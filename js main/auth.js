@@ -41,5 +41,7 @@ form.addEventListener("submit", (e) => {
 
     alert("Login Successful");
 
+    window.location.href = "dashboard.html";
+
 
 });
