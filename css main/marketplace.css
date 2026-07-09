@@ -466,3 +466,26 @@ body {
     border-bottom: none;
 
 }
+.back-btn {
+
+    background: #0f4c81;
+
+    color: white;
+
+    border: none;
+
+    padding: 12px 20px;
+
+    border-radius: 8px;
+
+    cursor: pointer;
+
+    transition: .3s;
+
+}
+
+.back-btn:hover {
+
+    background: #083b66;
+
+}

@@ -4,11 +4,13 @@
 <head>
 
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width,initial-scale=1.0">
 
-    <title>Dashboard</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <link rel="stylesheet" href="..//css main/dashbord.css">
+    <title>Mera Ilaka | Dashboard</title>
+
+    <link rel="stylesheet" href="../css main/dashbord.css">
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
 
 </head>
@@ -16,7 +18,6 @@
 <body>
 
     <div class="container">
-
 
         <aside class="sidebar">
 
@@ -29,55 +30,82 @@
             <ul>
 
                 <li class="active">
+
                     <i class="fa-solid fa-house"></i>
-                    Dashboard
+
+                    <span>Dashboard</span>
+
                 </li>
 
-                <li>
+                <li onclick="window.location.href='community.html'">
+
                     <i class="fa-solid fa-users"></i>
-                    Community Feed
+
+                    <span>Community Feed</span>
+
                 </li>
 
                 <li onclick="window.location.href='marketplace.html'">
+
                     <i class="fa-solid fa-store"></i>
-                    Marketplace
+
+                    <span>Marketplace</span>
+
                 </li>
 
-                <li>
+                <li onclick="window.location.href='business.html'">
+
                     <i class="fa-solid fa-building"></i>
-                    Businesses
+
+                    <span>Businesses</span>
+
                 </li>
 
-                <li>
+                <li onclick="window.location.href='services.html'">
+
                     <i class="fa-solid fa-screwdriver-wrench"></i>
-                    Services
+
+                    <span>Services</span>
+
                 </li>
 
-                <li>
-                    <i class="fa-solid fa-calendar"></i>
-                    Events
+                <li onclick="window.location.href='events.html'">
+
+                    <i class="fa-solid fa-calendar-days"></i>
+
+                    <span>Events</span>
+
                 </li>
 
-                <li>
+                <li onclick="window.location.href='chat.html'">
+
                     <i class="fa-solid fa-comments"></i>
-                    Chat
+
+                    <span>Chat</span>
+
                 </li>
 
-                <li>
+                <li onclick="window.location.href='notifications.html'">
+
                     <i class="fa-solid fa-bell"></i>
-                    Notifications
+
+                    <span>Notifications</span>
+
                 </li>
 
-                <li>
+                <li onclick="window.location.href='profile.html'">
+
                     <i class="fa-solid fa-user"></i>
-                    Profile
+
+                    <span>Profile</span>
+
                 </li>
 
                 <li id="logout">
 
                     <i class="fa-solid fa-right-from-bracket"></i>
 
-                    Logout
+                    <span>Logout</span>
 
                 </li>
 
@@ -85,16 +113,20 @@
 
         </aside>
 
+        
 
         <main class="main">
 
+            <!-- Navbar -->
 
             <header class="navbar">
 
                 <div class="left-nav">
 
                     <button id="menuBtn">
+
                         <i class="fa-solid fa-bars"></i>
+
                     </button>
 
                     <div class="search">
@@ -108,7 +140,9 @@
                 <div class="user">
 
                     <button id="darkBtn">
+
                         <i class="fa-solid fa-moon"></i>
+
                     </button>
 
                     <div class="notification">
@@ -123,7 +157,7 @@
 
                             <p>🎉 New Event Added</p>
 
-                            <p>🛒 New Marketplace Item</p>
+                            <p>🛍 New Marketplace Item</p>
 
                             <p>🚨 Emergency Alert</p>
 
@@ -131,31 +165,41 @@
 
                     </div>
 
-                    <span>Arun</span>
+                    <span>Arun Sai</span>
 
                 </div>
 
             </header>
-            <div class="welcome-banner">
+
+            <!-- Welcome Banner -->
+
+            <section class="welcome-banner">
 
                 <div>
 
                     <h2>👋 Welcome Back, Arun!</h2>
 
-                    <p>Stay connected with your community and explore what's happening today.</p>
+                    <p>
+
+                        Stay connected with your neighborhood using Mera Ilaka.
+
+                    </p>
 
                 </div>
 
                 <button id="exploreBtn">
+
                     Explore Now
+
                 </button>
 
-            </div>
-
-
+            </section>
+           
             <section class="cards">
 
                 <div class="card blue">
+
+                    <i class="fa-solid fa-users"></i>
 
                     <h3>Total Residents</h3>
 
@@ -165,6 +209,8 @@
 
                 <div class="card green">
 
+                    <i class="fa-solid fa-building"></i>
+
                     <h3>Businesses</h3>
 
                     <h1 class="counter" data-target="2143">0</h1>
@@ -172,6 +218,8 @@
                 </div>
 
                 <div class="card orange">
+
+                    <i class="fa-solid fa-calendar-days"></i>
 
                     <h3>Events</h3>
 
@@ -181,6 +229,8 @@
 
                 <div class="card red">
 
+                    <i class="fa-solid fa-triangle-exclamation"></i>
+
                     <h3>Emergency Alerts</h3>
 
                     <h1 class="counter" data-target="3">0</h1>
@@ -189,366 +239,209 @@
 
             </section>
 
+            <section class="quick-access">
 
+                <h2>Quick Access</h2>
 
-            <section class="feed-container">
+                <div class="module-grid">
 
-                <div class="feed-left">
+                    <div class="module-card" onclick="window.location.href='community.html'">
 
-                    <div class="dashboard-extras">
-                        <div class="widget">
+                        <i class="fa-solid fa-users"></i>
 
-                            <h3>Community Activity</h3>
+                        <h3>Community Feed</h3>
 
-                            <div class="chart">
-
-                                <div class="bar" style="height:60%">
-                                    <span>Mon</span>
-                                </div>
-
-                                <div class="bar" style="height:80%">
-                                    <span>Tue</span>
-                                </div>
-
-                                <div class="bar" style="height:45%">
-                                    <span>Wed</span>
-                                </div>
-
-                                <div class="bar" style="height:95%">
-                                    <span>Thu</span>
-                                </div>
-
-                                <div class="bar" style="height:70%">
-                                    <span>Fri</span>
-                                </div>
-
-                                <div class="bar" style="height:55%">
-                                    <span>Sat</span>
-                                </div>
-
-                                <div class="bar" style="height:85%">
-                                    <span>Sun</span>
-                                </div>
-
-                            </div>
-
-                        </div>
-                        <div class="widget">
-
-                            <h3>Recent Activity</h3>
-
-                            <ul class="timeline">
-
-                                <li>🎉 New event created</li>
-                                <li>👥 12 new residents joined</li>
-                                <li>🏪 New business registered</li>
-                                <li>🚨 Emergency alert resolved</li>
-
-                            </ul>
-
-                        </div>
+                        <p>View posts from your neighborhood.</p>
 
                     </div>
 
-                    <div class="create-post">
+                    <div class="module-card" onclick="window.location.href='marketplace.html'">
 
-                        <div class="post-header">
+                        <i class="fa-solid fa-store"></i>
 
+                        <h3>Marketplace</h3>
 
-                            <textarea id="postText" placeholder="What's happening in your neighborhood?"></textarea>
-
-                        </div>
-
-                        <div class="post-footer">
-
-                            <label class="upload">
-
-                                📷 Photo
-
-                                <input type="file" id="imageUpload" hidden>
-
-                            </label>
-
-                            <button id="postBtn">
-
-                                Post
-
-                            </button>
-
-                        </div>
-
-                    </div>
-                    <div class="post-search">
-
-                        <input type="text" id="postSearch" placeholder="🔍 Search community posts...">
+                        <p>Buy and sell products locally.</p>
 
                     </div>
 
-                    <div id="posts">
+                    <div class="module-card" onclick="window.location.href='business.html'">
 
-                        <div class="post-card">
+                        <i class="fa-solid fa-building"></i>
 
-                            <div class="user-info">
+                        <h3>Businesses</h3>
 
-
-                                <div>
-
-                                    <h3>Rahul</h3>
-
-                                    <span>10 mins ago</span>
-
-                                </div>
-
-                            </div>
-
-                            <p>
-
-                                🌳 Community Clean-up Drive this Sunday at 8:00 AM.
-                                Everyone is welcome!
-
-                            </p>
-
-                            <div class="post-actions">
-
-                                <button class="like-btn">
-                                    👍 <span>0</span>
-                                </button>
-
-                                <button class="emoji-btn">
-                                    😊 React
-                                </button>
-
-                                <button class="comment-btn">
-                                    💬 Comment
-                                </button>
-
-                                <button class="share-btn">
-                                    ↗ Share
-                                </button>
-
-                                <button class="edit-btn">
-                                    ✏ Edit
-                                </button>
-
-                                <button class="pin-btn">
-                                    📌 Pin
-                                </button>
-
-                                <button class="delete-btn">
-                                    🗑 Delete
-                                </button>
-
-                            </div>
-
-                            <div class="comments"></div>
-
-                        </div>
-
-                    </div>
-                    <div class="widget chat-widget">
-
-                        <h3>💬 Community Chat</h3>
-
-                        <div class="chat-box" id="chatBox">
-
-                            <div class="chat-message">
-                                <strong>Prem:</strong> Good morning everyone! 👋
-                            </div>
-
-                            <div class="chat-message">
-                                <strong>Sai:</strong> Tree plantation starts at 9 AM 🌳
-                            </div>
-
-                        </div>
-
-                        <div class="chat-input">
-
-                            <input type="text" id="chatInput" placeholder="Type a message...">
-
-                            <button id="sendChat">
-                                Send
-                            </button>
-
-                        </div>
-
-                    </div>
-                    <div class="widget">
-
-                        <h3>🔥 Trending Topics</h3>
-
-                        <ul class="trending-list">
-
-                            <li># Independence Day Celebration</li>
-
-                            <li># Clean Hyderabad</li>
-
-                            <li># Tree Plantation Drive</li>
-
-                            <li># Blood Donation Camp</li>
-
-                            <li># Weekend Cricket Match</li>
-
-                        </ul>
+                        <p>Explore nearby businesses.</p>
 
                     </div>
 
-                    <div class="widget">
+                    <div class="module-card" onclick="window.location.href='services.html'">
 
-                        <h3>🏆 Top Contributors</h3>
+                        <i class="fa-solid fa-screwdriver-wrench"></i>
 
-                        <div class="contributors">
+                        <h3>Services</h3>
 
-                            <div class="person">
-                                <div>
-                                    <h4>Sai</h4>
-                                    <small>125 Posts</small>
-                                </div>
-                            </div>
-
-                            <div class="person">
-                                <div>
-                                    <h4>Laxman</h4>
-                                    <small>98 Posts</small>
-                                </div>
-                            </div>
-
-                            <div class="person">
-                                <div>
-                                    <h4>Arun Sai</h4>
-                                    <small>45 Posts</small>
-                                </div>
-                            </div>
-
-                        </div>
-
-                    </div>
-                    <div class="widget">
-
-                        <h3>📢 Community Announcements</h3>
-
-                        <ul class="announcement-list">
-
-                            <li>🚰 Water supply maintenance on Friday (10 AM - 2 PM)</li>
-
-                            <li>🚌 New city bus route starts next week</li>
-
-                            <li>🌳 Tree plantation drive this Sunday</li>
-
-                            <li>🎉 Independence Day celebrations on August 15</li>
-
-                        </ul>
-
-                    </div>
-                    <div class="widget">
-
-                        <h3>🌍 Live Clock</h3>
-
-                        <div class="live-clock">
-
-                            <h2 id="clock">00:00:00</h2>
-
-                            <p id="todayDate">Loading...</p>
-
-                        </div>
+                        <p>Book trusted local services.</p>
 
                     </div>
 
-                    <div class="widget">
+                    <div class="module-card" onclick="window.location.href='events.html'">
 
-                        <h3>📝 Sticky Notes</h3>
+                        <i class="fa-solid fa-calendar"></i>
 
-                        <textarea id="stickyNote" placeholder="Write your reminder here..."></textarea>
+                        <h3>Events</h3>
 
-                        <button id="saveNote">
-                            Save Note
-                        </button>
+                        <p>See upcoming community events.</p>
 
                     </div>
 
-                    <div class="widget">
+                    <div class="module-card" onclick="window.location.href='chat.html'">
 
-                        <h3>📊 Weekly Analytics</h3>
+                        <i class="fa-solid fa-comments"></i>
 
-                        <div class="analytics">
+                        <h3>Chat</h3>
 
-                            <div class="analytics-item">
+                        <p>Connect with your neighbors.</p>
 
-                                <h2>85%</h2>
+                    </div>
 
-                                <p>Community Activity</p>
+                    <div class="module-card" onclick="window.location.href='notifications.html'">
 
-                            </div>
+                        <i class="fa-solid fa-bell"></i>
 
-                            <div class="analytics-item">
+                        <h3>Notifications</h3>
 
-                                <h2>92%</h2>
+                        <p>Stay updated with alerts.</p>
 
-                                <p>Resident Satisfaction</p>
+                    </div>
 
-                            </div>
+                    <div class="module-card" onclick="window.location.href='profile.html'">
 
-                            <div class="analytics-item">
+                        <i class="fa-solid fa-user"></i>
 
-                                <h2>67%</h2>
+                        <h3>Profile</h3>
 
-                                <p>Marketplace Sales</p>
-
-                            </div>
-
-                        </div>
+                        <p>Manage your account.</p>
 
                     </div>
 
                 </div>
 
+            </section>
 
-                <div class="feed-right">
+            <section class="recent-activity">
 
+                <h2>Recent Activity</h2>
 
-                    <div class="widget weather-widget">
+                <ul>
 
-                        <h3>Today's Weather</h3>
+                    <li>🎉 New Marketplace product added.</li>
 
-                        <div class="weather-content">
+                    <li>🏢 New business registered.</li>
 
-                            <h1>29°C</h1>
+                    <li>🌳 Community Clean-up Drive this Sunday.</li>
 
-                            <p>☀ Sunny</p>
+                    <li>📅 Society Meeting tomorrow at 9:00 AM.</li>
 
-                            <small>Hyderabad</small>
+                    <li>🚨 No emergency alerts today.</li>
 
-                        </div>
+                </ul>
+
+            </section>
+
+            <section class="dashboard-widgets">
+
+                <!-- Weather Widget -->
+
+                <div class="widget weather-widget">
+
+                    <h2>
+
+                        <i class="fa-solid fa-cloud-sun"></i>
+
+                        Weather
+
+                    </h2>
+
+                    <div class="weather-content">
+
+                        <i class="fa-solid fa-sun weather-icon"></i>
+
+                        <h1>30°C</h1>
+
+                        <p>Sunny</p>
+
+                        <small>Hyderabad, India</small>
 
                     </div>
 
+                </div>
 
-                    <div class="widget">
+                <!-- Upcoming Events -->
 
-                        <h3>Upcoming Schedule</h3>
+                <div class="widget events-widget">
 
-                        <ul class="schedule">
+                    <h2>
 
-                            <li>
-                                <span>09:00 AM</span>
-                                Society Meeting
-                            </li>
+                        <i class="fa-solid fa-calendar-days"></i>
 
-                            <li>
-                                <span>04:00 PM</span>
-                                Water Supply Check
-                            </li>
+                        Upcoming Events
 
-                            <li>
-                                <span>07:00 PM</span>
-                                Yoga Session
-                            </li>
+                    </h2>
 
-                        </ul>
+                    <ul class="schedule">
 
-                    </div>
+                        <li>
 
+                            <span>10 Aug</span>
 
-                    <div class="widget profile-widget">
+                            Community Meeting
+
+                        </li>
+
+                        <li>
+
+                            <span>15 Aug</span>
+
+                            Independence Day Celebration
+
+                        </li>
+
+                        <li>
+
+                            <span>20 Aug</span>
+
+                            Blood Donation Camp
+
+                        </li>
+
+                        <li>
+
+                            <span>25 Aug</span>
+
+                            Tree Plantation Drive
+
+                        </li>
+
+                    </ul>
+
+                </div>
+
+                <!-- Profile Widget -->
+
+                <div class="widget profile-widget">
+
+                    <h2>
+
+                        <i class="fa-solid fa-user"></i>
+
+                        My Profile
+
+                    </h2>
+
+                    <div class="profile-content">
+
+                        <i class="fa-solid fa-circle-user profile-icon"></i>
 
                         <h3>Arun Sai</h3>
 
@@ -558,7 +451,7 @@
 
                             <div>
 
-                                <h2>45</h2>
+                                <h4>25</h4>
 
                                 <small>Posts</small>
 
@@ -566,9 +459,17 @@
 
                             <div>
 
-                                <h2>120</h2>
+                                <h4>180</h4>
 
-                                <small>Friends</small>
+                                <small>Followers</small>
+
+                            </div>
+
+                            <div>
+
+                                <h4>95</h4>
+
+                                <small>Following</small>
 
                             </div>
 
@@ -577,184 +478,20 @@
                         <button>Edit Profile</button>
 
                     </div>
-                    <div class="widget">
-
-                        <h3>📅 Calendar</h3>
-
-                        <div class="calendar">
-
-                            <div class="month">
-                                July 2026
-                            </div>
-
-                            <div class="days">
-
-                                <span>Su</span>
-                                <span>Mo</span>
-                                <span>Tu</span>
-                                <span>We</span>
-                                <span>Th</span>
-                                <span>Fr</span>
-                                <span>Sa</span>
-
-                                <span></span>
-                                <span></span>
-
-                                <span>1</span>
-                                <span>2</span>
-                                <span>3</span>
-                                <span>4</span>
-                                <span>5</span>
-
-                                <span>6</span>
-                                <span>7</span>
-
-                                <span class="today">8</span>
-
-                                <span>9</span>
-                                <span>10</span>
-                                <span>11</span>
-                                <span>12</span>
-
-                                <span>13</span>
-                                <span>14</span>
-                                <span>15</span>
-                                <span>16</span>
-                                <span>17</span>
-                                <span>18</span>
-                                <span>19</span>
-
-                                <span>20</span>
-                                <span>21</span>
-                                <span>22</span>
-                                <span>23</span>
-                                <span>24</span>
-                                <span>25</span>
-                                <span>26</span>
-
-                                <span>27</span>
-                                <span>28</span>
-                                <span>29</span>
-                                <span>30</span>
-                                <span>31</span>
-
-                            </div>
-
-                        </div>
-
-                    </div>
-
-                    <div class="widget">
-
-                        <h3>⚡ Quick Actions</h3>
-
-                        <div class="quick-actions">
-
-                            <button>Add Event</button>
-
-                            <button>New Business</button>
-
-                            <button>Emergency Alert</button>
-
-                            <button>Marketplace</button>
-
-                        </div>
-
-                    </div>
-
-                    <div class="widget">
-
-                        <h3>Upcoming Events</h3>
-
-                        <ul>
-
-                            <li>🎉 Independence Day Celebration</li>
-
-                            <li>🌳 Tree Plantation</li>
-
-                            <li>🏏 Cricket Tournament</li>
-
-                        </ul>
-
-                    </div>
-
-                    <div class="widget">
-
-                        <h3>Emergency</h3>
-
-                        <p>No Emergency Alerts</p>
-
-                    </div>
-                    <div class="widget">
-
-                        <h3>🏅 Achievement Badges</h3>
-
-                        <div class="badges">
-
-                            <div class="badge-card">
-                                🥇
-                                <span>Top Contributor</span>
-                            </div>
-
-                            <div class="badge-card">
-                                🌳
-                                <span>Green Hero</span>
-                            </div>
-
-                            <div class="badge-card">
-                                ❤️
-                                <span>Helpful Neighbor</span>
-                            </div>
-
-                            <div class="badge-card">
-                                ⭐
-                                <span>Community Star</span>
-                            </div>
-
-                        </div>
-
-                    </div>
-
-                    <div class="widget">
-
-                        <h3>🎯 Community Progress</h3>
-
-                        <div class="progress-item">
-
-                            <p>Monthly Events</p>
-
-                            <div class="progress-bar">
-                                <div class="progress-fill events-progress"></div>
-                            </div>
-
-                        </div>
-
-                        <div class="progress-item">
-
-                            <p>Resident Participation</p>
-
-                            <div class="progress-bar">
-                                <div class="progress-fill residents-progress"></div>
-                            </div>
-
-                        </div>
-
-                        <div class="progress-item">
-
-                            <p>Cleanliness Drive</p>
-
-                            <div class="progress-bar">
-                                <div class="progress-fill clean-progress"></div>
-                            </div>
-
-                        </div>
-
-                    </div>
 
                 </div>
 
-
             </section>
+
+            <footer class="footer">
+
+                <p>
+
+                    © 2025 Mera Ilaka | Smart Community Portal
+
+                </p>
+
+            </footer>
 
         </main>
 
