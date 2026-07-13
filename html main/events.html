@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Mera Ilaka | Events</title>
+
+    <link rel="stylesheet" href="../css main/events.css">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+
+</head>
+
+<body>
+
+    <div class="events-container">
+
+        <!-- Header -->
+
+        <header class="events-header">
+
+            <h1>
+
+                <i class="fa-solid fa-calendar-days"></i>
+
+                Community Events
+
+            </h1>
+
+            <button onclick="window.location.href='dashboard.html'">
+
+                <i class="fa-solid fa-arrow-left"></i>
+
+                Dashboard
+
+            </button>
+
+        </header>
+
+        <!-- Search -->
+
+        <div class="search-box">
+
+            <input type="text" id="eventSearch" placeholder="Search events...">
+
+        </div>
+
+        <!-- Categories -->
+
+        <section class="categories">
+
+            <button class="active">All</button>
+
+            <button>Festival</button>
+
+            <button>Sports</button>
+
+            <button>Meeting</button>
+
+            <button>Education</button>
+
+            <button>Health</button>
+
+            <button>Social</button>
+
+        </section>
+
+        <!-- Create Event -->
+
+        <section class="create-event">
+
+            <h2>Create New Event</h2>
+
+            <input type="text" id="eventTitle" placeholder="Event Title">
+
+            <input type="date" id="eventDate">
+
+            <input type="time" id="eventTime">
+
+            <input type="text" id="eventLocation" placeholder="Location">
+
+            <textarea id="eventDescription" placeholder="Event Description">
+
+        </textarea>
+
+            <button id="createEventBtn">
+
+                <i class="fa-solid fa-plus"></i>
+
+                Create Event
+
+            </button>
+
+        </section>
+
+        <!-- Events Grid -->
+
+        <section class="events-grid">
+            <!-- Event 1 -->
+
+            <div class="event-card" data-category="Festival">
+
+                <i class="fa-solid fa-flag event-icon"></i>
+
+                <h3>Independence Day Celebration</h3>
+
+                <p class="event-date">
+
+                    <i class="fa-solid fa-calendar"></i>
+
+                    15 Aug 2025
+
+                </p>
+
+                <p class="event-time">
+
+                    <i class="fa-solid fa-clock"></i>
+
+                    09:00 AM
+
+                </p>
+
+                <p class="event-location">
+
+                    <i class="fa-solid fa-location-dot"></i>
+
+                    Community Hall
+
+                </p>
+
+                <p class="event-description">
+
+                    Cultural programs, flag hoisting and celebrations.
+
+                </p>
+
+                <div class="event-actions">
+
+                    <button class="register-btn">
+
+                        <i class="fa-solid fa-ticket"></i>
+
+                        Register
+
+                    </button>
+
+                    <button class="wish-btn">
+
+                        <i class="fa-regular fa-heart"></i>
+
+                    </button>
+
+                </div>
+
+            </div>
+
+            <!-- Event 2 -->
+
+            <div class="event-card" data-category="Sports">
+
+                <i class="fa-solid fa-futbol event-icon"></i>
+
+                <h3>Football Tournament</h3>
+
+                <p class="event-date">
+
+                    <i class="fa-solid fa-calendar"></i>
+
+                    20 Aug 2025
+
+                </p>
+
+                <p class="event-time">
+
+                    <i class="fa-solid fa-clock"></i>
+
+                    05:00 PM
+
+                </p>
+
+                <p class="event-location">
+
+                    <i class="fa-solid fa-location-dot"></i>
+
+                    Sports Ground
+
+                </p>
+
+                <p class="event-description">
+
+                    Friendly football competition for all residents.
+
+                </p>
+
+                <div class="event-actions">
+
+                    <button class="register-btn">
+
+                        <i class="fa-solid fa-ticket"></i>
+
+                        Register
+
+                    </button>
+
+                    <button class="wish-btn">
+
+                        <i class="fa-regular fa-heart"></i>
+
+                    </button>
+
+                </div>
+
+            </div>
+
+            <!-- Event 3 -->
+
+            <div class="event-card" data-category="Meeting">
+
+                <i class="fa-solid fa-users event-icon"></i>
+
+                <h3>Residents Meeting</h3>
+
+                <p class="event-date">
+
+                    <i class="fa-solid fa-calendar"></i>
+
+                    22 Aug 2025
+
+                </p>
+
+                <p class="event-time">
+
+                    <i class="fa-solid fa-clock"></i>
+
+                    07:00 PM
+
+                </p>
+
+                <p class="event-location">
+
+                    <i class="fa-solid fa-location-dot"></i>
+
+                    Society Office
+
+                </p>
+
+                <p class="event-description">
+
+                    Monthly community discussion and planning.
+
+                </p>
+
+                <div class="event-actions">
+
+                    <button class="register-btn">
+
+                        <i class="fa-solid fa-ticket"></i>
+
+                        Register
+
+                    </button>
+
+                    <button class="wish-btn">
+
+                        <i class="fa-regular fa-heart"></i>
+
+                    </button>
+
+                </div>
+
+            </div>
+
+            <!-- Event 4 -->
+
+            <div class="event-card" data-category="Education">
+
+                <i class="fa-solid fa-book-open event-icon"></i>
+
+                <h3>Career Guidance Seminar</h3>
+
+                <p class="event-date">
+
+                    <i class="fa-solid fa-calendar"></i>
+
+                    25 Aug 2025
+
+                </p>
+
+                <p class="event-time">
+
+                    <i class="fa-solid fa-clock"></i>
+
+                    11:00 AM
+
+                </p>
+
+                <p class="event-location">
+
+                    <i class="fa-solid fa-location-dot"></i>
+
+                    Library Hall
+
+                </p>
+
+                <p class="event-description">
+
+                    Career guidance for students and graduates.
+
+                </p>
+
+                <div class="event-actions">
+
+                    <button class="register-btn">
+
+                        <i class="fa-solid fa-ticket"></i>
+
+                        Register
+
+                    </button>
+
+                    <button class="wish-btn">
+
+                        <i class="fa-regular fa-heart"></i>
+
+                    </button>
+
+                </div>
+
+            </div>
+
+            <!-- Event 5 -->
+
+            <div class="event-card" data-category="Health">
+
+                <i class="fa-solid fa-heart-pulse event-icon"></i>
+
+                <h3>Free Health Camp</h3>
+
+                <p class="event-date">
+
+                    <i class="fa-solid fa-calendar"></i>
+
+                    28 Aug 2025
+
+                </p>
+
+                <p class="event-time">
+
+                    <i class="fa-solid fa-clock"></i>
+
+                    10:00 AM
+
+                </p>
+
+                <p class="event-location">
+
+                    <i class="fa-solid fa-location-dot"></i>
+
+                    Health Center
+
+                </p>
+
+                <p class="event-description">
+
+                    Free medical check-up for all residents.
+
+                </p>
+
+                <div class="event-actions">
+
+                    <button class="register-btn">
+
+                        <i class="fa-solid fa-ticket"></i>
+
+                        Register
+
+                    </button>
+
+                    <button class="wish-btn">
+
+                        <i class="fa-regular fa-heart"></i>
+
+                    </button>
+
+                </div>
+
+            </div>
+
+            <!-- Event 6 -->
+
+            <div class="event-card" data-category="Social">
+
+                <i class="fa-solid fa-seedling event-icon"></i>
+
+                <h3>Tree Plantation Drive</h3>
+
+                <p class="event-date">
+
+                    <i class="fa-solid fa-calendar"></i>
+
+                    30 Aug 2025
+
+                </p>
+
+                <p class="event-time">
+
+                    <i class="fa-solid fa-clock"></i>
+
+                    08:00 AM
+
+                </p>
+
+                <p class="event-location">
+
+                    <i class="fa-solid fa-location-dot"></i>
+
+                    Community Park
+
+                </p>
+
+                <p class="event-description">
+
+                    Join us to plant trees and make our community greener.
+
+                </p>
+
+                <div class="event-actions">
+
+                    <button class="register-btn">
+
+                        <i class="fa-solid fa-ticket"></i>
+
+                        Register
+
+                    </button>
+
+                    <button class="wish-btn">
+
+                        <i class="fa-regular fa-heart"></i>
+
+                    </button>
+
+                </div>
+
+            </div>
+
+        </section>
+
+        <!-- Registration History -->
+
+        <section class="registration-history">
+
+            <h2>
+
+                <i class="fa-solid fa-clock-rotate-left"></i>
+
+                Registration History
+
+            </h2>
+
+            <ul id="registrationHistory">
+
+                <li>No registrations yet.</li>
+
+            </ul>
+
+        </section>
+
+        <!-- Toast -->
+
+        <div id="toast">
+
+            Event Registered Successfully!
+
+        </div>
+
+    </div>
+
+    <script src="../js main/events.js"></script>
+
+</body>
+
+</html>
