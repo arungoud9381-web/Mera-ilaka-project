@@ -1,11 +1,3 @@
-/*==================================================
-                DASHBOARD JAVASCRIPT
-==================================================*/
-
-/*==========================
-      COUNTER ANIMATION
-==========================*/
-
 const counters = document.querySelectorAll(".counter");
 
 counters.forEach(counter => {
@@ -36,9 +28,6 @@ counters.forEach(counter => {
 
 });
 
-/*==========================
-      DARK MODE
-==========================*/
 
 const darkBtn = document.getElementById("darkBtn");
 
@@ -60,10 +49,6 @@ darkBtn.addEventListener("click", () => {
 
 });
 
-/*==========================
-      SIDEBAR TOGGLE
-==========================*/
-
 const menuBtn = document.getElementById("menuBtn");
 
 const sidebar = document.querySelector(".sidebar");
@@ -73,10 +58,6 @@ menuBtn.addEventListener("click", () => {
     sidebar.classList.toggle("show");
 
 });
-
-/*==========================
-      NOTIFICATIONS
-==========================*/
 
 const bell = document.getElementById("bell");
 
@@ -99,10 +80,6 @@ document.addEventListener("click", () => {
 
 });
 
-/*==========================
-      EXPLORE BUTTON
-==========================*/
-
 const exploreBtn = document.getElementById("exploreBtn");
 
 exploreBtn.addEventListener("click", () => {
@@ -114,10 +91,6 @@ exploreBtn.addEventListener("click", () => {
     });
 
 });
-
-/*==========================
-      SEARCH
-==========================*/
 
 const searchInput = document.querySelector(".search input");
 
@@ -141,10 +114,6 @@ searchInput.addEventListener("keyup", function () {
 
 });
 
-/*==========================
-      LOGOUT
-==========================*/
-
 const logout = document.getElementById("logout");
 
 logout.addEventListener("click", () => {
@@ -159,10 +128,6 @@ logout.addEventListener("click", () => {
 
 });
 
-/*==========================
-      PROFILE BUTTON
-==========================*/
-
 const profileBtn = document.querySelector(".profile-content button");
 
 if (profileBtn) {
@@ -174,10 +139,6 @@ if (profileBtn) {
     });
 
 }
-
-/*==========================
-      WEATHER DEMO
-==========================*/
 
 const temperatures = [28, 29, 30, 31, 32];
 
@@ -213,10 +174,6 @@ setInterval(() => {
 
 }, 10000);
 
-/*==========================
-      CURRENT DATE
-==========================*/
-
 const today = new Date();
 
 console.log(
@@ -226,10 +183,6 @@ console.log(
     today.toDateString()
 
 );
-
-/*==========================
-      PAGE LOADED
-==========================*/
 
 window.addEventListener("load", () => {
 
