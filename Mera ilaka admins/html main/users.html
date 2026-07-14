@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>User Management | Mera Ilaka Admin</title>
+
+    <link rel="stylesheet" href="../css main/users.css">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+
+</head>
+
+<body>
+
+    <div class="container">
+
+        <!-- Header -->
+
+        <header>
+
+            <div>
+
+                <h1>User Management</h1>
+
+                <p>Manage all registered users</p>
+
+            </div>
+
+            <div class="header-buttons">
+
+                <button id="dashboardBtn">
+
+                    <i class="fa-solid fa-house"></i>
+
+                    Dashboard
+
+                </button>
+
+                <button id="addUserBtn">
+
+                    <i class="fa-solid fa-user-plus"></i>
+
+                    Add User
+
+                </button>
+
+            </div>
+
+        </header>
+
+        <!-- Search -->
+
+        <div class="search-box">
+
+            <i class="fa-solid fa-magnifying-glass"></i>
+
+            <input type="text" id="searchUser" placeholder="Search User...">
+
+        </div>
+
+        <!-- User Table -->
+
+        <table id="userTable">
+
+            <thead>
+
+                <tr>
+
+                    <th>ID</th>
+
+                    <th>Name</th>
+
+                    <th>Email</th>
+
+                    <th>Phone</th>
+
+                    <th>Status</th>
+
+                    <th>Actions</th>
+
+                </tr>
+
+            </thead>
+
+            <tbody>
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+    <!-- Add/Edit User Modal -->
+
+    <div id="userModal" class="modal">
+
+        <div class="modal-content">
+
+            <span class="close">&times;</span>
+
+            <h2 id="modalTitle">Add User</h2>
+
+            <form id="userForm">
+
+                <input type="text" id="name" placeholder="Full Name" required>
+
+                <input type="email" id="email" placeholder="Email Address" required>
+
+                <input type="tel" id="phone" placeholder="Phone Number" required>
+
+                <select id="status">
+
+                    <option>Active</option>
+
+                    <option>Inactive</option>
+
+                </select>
+
+                <button type="submit">
+
+                    Save User
+
+                </button>
+
+            </form>
+
+        </div>
+
+    </div>
+
+    <script src="../js main/users.js"></script>
+
+</body>
+
+</html>

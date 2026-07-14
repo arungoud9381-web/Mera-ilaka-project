@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Mera Ilaka | Admin Dashboard</title>
+
+    <link rel="stylesheet" href="../css main/dashboard.css">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+
+</head>
+
+<body>
+
+    <div class="container">
+
+        <!-- Sidebar Starts -->
+
+        <aside class="sidebar">
+
+            <div class="logo">
+
+                <h2>Mera Ilaka</h2>
+
+                <p>Admin Panel</p>
+
+            </div>
+
+            <ul>
+
+                <li class="active">
+                    <a href="dashboard.html">
+                        <i class="fa-solid fa-gauge"></i>
+                        Dashboard
+                    </a>
+                </li>
+
+                <li>
+                    <a href="users.html">
+                        <i class="fa-solid fa-users"></i>
+                        User Management
+                    </a>
+                </li>
+
+                <li>
+                    <a href="community.html">
+                        <i class="fa-solid fa-comments"></i>
+                        Community
+                    </a>
+                </li>
+
+                <li>
+                    <a href="marketplace.html">
+                        <i class="fa-solid fa-store"></i>
+                        Marketplace
+                    </a>
+                </li>
+
+                <li>
+                    <a href="business.html">
+                        <i class="fa-solid fa-building"></i>
+                        Businesses
+                    </a>
+                </li>
+
+                <li>
+                    <a href="service.html">
+                        <i class="fa-solid fa-screwdriver-wrench"></i>
+                        Services
+                    </a>
+                </li>
+
+                <li>
+                    <a href="events.html">
+                        <i class="fa-solid fa-calendar-days"></i>
+                        Events
+                    </a>
+                </li>
+
+                <li>
+                    <a href="support.html">
+                        <i class="fa-solid fa-headset"></i>
+                        Support
+                    </a>
+                </li>
+
+                <li>
+                    <a href="notifications.html">
+                        <i class="fa-solid fa-bell"></i>
+                        Notifications
+                    </a>
+                </li>
+
+                <li>
+                    <a href="reports.html">
+                        <i class="fa-solid fa-chart-line"></i>
+                        Reports
+                    </a>
+                </li>
+
+                <li>
+                    <a href="profile.html">
+                        <i class="fa-solid fa-user-shield"></i>
+                        Profile
+                    </a>
+                </li>
+
+                <li>
+                    <a href="settings.html">
+                        <i class="fa-solid fa-gear"></i>
+                        Settings
+                    </a>
+                </li>
+
+                <li>
+                    <a href="login.html">
+                        <i class="fa-solid fa-right-from-bracket"></i>
+                        Logout
+                    </a>
+                </li>
+
+            </ul>
+        </aside>
+
+
+        <main class="main-content">
+
+            <!-- Navbar -->
+
+            <header class="topbar">
+
+                <div class="search-box">
+
+                    <i class="fa-solid fa-magnifying-glass"></i>
+
+                    <input type="text" id="searchInput" placeholder="Search Menu...">
+
+                </div>
+
+                <div class="topbar-right">
+
+                    <span id="dateTime"></span>
+
+                    <button id="themeBtn">
+
+                        <i class="fa-solid fa-moon"></i>
+
+                    </button>
+
+                    <button id="notificationBtn">
+
+                        <i class="fa-solid fa-bell"></i>
+
+                    </button>
+
+                    <div class="profile">
+
+                        <i class="fa-solid fa-user-circle"></i>
+
+                        <span>Admin</span>
+
+                    </div>
+
+                </div>
+
+            </header>
+
+            <!-- Welcome Section -->
+
+            <section class="welcome">
+
+                <h1>Welcome, Administrator 👋</h1>
+
+                <p>
+
+                    Manage users, businesses, marketplace, services and events from one place.
+
+                </p>
+
+            </section>
+
+            <section class="cards">
+
+                <div class="card">
+
+                    <i class="fa-solid fa-users"></i>
+
+                    <h3>Total Users</h3>
+
+                    <h2>1250</h2>
+
+                </div>
+
+                <div class="card">
+
+                    <i class="fa-solid fa-building"></i>
+
+                    <h3>Businesses</h3>
+
+                    <h2>120</h2>
+
+                </div>
+
+                <div class="card">
+
+                    <i class="fa-solid fa-store"></i>
+
+                    <h3>Marketplace</h3>
+
+                    <h2>120</h2>
+
+                </div>
+
+                <div class="card">
+
+                    <i class="fa-solid fa-calendar-days"></i>
+
+                    <h3>Events</h3>
+
+                    <h2>18</h2>
+
+                </div>
+
+            </section>
+            <!-- Quick Actions -->
+
+            <section class="quick-actions">
+
+                <h2>Quick Actions</h2>
+
+                <div class="action-grid">
+
+                    <div class="action-card" onclick="location.href='users.html'">
+
+                        <i class="fa-solid fa-users"></i>
+
+                        <h3>Users</h3>
+
+                    </div>
+
+                    <div class="action-card" onclick="location.href='community.html'">
+
+                        <i class="fa-solid fa-comments"></i>
+
+                        <h3>Community</h3>
+
+                    </div>
+
+                    <div class="action-card" onclick="location.href='marketplace.html'">
+
+                        <i class="fa-solid fa-store"></i>
+
+                        <h3>Marketplace</h3>
+
+                    </div>
+
+                    <div class="action-card" onclick="location.href='business.html'">
+
+                        <i class="fa-solid fa-building"></i>
+
+                        <h3>Businesses</h3>
+
+                    </div>
+
+                    <div class="action-card" onclick="location.href='service.html'">
+
+                        <i class="fa-solid fa-screwdriver-wrench"></i>
+
+                        <h3>Services</h3>
+
+                    </div>
+
+                    <div class="action-card" onclick="location.href='events.html'">
+
+                        <i class="fa-solid fa-calendar-days"></i>
+
+                        <h3>Events</h3>
+
+                    </div>
+
+                </div>
+
+            </section>
+            <!-- Recent Activities & Notifications -->
+
+            <section class="dashboard-content">
+
+                <div class="activity">
+
+                    <h2>Recent Activities</h2>
+
+                    <table>
+
+                        <tr>
+
+                            <th>Date</th>
+
+                            <th>Activity</th>
+
+                        </tr>
+
+                        <tr>
+
+                            <td>15-07-2026</td>
+
+                            <td>New User Registered</td>
+
+                        </tr>
+
+                        <tr>
+
+                            <td>15-07-2026</td>
+
+                            <td>Business Approved</td>
+
+                        </tr>
+
+                        <tr>
+
+                            <td>14-07-2026</td>
+
+                            <td>Marketplace Product Added</td>
+
+                        </tr>
+
+                        <tr>
+
+                            <td>14-07-2026</td>
+
+                            <td>Community Post Approved</td>
+
+                        </tr>
+
+                    </table>
+
+                </div>
+
+                <!-- Notifications -->
+
+                <div class="notification">
+
+                    <h2>Latest Notifications</h2>
+
+                    <ul>
+
+                        <li>🔔 3 New User Registrations</li>
+
+                        <li>🔔 2 Business Verification Requests</li>
+
+                        <li>🔔 1 Event Approval Pending</li>
+
+                        <li>🔔 5 Marketplace Products Waiting</li>
+
+                    </ul>
+
+                </div>
+
+            </section>
+            <footer class="footer">
+
+                <p>
+
+                    © 2026 Mera Ilaka Admin Panel | All Rights Reserved
+
+                </p>
+
+            </footer>
+
+        </main>
+
+    </div>
+
+    <script src="../js main/dashboard.js"></script>
+
+</body>
+
+</html>
