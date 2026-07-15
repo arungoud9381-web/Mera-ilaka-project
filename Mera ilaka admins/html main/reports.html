@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Reports & Analytics</title>
+
+    <link rel="stylesheet" href="../css main/reports.css">
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+
+</head>
+
+<body>
+
+    <div class="container">
+
+        <header>
+
+            <div>
+
+                <h1>Reports & Analytics</h1>
+
+                <p>System Overview</p>
+
+            </div>
+
+            <button id="dashboardBtn">
+
+                <i class="fa-solid fa-house"></i>
+
+                Dashboard
+
+            </button>
+
+        </header>
+
+        <div class="cards">
+
+            <div class="card">
+
+                <h3>Total Users</h3>
+
+                <h2 id="usersCount">0</h2>
+
+            </div>
+
+            <div class="card">
+
+                <h3>Community Posts</h3>
+
+                <h2 id="communityCount">0</h2>
+
+            </div>
+
+            <div class="card">
+
+                <h3>Marketplace</h3>
+
+                <h2 id="marketCount">0</h2>
+
+            </div>
+
+            <div class="card">
+
+                <h3>Businesses</h3>
+
+                <h2 id="businessCount">0</h2>
+
+            </div>
+
+            <div class="card">
+
+                <h3>Services</h3>
+
+                <h2 id="serviceCount">0</h2>
+
+            </div>
+
+            <div class="card">
+
+                <h3>Events</h3>
+
+                <h2 id="eventCount">0</h2>
+
+            </div>
+
+            <div class="card">
+
+                <h3>Support Tickets</h3>
+
+                <h2 id="supportCount">0</h2>
+
+            </div>
+
+            <div class="card">
+
+                <h3>Notifications</h3>
+
+                <h2 id="notificationCount">0</h2>
+
+            </div>
+
+        </div>
+
+        <div class="chart-box">
+
+            <canvas id="reportChart"></canvas>
+
+        </div>
+
+    </div>
+
+    <script src="../js main/reports.js"></script>
+
+</body>
+
+</html>
