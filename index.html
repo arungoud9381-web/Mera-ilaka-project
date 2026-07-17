@@ -1,40 +1,128 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
     <meta charset="UTF-8">
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Main Index</title>
+
+    <title>Mera Ilaka</title>
 
     <style>
-        body{
-            margin:0;
-            height:100vh;
-            display:flex;
-            justify-content:center;
-            align-items:center;
-            background:#f4f4f4;
-            font-family:Arial,sans-serif;
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, Helvetica, sans-serif;
         }
 
-        .btn{
-            background:#0f4c81;
-            color:#fff;
-            padding:15px 35px;
-            text-decoration:none;
-            border-radius:8px;
-            font-size:20px;
+        body {
+
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(135deg, #1565c0, #42a5f5);
+
         }
 
-        .btn:hover{
-            background:#083b66;
+        .container {
+
+            background: white;
+            padding: 50px;
+            border-radius: 12px;
+            text-align: center;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, .2);
+
+        }
+
+        h1 {
+
+            margin-bottom: 15px;
+            color: #1565c0;
+
+        }
+
+        p {
+
+            color: #666;
+            margin-bottom: 35px;
+
+        }
+
+        .buttons {
+
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+
+        }
+
+        .btn {
+
+            text-decoration: none;
+            padding: 15px 30px;
+            border-radius: 8px;
+            color: white;
+            font-size: 18px;
+            transition: .3s;
+
+        }
+
+        .admin {
+
+            background: #0f4c81;
+
+        }
+
+        .admin:hover {
+
+            background: #083b66;
+
+        }
+
+        .user {
+
+            background: #28a745;
+
+        }
+
+        .user:hover {
+
+            background: #1f7a33;
+
         }
     </style>
+
 </head>
+
 <body>
 
-<a class="btn" href="./Mera ilaka admins/html main/login.html">
-    Open Mera Ilaka
-</a>
+    <div class="container">
+
+        <h1>🏡 Mera Ilaka</h1>
+
+        <p>Select the panel you want to access</p>
+
+        <div class="buttons">
+
+            <a class="btn admin" href="./Mera ilaka admins/html main/login.html">
+
+                👨‍💼 Admin Panel
+
+            </a>
+
+            <a class="btn user" href="./Mera ilaka user/Html User/index.html">
+
+                👤 User Panel
+
+            </a>
+
+        </div>
+
+    </div>
 
 </body>
+
 </html>
