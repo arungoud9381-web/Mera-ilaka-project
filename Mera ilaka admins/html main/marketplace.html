@@ -7,57 +7,113 @@
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Marketplace Management</title>
+    <title>Admin Marketplace</title>
 
     <link rel="stylesheet" href="../css main/marketplace.css">
-
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
 
 </head>
 
 <body>
 
+    <header>
+
+        <h2>Mera Ilaka - Admin</h2>
+
+        <nav>
+
+            <a href="dashboard.html">Dashboard</a>
+
+            <a href="marketplace.html" class="active">Marketplace</a>
+
+            <a href="profile.html">Profile</a>
+
+            <a href="../login.html">Logout</a>
+
+        </nav>
+
+    </header>
+
     <div class="container">
 
-        <header>
+        <h1>Marketplace Management</h1>
 
-            <div>
+        <!-- Statistics -->
 
-                <h1>Marketplace Management</h1>
+        <div class="stats">
 
-                <p>Manage Marketplace Products</p>
+            <div class="card">
+
+                <h3>Total Products</h3>
+
+                <p id="totalProducts">0</p>
 
             </div>
 
-            <div class="header-buttons">
+            <div class="card">
 
-                <button id="dashboardBtn">
+                <h3>Available</h3>
 
-                    <i class="fa-solid fa-house"></i>
+                <p id="availableProducts">0</p>
 
-                    Dashboard
+            </div>
 
-                </button>
+            <div class="card">
 
-                <button id="addProductBtn">
+                <h3>Sold</h3>
 
-                    <i class="fa-solid fa-plus"></i>
+                <p id="soldProducts">0</p>
+
+            </div>
+
+        </div>
+
+        <!-- Product Form -->
+
+        <div class="form-box">
+
+            <h2>Add Product</h2>
+
+            <form id="productForm">
+
+                <input type="text" id="productName" placeholder="Product Name" required>
+
+                <input type="text" id="sellerName" placeholder="Seller Name" required>
+
+                <input type="text" id="category" placeholder="Category" required>
+
+                <input type="number" id="price" placeholder="Price" required>
+
+                <textarea id="description" placeholder="Description" rows="4" required></textarea>
+
+                <input type="text" id="contact" placeholder="Contact Number" required>
+
+                <select id="status">
+
+                    <option value="Available">Available</option>
+
+                    <option value="Sold">Sold</option>
+
+                </select>
+
+                <button type="submit" id="saveBtn">
 
                     Add Product
 
                 </button>
 
-            </div>
+            </form>
 
-        </header>
+        </div>
+
+        <!-- Search -->
 
         <div class="search-box">
-
-            <i class="fa-solid fa-magnifying-glass"></i>
 
             <input type="text" id="searchProduct" placeholder="Search Product">
 
         </div>
+
+        <!-- Product Table -->
 
         <table id="productTable">
 
@@ -70,6 +126,8 @@
                     <th>Product</th>
 
                     <th>Seller</th>
+
+                    <th>Category</th>
 
                     <th>Price</th>
 
@@ -86,6 +144,19 @@
             </tbody>
 
         </table>
+
+    </div>
+    <div id="viewModal" class="modal">
+
+        <div class="modal-content">
+
+            <span id="closeView">&times;</span>
+
+            <h2>Product Details</h2>
+
+            <div id="viewContent"></div>
+
+        </div>
 
     </div>
 

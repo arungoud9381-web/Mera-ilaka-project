@@ -2,13 +2,15 @@
 <html lang="en">
 
 <head>
+
     <meta charset="UTF-8">
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>Marketplace | Mera Ilaka</title>
 
     <link rel="stylesheet" href="../CSS User/marketplace.css">
 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
 </head>
 
 <body>
@@ -17,177 +19,63 @@
 
     <header>
 
-        <h2>🛒 Mera Ilaka Marketplace</h2>
+        <h2>Mera Ilaka</h2>
 
         <nav>
 
-            <a href="dashboard.html">🏠 Dashboard</a>
+            <a href="dashboard.html">Dashboard</a>
 
-            <a href="profile.html">👤 Profile</a>
+            <a href="marketplace.html" class="active">Marketplace</a>
 
-            <a href="../landing/index.html">🚪 Logout</a>
+            <a href="wishlist.html">Wishlist</a>
+
+            <a href="cart.html">Cart</a>
+
+            <a href="profile.html">Profile</a>
+
+            <a href="../login.html">Logout</a>
 
         </nav>
 
     </header>
 
-    <!-- Search -->
+    <!-- Main -->
 
-    <section class="search-box">
+    <div class="container">
 
-        <input type="text" id="search" placeholder="🔍 Search Products">
+        <h1>Marketplace</h1>
 
-    </section>
+        <!-- Search & Filter -->
 
-    <!-- Products -->
+        <div class="top-bar">
 
-    <section class="products" id="productContainer">
+            <input type="text" id="searchProduct" placeholder="Search products...">
 
-        <!-- Product 1 -->
+            <select id="categoryFilter">
 
-        <div class="card">
+                <option value="All">All Categories</option>
 
-            <div class="emoji">💻</div>
+            </select>
 
-            <h3>Laptop</h3>
+            <select id="sortPrice">
 
-            <p>👤 Seller : Arun</p>
+                <option value="default">Sort Price</option>
 
-            <p>💰 ₹45,000</p>
+                <option value="low">Low to High</option>
 
-            <p class="available">🟢 Available</p>
+                <option value="high">High to Low</option>
 
-            <div class="buttons">
-
-                <button class="view">
-                    👁 View
-                </button>
-
-                <button class="wishlist">
-                    ❤️ Wishlist
-                </button>
-
-                <button class="cart">
-                    🛒 Cart
-                </button>
-
-                <button class="buy">
-                    ⚡ Buy Now
-                </button>
-
-            </div>
+            </select>
 
         </div>
 
-        <!-- Product 2 -->
+        <!-- Products -->
 
-        <div class="card">
-
-            <div class="emoji">📱</div>
-
-            <h3>Mobile Phone</h3>
-
-            <p>👤 Seller : Sai Krishna</p>
-
-            <p>💰 ₹15,000</p>
-
-            <p class="available">🟢 Available</p>
-
-            <div class="buttons">
-
-                <button class="view">
-                    👁 View
-                </button>
-
-                <button class="wishlist">
-                    ❤️ Wishlist
-                </button>
-
-                <button class="cart">
-                    🛒 Cart
-                </button>
-
-                <button class="buy">
-                    ⚡ Buy Now
-                </button>
-
-            </div>
+        <div id="productContainer" class="product-container">
 
         </div>
 
-        <!-- Product 3 -->
-
-        <div class="card">
-
-            <div class="emoji">⌚</div>
-
-            <h3>Smart Watch</h3>
-
-            <p>👤 Seller : Ravi</p>
-
-            <p>💰 ₹3,500</p>
-
-            <p class="sold">🔴 Sold</p>
-
-            <div class="buttons">
-
-                <button class="view">
-                    👁 View
-                </button>
-
-                <button class="wishlist">
-                    ❤️ Wishlist
-                </button>
-
-                <button class="cart">
-                    🛒 Cart
-                </button>
-
-                <button class="buy">
-                    ⚡ Buy Now
-                </button>
-
-            </div>
-
-        </div>
-
-        <!-- Product 4 -->
-
-        <div class="card">
-
-            <div class="emoji">🎧</div>
-
-            <h3>Headphones</h3>
-
-            <p>👤 Seller : Kiran</p>
-
-            <p>💰 ₹2,000</p>
-
-            <p class="available">🟢 Available</p>
-
-            <div class="buttons">
-
-                <button class="view">
-                    👁 View
-                </button>
-
-                <button class="wishlist">
-                    ❤️ Wishlist
-                </button>
-
-                <button class="cart">
-                    🛒 Cart
-                </button>
-
-                <button class="buy">
-                    ⚡ Buy Now
-                </button>
-
-            </div>
-
-        </div>
-
-    </section>
+    </div>
 
     <script src="../JS User/marketplace.js"></script>
 

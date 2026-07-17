@@ -1,17 +1,61 @@
+const productContainer = document.getElementById("productContainer");
+
+const searchProduct = document.getElementById("searchProduct");
+
+const categoryFilter = document.getElementById("categoryFilter");
+
+const sortPrice = document.getElementById("sortPrice");
+
 let products = JSON.parse(localStorage.getItem("products")) || [];
 
-const productContainer = document.getElementById("productContainer");
-const search = document.getElementById("search");
+function loadCategories() {
 
-function displayProducts(productList) {
+    let categories = [];
+
+    products.forEach(function (product) {
+
+        if (!categories.includes(product.category)) {
+
+            categories.push(product.category);
+
+        }
+
+    });
+
+    categories.forEach(function (category) {
+
+        categoryFilter.innerHTML += `
+
+            <option value="${category}">
+
+                ${category}
+
+            </option>
+
+        `;
+
+    });
+
+}
+
+function displayProducts(productList = products) {
 
     productContainer.innerHTML = "";
 
-    if (productList.length === 0) {
+    if (productList.length == 0) {
 
-        productContainer.innerHTML = "<h2>No Products Available</h2>";
+        productContainer.innerHTML = `
+
+            <div class="no-products">
+
+                <h2>No Products Found</h2>
+
+            </div>
+
+        `;
 
         return;
+
     }
 
     productList.forEach(function (product, index) {
@@ -24,31 +68,68 @@ function displayProducts(productList) {
 
             <p><strong>Seller :</strong> ${product.seller}</p>
 
+            <p><strong>Category :</strong> ${product.category}</p>
+
             <p><strong>Price :</strong> ${product.price}</p>
 
             <p>
+
                 <strong>Status :</strong>
+
                 <span class="${product.status.toLowerCase()}">
+
                     ${product.status}
+
                 </span>
+
+            </p>
+
+            <p>
+
+                ${product.description.substring(0, 60)}...
+
             </p>
 
             <div class="buttons">
 
-                <button class="view" onclick="viewProduct(${index})">
+                <button
+
+                    class="view"
+
+                    onclick="viewProduct(${index})">
+
                     View
+
                 </button>
 
-                <button class="wishlist" onclick="wishlist(${index})">
+                <button
+
+                    class="wishlist"
+
+                    onclick="addWishlist(${index})">
+
                     Wishlist
+
                 </button>
 
-                <button class="cart" onclick="cart(${index})">
-                    Cart
+                <button
+
+                    class="cart"
+
+                    onclick="addCart(${index})">
+
+                    Add Cart
+
                 </button>
 
-                <button class="buy" onclick="buyNow(${index})">
+                <button
+
+                    class="buy"
+
+                    onclick="buyNow(${index})">
+
                     Buy Now
+
                 </button>
 
             </div>
@@ -61,47 +142,186 @@ function displayProducts(productList) {
 
 }
 
-search.addEventListener("keyup", function () {
+loadCategories();
 
-    let value = this.value.toLowerCase();
+displayProducts();
 
-    let filteredProducts = products.filter(function (product) {
+searchProduct.addEventListener("keyup", function () {
 
-        return product.product.toLowerCase().includes(value);
-
-    });
-
-    displayProducts(filteredProducts);
+    filterProducts();
 
 });
 
+categoryFilter.addEventListener("change", function () {
+
+    filterProducts();
+
+});
+
+sortPrice.addEventListener("change", function () {
+
+    filterProducts();
+
+});
+
+function filterProducts() {
+
+    let searchValue = searchProduct.value.toLowerCase();
+
+    let categoryValue = categoryFilter.value;
+
+    let filtered = products.filter(function (product) {
+
+        let matchSearch =
+
+            product.product.toLowerCase().includes(searchValue) ||
+
+            product.seller.toLowerCase().includes(searchValue) ||
+
+            product.category.toLowerCase().includes(searchValue);
+
+        let matchCategory =
+
+            categoryValue === "All" ||
+
+            product.category === categoryValue;
+
+        return matchSearch && matchCategory;
+
+    });
+
+    if (sortPrice.value === "low") {
+
+        filtered.sort(function (a, b) {
+
+            return parseInt(a.price.replace("₹", "")) -
+
+                parseInt(b.price.replace("₹", ""));
+
+        });
+
+    }
+
+    if (sortPrice.value === "high") {
+
+        filtered.sort(function (a, b) {
+
+            return parseInt(b.price.replace("₹", "")) -
+
+                parseInt(a.price.replace("₹", ""));
+
+        });
+
+    }
+
+    displayProducts(filtered);
+
+}
+
 function viewProduct(index) {
 
-    alert(
-        "Product : " + products[index].product +
-        "\nSeller : " + products[index].seller +
-        "\nPrice : " + products[index].price +
-        "\nStatus : " + products[index].status
+    localStorage.setItem(
+
+        "selectedProduct",
+
+        JSON.stringify(products[index])
+
     );
 
-}
-
-function wishlist(index) {
-
-    alert(products[index].product + " added to Wishlist.");
+    window.location.href = "product-details.html";
 
 }
 
-function cart(index) {
+function addWishlist(index) {
 
-    alert(products[index].product + " added to Cart.");
+    let wishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
+
+    let exists = wishlist.find(function (item) {
+
+        return item.product === products[index].product;
+
+    });
+
+    if (exists) {
+
+        alert("Product already exists in Wishlist.");
+
+        return;
+
+    }
+
+    wishlist.push(products[index]);
+
+    localStorage.setItem(
+
+        "wishlist",
+
+        JSON.stringify(wishlist)
+
+    );
+
+    alert("Added to Wishlist.");
+
+}
+
+function addCart(index) {
+
+    let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+    let exists = cart.find(function (item) {
+
+        return item.product === products[index].product;
+
+    });
+
+    if (exists) {
+
+        exists.quantity++;
+
+    }
+
+    else {
+
+        cart.push({
+
+            ...products[index],
+
+            quantity: 1
+
+        });
+
+    }
+
+    localStorage.setItem(
+
+        "cart",
+
+        JSON.stringify(cart)
+
+    );
+
+    alert("Added to Cart.");
 
 }
 
 function buyNow(index) {
 
-    alert("Proceeding to Buy " + products[index].product);
+    localStorage.setItem(
+
+        "buyNow",
+
+        JSON.stringify({
+
+            ...products[index],
+
+            quantity: 1
+
+        })
+
+    );
+
+    window.location.href = "checkout.html";
 
 }
 
-displayProducts(products);
+filterProducts();

@@ -1,70 +1,98 @@
-// Dashboard Button
-
-const dashboardBtn = document.getElementById("dashboardBtn");
-
-dashboardBtn.addEventListener("click", function () {
-
-    window.location.href = "dashboard.html";
-
-});
-
-// Elements
-
-const addProductBtn = document.getElementById("addProductBtn");
+const productForm = document.getElementById("productForm");
+const productTable = document.querySelector("#productTable tbody");
 const searchProduct = document.getElementById("searchProduct");
-const tableBody = document.querySelector("#productTable tbody");
 
-// Products
+const totalProducts = document.getElementById("totalProducts");
+const availableProducts = document.getElementById("availableProducts");
+const soldProducts = document.getElementById("soldProducts");
 
-let products = JSON.parse(localStorage.getItem("products")) || [
+const viewModal = document.getElementById("viewModal");
+const closeView = document.getElementById("closeView");
+const viewContent = document.getElementById("viewContent");
 
-    {
+const saveBtn = document.getElementById("saveBtn");
 
-        product: "Laptop",
+let editIndex = -1;
 
-        seller: "Arun",
+let products = JSON.parse(localStorage.getItem("products"));
 
-        category: "Electronics",
+if (!products) {
 
-        price: "₹45,000",
+    products = [
 
-        description: "Dell Laptop with 16GB RAM and 512GB SSD.",
+        {
+            product: "Dell Laptop",
+            seller: "Arun",
+            category: "Electronics",
+            price: "₹45000",
+            description: "Dell Inspiron Laptop",
+            contact: "9876543210",
+            status: "Available"
+        },
 
-        contact: "9876543210",
+        {
+            product: "Samsung Mobile",
+            seller: "Rahul",
+            category: "Mobiles",
+            price: "₹18000",
+            description: "Android Mobile 128GB",
+            contact: "9876501234",
+            status: "Available"
+        },
 
-        status: "Available"
+        {
+            product: "Office Chair",
+            seller: "Priya",
+            category: "Furniture",
+            price: "₹6500",
+            description: "Comfortable Office Chair",
+            contact: "9876512345",
+            status: "Sold"
+        }
 
-    },
+    ];
 
-    {
+    localStorage.setItem("products", JSON.stringify(products));
 
-        product: "Mobile Phone",
+}
 
-        seller: "Rahul",
+function saveProducts() {
 
-        category: "Mobiles",
+    localStorage.setItem(
 
-        price: "₹15,000",
+        "products",
 
-        description: "Android Mobile with 128GB Storage.",
+        JSON.stringify(products)
 
-        contact: "9876501234",
+    );
 
-        status: "Sold"
+}
 
-    }
+function updateStatistics() {
 
-];
+    totalProducts.innerHTML = products.length;
 
-// Display Products
+    availableProducts.innerHTML = products.filter(function (item) {
 
-function displayProducts() {
+        return item.status == "Available";
 
-    tableBody.innerHTML = "";
+    }).length;
 
-    products.forEach(function (product, index) {
+    soldProducts.innerHTML = products.filter(function (item) {
 
-        tableBody.innerHTML += `
+        return item.status == "Sold";
+
+    }).length;
+
+}
+
+function displayProducts(list = products) {
+
+    productTable.innerHTML = "";
+
+    list.forEach(function (product, index) {
+
+        productTable.innerHTML += `
 
         <tr>
 
@@ -90,19 +118,25 @@ function displayProducts() {
 
             <td>
 
-                <button class="view" onclick="viewProduct(${index})">
+                <button class="view"
+
+                    onclick="viewProduct(${index})">
 
                     View
 
                 </button>
 
-                <button class="edit" onclick="editProduct(${index})">
+                <button class="edit"
+
+                    onclick="editProduct(${index})">
 
                     Edit
 
                 </button>
 
-                <button class="delete" onclick="deleteProduct(${index})">
+                <button class="delete"
+
+                    onclick="deleteProduct(${index})">
 
                     Delete
 
@@ -116,190 +150,182 @@ function displayProducts() {
 
     });
 
-    localStorage.setItem("products", JSON.stringify(products));
+    updateStatistics();
+
+    saveProducts();
 
 }
 
-// Add Product
+productForm.addEventListener("submit", function (e) {
 
-addProductBtn.addEventListener("click", function () {
+    e.preventDefault();
 
-    let product = prompt("Enter Product Name");
+    let product = {
 
-    if (product == null || product.trim() == "") return;
+        product: document.getElementById("productName").value,
 
-    let seller = prompt("Enter Seller Name");
+        seller: document.getElementById("sellerName").value,
 
-    if (seller == null || seller.trim() == "") return;
+        category: document.getElementById("category").value,
 
-    let category = prompt("Enter Product Category");
+        price: "₹" + document.getElementById("price").value,
 
-    if (category == null || category.trim() == "") return;
+        description: document.getElementById("description").value,
 
-    let price = prompt("Enter Product Price");
+        contact: document.getElementById("contact").value,
 
-    if (price == null || price.trim() == "") return;
+        status: document.getElementById("status").value
 
-    let description = prompt("Enter Product Description");
+    };
 
-    if (description == null || description.trim() == "") return;
+    if (editIndex == -1) {
 
-    let contact = prompt("Enter Contact Number");
-
-    if (contact == null || contact.trim() == "") return;
-
-    let status = prompt("Enter Status (Available/Sold)");
-
-    if (status == null || status.trim() == "") {
-
-        status = "Available";
+        products.push(product);
 
     }
 
-    products.push({
+    else {
 
-        product: product,
+        products[editIndex] = product;
 
-        seller: seller,
+        editIndex = -1;
 
-        category: category,
+        saveBtn.innerHTML = "Add Product";
 
-        price: "₹" + price,
+    }
 
-        description: description,
-
-        contact: contact,
-
-        status: status
-
-    });
+    saveProducts();
 
     displayProducts();
 
-    alert("Product Added Successfully.");
+    productForm.reset();
 
 });
 
-// View Product
-
 function viewProduct(index) {
 
-    const product = products[index];
+    let product = products[index];
 
-    alert(
+    viewContent.innerHTML = `
 
-        "Product : " + product.product +
+        <p><strong>Product :</strong> ${product.product}</p>
 
-        "\nSeller : " + product.seller +
+        <p><strong>Seller :</strong> ${product.seller}</p>
 
-        "\nCategory : " + product.category +
+        <p><strong>Category :</strong> ${product.category}</p>
 
-        "\nPrice : " + product.price +
+        <p><strong>Price :</strong> ${product.price}</p>
 
-        "\nDescription : " + product.description +
+        <p><strong>Description :</strong> ${product.description}</p>
 
-        "\nContact : " + product.contact +
+        <p><strong>Contact :</strong> ${product.contact}</p>
 
-        "\nStatus : " + product.status
+        <p><strong>Status :</strong> ${product.status}</p>
 
-    );
+    `;
 
-}
-
-// Edit Product
-
-function editProduct(index) {
-
-    let productName = prompt("Edit Product Name", products[index].product);
-
-    if (productName == null) return;
-
-    let seller = prompt("Edit Seller Name", products[index].seller);
-
-    if (seller == null) return;
-
-    let category = prompt("Edit Category", products[index].category);
-
-    if (category == null) return;
-
-    let price = prompt("Edit Price", products[index].price.replace("₹", ""));
-
-    if (price == null) return;
-
-    let description = prompt("Edit Description", products[index].description);
-
-    if (description == null) return;
-
-    let contact = prompt("Edit Contact", products[index].contact);
-
-    if (contact == null) return;
-
-    let status = prompt("Edit Status", products[index].status);
-
-    if (status == null) return;
-
-    products[index].product = productName;
-
-    products[index].seller = seller;
-
-    products[index].category = category;
-
-    products[index].price = "₹" + price;
-
-    products[index].description = description;
-
-    products[index].contact = contact;
-
-    products[index].status = status;
-
-    displayProducts();
-
-    alert("Product Updated Successfully.");
+    viewModal.style.display = "block";
 
 }
 
-// Delete Product
+closeView.onclick = function () {
 
-function deleteProduct(index) {
+    viewModal.style.display = "none";
 
-    if (confirm("Delete this product?")) {
+}
 
-        products.splice(index, 1);
+window.onclick = function (event) {
 
-        displayProducts();
+    if (event.target == viewModal) {
 
-        alert("Product Deleted Successfully.");
+        viewModal.style.display = "none";
 
     }
 
 }
 
-// Search Product
+function editProduct(index) {
+
+    let product = products[index];
+
+    document.getElementById("productName").value = product.product;
+
+    document.getElementById("sellerName").value = product.seller;
+
+    document.getElementById("category").value = product.category;
+
+    document.getElementById("price").value = product.price.replace("₹", "");
+
+    document.getElementById("description").value = product.description;
+
+    document.getElementById("contact").value = product.contact;
+
+    document.getElementById("status").value = product.status;
+
+    editIndex = index;
+
+    saveBtn.innerHTML = "Update Product";
+
+    window.scrollTo({
+
+        top: 0,
+
+        behavior: "smooth"
+
+    });
+
+}
+
+function deleteProduct(index) {
+
+    let check = confirm("Delete this product?");
+
+    if (!check) {
+
+        return;
+
+    }
+
+    products.splice(index, 1);
+
+    saveProducts();
+
+    displayProducts();
+
+}
 
 searchProduct.addEventListener("keyup", function () {
 
     let value = this.value.toLowerCase();
 
-    const rows = document.querySelectorAll("#productTable tbody tr");
+    let filtered = products.filter(function (product) {
 
-    rows.forEach(function (row) {
+        return (
 
-        if (row.innerText.toLowerCase().includes(value)) {
+            product.product.toLowerCase().includes(value) ||
 
-            row.style.display = "";
+            product.seller.toLowerCase().includes(value) ||
 
-        }
+            product.category.toLowerCase().includes(value) ||
 
-        else {
+            product.status.toLowerCase().includes(value)
 
-            row.style.display = "none";
-
-        }
+        );
 
     });
 
+    displayProducts(filtered);
+
 });
 
-// Load Products
+function resetForm() {
+
+    productForm.reset();
+
+    editIndex = -1;
+
+    saveBtn.innerHTML = "Add Product";
+
+}
 
 displayProducts();
