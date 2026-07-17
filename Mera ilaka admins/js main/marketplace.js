@@ -1,3 +1,5 @@
+// Dashboard Button
+
 const dashboardBtn = document.getElementById("dashboardBtn");
 
 dashboardBtn.addEventListener("click", function () {
@@ -7,11 +9,13 @@ dashboardBtn.addEventListener("click", function () {
 });
 
 // Elements
+
 const addProductBtn = document.getElementById("addProductBtn");
 const searchProduct = document.getElementById("searchProduct");
 const tableBody = document.querySelector("#productTable tbody");
 
-// Products Array
+// Products
+
 let products = JSON.parse(localStorage.getItem("products")) || [
 
     {
@@ -20,7 +24,13 @@ let products = JSON.parse(localStorage.getItem("products")) || [
 
         seller: "Arun",
 
+        category: "Electronics",
+
         price: "₹45,000",
+
+        description: "Dell Laptop with 16GB RAM and 512GB SSD.",
+
+        contact: "9876543210",
 
         status: "Available"
 
@@ -30,15 +40,23 @@ let products = JSON.parse(localStorage.getItem("products")) || [
 
         product: "Mobile Phone",
 
-        seller: "Saikrishna",
+        seller: "Rahul",
+
+        category: "Mobiles",
 
         price: "₹15,000",
+
+        description: "Android Mobile with 128GB Storage.",
+
+        contact: "9876501234",
 
         status: "Sold"
 
     }
 
 ];
+
+// Display Products
 
 function displayProducts() {
 
@@ -56,6 +74,8 @@ function displayProducts() {
 
             <td>${product.seller}</td>
 
+            <td>${product.category}</td>
+
             <td>${product.price}</td>
 
             <td>
@@ -72,19 +92,19 @@ function displayProducts() {
 
                 <button class="view" onclick="viewProduct(${index})">
 
-                    <i class="fa-solid fa-eye"></i>
+                    View
 
                 </button>
 
                 <button class="edit" onclick="editProduct(${index})">
 
-                    <i class="fa-solid fa-pen"></i>
+                    Edit
 
                 </button>
 
                 <button class="delete" onclick="deleteProduct(${index})">
 
-                    <i class="fa-solid fa-trash"></i>
+                    Delete
 
                 </button>
 
@@ -100,6 +120,8 @@ function displayProducts() {
 
 }
 
+// Add Product
+
 addProductBtn.addEventListener("click", function () {
 
     let product = prompt("Enter Product Name");
@@ -110,9 +132,29 @@ addProductBtn.addEventListener("click", function () {
 
     if (seller == null || seller.trim() == "") return;
 
+    let category = prompt("Enter Product Category");
+
+    if (category == null || category.trim() == "") return;
+
     let price = prompt("Enter Product Price");
 
     if (price == null || price.trim() == "") return;
+
+    let description = prompt("Enter Product Description");
+
+    if (description == null || description.trim() == "") return;
+
+    let contact = prompt("Enter Contact Number");
+
+    if (contact == null || contact.trim() == "") return;
+
+    let status = prompt("Enter Status (Available/Sold)");
+
+    if (status == null || status.trim() == "") {
+
+        status = "Available";
+
+    }
 
     products.push({
 
@@ -120,9 +162,15 @@ addProductBtn.addEventListener("click", function () {
 
         seller: seller,
 
+        category: category,
+
         price: "₹" + price,
 
-        status: "Available"
+        description: description,
+
+        contact: contact,
+
+        status: status
 
     });
 
@@ -131,6 +179,8 @@ addProductBtn.addEventListener("click", function () {
     alert("Product Added Successfully.");
 
 });
+
+// View Product
 
 function viewProduct(index) {
 
@@ -142,13 +192,21 @@ function viewProduct(index) {
 
         "\nSeller : " + product.seller +
 
+        "\nCategory : " + product.category +
+
         "\nPrice : " + product.price +
+
+        "\nDescription : " + product.description +
+
+        "\nContact : " + product.contact +
 
         "\nStatus : " + product.status
 
     );
 
 }
+
+// Edit Product
 
 function editProduct(index) {
 
@@ -160,21 +218,47 @@ function editProduct(index) {
 
     if (seller == null) return;
 
+    let category = prompt("Edit Category", products[index].category);
+
+    if (category == null) return;
+
     let price = prompt("Edit Price", products[index].price.replace("₹", ""));
 
     if (price == null) return;
+
+    let description = prompt("Edit Description", products[index].description);
+
+    if (description == null) return;
+
+    let contact = prompt("Edit Contact", products[index].contact);
+
+    if (contact == null) return;
+
+    let status = prompt("Edit Status", products[index].status);
+
+    if (status == null) return;
 
     products[index].product = productName;
 
     products[index].seller = seller;
 
+    products[index].category = category;
+
     products[index].price = "₹" + price;
+
+    products[index].description = description;
+
+    products[index].contact = contact;
+
+    products[index].status = status;
 
     displayProducts();
 
     alert("Product Updated Successfully.");
 
 }
+
+// Delete Product
 
 function deleteProduct(index) {
 
@@ -189,6 +273,8 @@ function deleteProduct(index) {
     }
 
 }
+
+// Search Product
 
 searchProduct.addEventListener("keyup", function () {
 
@@ -213,5 +299,7 @@ searchProduct.addEventListener("keyup", function () {
     });
 
 });
+
+// Load Products
 
 displayProducts();
