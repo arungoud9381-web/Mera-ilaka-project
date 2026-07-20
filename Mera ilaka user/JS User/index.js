@@ -1,117 +1,164 @@
-window.addEventListener("load", function () {
+// ========================================
+// Mera Ilaka - Landing Page JavaScript
+// ========================================
+
+document.addEventListener("DOMContentLoaded", function () {
 
     console.log("Welcome to Mera Ilaka");
 
-});
+    // ========================================
+    // Buttons
+    // ========================================
 
-const loginBtn = document.getElementById("loginBtn");
-const registerBtn = document.getElementById("registerBtn");
-const startBtn = document.getElementById("startBtn");
+    const loginBtn = document.getElementById("loginBtn");
+    const registerBtn = document.getElementById("registerBtn");
+    const startBtn = document.querySelector(".start-btn");
 
-loginBtn.addEventListener("click", function () {
+    if (loginBtn) {
 
-    window.location.href = "login.html";
+        loginBtn.addEventListener("click", function () {
 
-});
+            window.location.href = "login.html";
 
-registerBtn.addEventListener("click", function () {
+        });
 
-    window.location.href = "register.html";
+    }
 
-});
+    if (registerBtn) {
 
+        registerBtn.addEventListener("click", function () {
 
-startBtn.addEventListener("click", function () {
+            window.location.href = "register.html";
 
-    window.location.href = "register.html";
+        });
 
-});
+    }
 
-const navLinks = document.querySelectorAll("nav a");
+    if (startBtn) {
 
-navLinks.forEach(function (link) {
+        startBtn.addEventListener("click", function (e) {
 
-    link.addEventListener("click", function (e) {
+            e.preventDefault();
 
-        e.preventDefault();
+            window.location.href = "register.html";
 
-        const target = document.querySelector(this.getAttribute("href"));
+        });
 
-        if (target) {
+    }
 
-            target.scrollIntoView({
+    // ========================================
+    // Smooth Scrolling
+    // ========================================
 
-                behavior: "smooth"
+    const navLinks = document.querySelectorAll('nav a[href^="#"]');
 
-            });
+    navLinks.forEach(function (link) {
 
-        }
+        link.addEventListener("click", function (e) {
+
+            e.preventDefault();
+
+            const target = document.querySelector(this.getAttribute("href"));
+
+            if (target) {
+
+                target.scrollIntoView({
+
+                    behavior: "smooth",
+                    block: "start"
+
+                });
+
+            }
+
+        });
 
     });
 
-});
-
-window.addEventListener("scroll", function () {
+    // ========================================
+    // Active Navigation on Scroll
+    // ========================================
 
     const sections = document.querySelectorAll("section");
-    const navItems = document.querySelectorAll("nav a");
 
-    let currentSection = "";
+    window.addEventListener("scroll", function () {
 
-    sections.forEach(function (section) {
+        let current = "";
 
-        const sectionTop = section.offsetTop - 120;
+        sections.forEach(function (section) {
 
-        if (window.scrollY >= sectionTop) {
+            const sectionTop = section.offsetTop - 120;
 
-            currentSection = section.getAttribute("id");
+            if (window.scrollY >= sectionTop) {
 
-        }
+                current = section.getAttribute("id");
 
-    });
+            }
 
-    navItems.forEach(function (item) {
+        });
 
-        item.classList.remove("active");
+        navLinks.forEach(function (link) {
 
-        if (item.getAttribute("href") === "#" + currentSection) {
+            link.classList.remove("active");
 
-            item.classList.add("active");
+            if (link.getAttribute("href") === "#" + current) {
 
-        }
+                link.classList.add("active");
 
-    });
+            }
 
-});
-
-startBtn.addEventListener("mouseenter", function () {
-
-    startBtn.style.transform = "scale(1.05)";
-
-});
-
-startBtn.addEventListener("mouseleave", function () {
-
-    startBtn.style.transform = "scale(1)";
-
-});
-
-const cards = document.querySelectorAll(".card");
-
-cards.forEach(function (card) {
-
-    card.addEventListener("mouseenter", function () {
-
-        this.style.transform = "translateY(-10px)";
+        });
 
     });
 
-    card.addEventListener("mouseleave", function () {
+    // ========================================
+    // Hero Button Animation
+    // ========================================
 
-        this.style.transform = "translateY(0px)";
+    if (startBtn) {
+
+        startBtn.addEventListener("mouseenter", function () {
+
+            this.style.transform = "scale(1.05)";
+            this.style.transition = "0.3s";
+
+        });
+
+        startBtn.addEventListener("mouseleave", function () {
+
+            this.style.transform = "scale(1)";
+
+        });
+
+    }
+
+    // ========================================
+    // Feature Card Hover Effect
+    // ========================================
+
+    const cards = document.querySelectorAll(".card");
+
+    cards.forEach(function (card) {
+
+        card.addEventListener("mouseenter", function () {
+
+            this.style.transform = "translateY(-8px)";
+            this.style.transition = "0.3s";
+
+        });
+
+        card.addEventListener("mouseleave", function () {
+
+            this.style.transform = "translateY(0px)";
+
+        });
 
     });
 
-});
+    // ========================================
+    // Footer
+    // ========================================
 
-console.log("Landing Page Loaded Successfully");
+    console.log("Landing Page Loaded Successfully");
+
+});

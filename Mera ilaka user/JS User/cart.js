@@ -113,9 +113,6 @@ function displayCart() {
 }
 
 displayCart();
-// ===============================
-// Increase Quantity
-// ===============================
 
 function increaseQuantity(index) {
 
@@ -126,10 +123,6 @@ function increaseQuantity(index) {
     displayCart();
 
 }
-
-// ===============================
-// Decrease Quantity
-// ===============================
 
 function decreaseQuantity(index) {
 
@@ -155,10 +148,6 @@ function decreaseQuantity(index) {
 
 }
 
-// ===============================
-// Remove Item
-// ===============================
-
 function removeItem(index) {
 
     let confirmDelete = confirm("Are you sure you want to remove this product?");
@@ -179,10 +168,6 @@ function removeItem(index) {
 
 }
 
-// ===============================
-// Checkout
-// ===============================
-
 checkoutBtn.addEventListener("click", function () {
 
     if (cart.length === 0) {
@@ -199,18 +184,10 @@ checkoutBtn.addEventListener("click", function () {
 
 });
 
-// ===============================
-// Save Cart
-// ===============================
-
 function saveCart() {
 
     localStorage.setItem("cart", JSON.stringify(cart));
 
 }
-
-// ===============================
-// Initial Load
-// ===============================
 
 displayCart();

@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Checkout | Mera Ilaka</title>
+
+    <link rel="stylesheet" href="../CSS User/checkout.css">
+
+</head>
+
+<body>
+
+    <header>
+
+        <h2>Mera Ilaka</h2>
+
+        <nav>
+
+            <a href="dashboard.html">Dashboard</a>
+
+            <a href="marketplace.html">Marketplace</a>
+
+            <a href="wishlist.html">Wishlist</a>
+
+            <a href="cart.html">Cart</a>
+
+            <a href="profile.html">Profile</a>
+
+        </nav>
+
+    </header>
+
+    <div class="container">
+
+        <h1>Checkout</h1>
+
+        <div class="checkout-grid">
+
+            <!-- Delivery Details -->
+
+            <div class="delivery-box">
+
+                <h2>Delivery Details</h2>
+
+                <form id="checkoutForm">
+
+                    <input type="text" id="customerName" placeholder="Full Name" required>
+
+                    <input type="tel" id="phone" placeholder="Phone Number" required>
+
+                    <textarea id="address" placeholder="Delivery Address" rows="4" required></textarea>
+
+                    <input type="text" id="city" placeholder="City" required>
+
+                    <input type="text" id="pincode" placeholder="Pincode" required>
+
+                    <select id="paymentMethod" required>
+
+                        <option value="">Select Payment Method</option>
+
+                        <option value="Cash on Delivery">
+                            Cash on Delivery
+                        </option>
+
+                        <option value="UPI">
+                            UPI
+                        </option>
+
+                        <option value="Credit Card">
+                            Credit Card
+                        </option>
+
+                        <option value="Debit Card">
+                            Debit Card
+                        </option>
+
+                    </select>
+
+                </form>
+
+            </div>
+
+            <!-- Order Summary -->
+
+            <div class="summary-box">
+
+                <h2>Order Summary</h2>
+
+                <div id="orderItems">
+
+                </div>
+
+                <hr>
+
+                <h3>
+
+                    Grand Total :
+                    <span id="grandTotal">₹0</span>
+
+                </h3>
+
+                <button id="placeOrderBtn">
+
+                    Place Order
+
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <script src="../JS User/checkout.js"></script>
+
+</body>
+
+</html>

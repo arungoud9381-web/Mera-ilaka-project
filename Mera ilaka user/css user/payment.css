@@ -1,0 +1,106 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background: #f4f6f9;
+}
+
+header {
+    background: #0f4c81;
+    color: white;
+    padding: 15px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header h2 {
+    font-size: 28px;
+}
+
+nav {
+    display: flex;
+    gap: 20px;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+nav a:hover {
+    color: #ffd700;
+}
+
+.container {
+    width: 90%;
+    max-width: 700px;
+    margin: 40px auto;
+}
+
+.container h1 {
+    text-align: center;
+    color: #0f4c81;
+    margin-bottom: 30px;
+}
+
+.payment-box {
+    background: white;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, .15);
+}
+
+.order-item {
+    border-bottom: 1px solid #ddd;
+    padding: 15px 0;
+}
+
+.order-item p {
+    margin: 8px 0;
+    color: #444;
+}
+
+.payment-box hr {
+    margin: 25px 0;
+}
+
+.payment-box h2 {
+    margin: 15px 0;
+    color: #0f4c81;
+}
+
+#payNowBtn {
+    width: 100%;
+    margin-top: 30px;
+    padding: 15px;
+    border: none;
+    background: #4CAF50;
+    color: white;
+    font-size: 17px;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+#payNowBtn:hover {
+    opacity: .9;
+}
+
+@media(max-width:768px) {
+
+    header {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    nav {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+}
