@@ -7,7 +7,7 @@
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Notifications Management</title>
+    <title>Admin Notifications | Mera Ilaka</title>
 
     <link rel="stylesheet" href="../css main/notifications.css">
 
@@ -17,75 +17,47 @@
 
 <body>
 
+    <header>
+
+        <h2>Mera Ilaka - Admin</h2>
+
+        <button id="dashboardBtn">
+
+            <i class="fa-solid fa-house"></i>
+
+            Dashboard
+
+        </button>
+
+    </header>
+
     <div class="container">
 
-        <header>
+        <div class="top">
 
-            <div>
+            <h1>
 
-                <h1>Notifications Management</h1>
+                <i class="fa-solid fa-bell"></i>
 
-                <p>Manage Notifications</p>
+                Admin Notifications
 
-            </div>
+            </h1>
 
-            <div class="header-buttons">
+            <button id="clearAllBtn">
 
-                <button id="dashboardBtn">
+                <i class="fa-solid fa-trash"></i>
 
-                    <i class="fa-solid fa-house"></i>
+                Clear All
 
-                    Dashboard
-
-                </button>
-
-                <button id="addNotificationBtn">
-
-                    <i class="fa-solid fa-bell"></i>
-
-                    Add Notification
-
-                </button>
-
-            </div>
-
-        </header>
-
-        <div class="search-box">
-
-            <i class="fa-solid fa-magnifying-glass"></i>
-
-            <input type="text" id="searchNotification" placeholder="Search Notification">
+            </button>
 
         </div>
 
-        <table id="notificationTable">
+        <div id="notificationList">
 
-            <thead>
+            <!-- Notifications -->
 
-                <tr>
-
-                    <th>ID</th>
-
-                    <th>Title</th>
-
-                    <th>Message</th>
-
-                    <th>Type</th>
-
-                    <th>Date</th>
-
-                    <th>Actions</th>
-
-                </tr>
-
-            </thead>
-
-            <tbody>
-
-            </tbody>
-
-        </table>
+        </div>
 
     </div>
 

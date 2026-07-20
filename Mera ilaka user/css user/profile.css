@@ -1,151 +1,354 @@
 * {
+
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     font-family: Arial, Helvetica, sans-serif;
+
 }
 
 body {
 
     background: #f4f6f9;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
+    color: #333;
 
 }
 
-.profile-container {
+header {
 
-    width: 100%;
+    background: #0d6efd;
+
+    color: #fff;
+
     display: flex;
-    justify-content: center;
+
+    justify-content: space-between;
+
     align-items: center;
-    padding: 30px;
+
+    padding: 15px 30px;
+
+    box-shadow: 0 2px 10px rgba(0, 0, 0, .15);
+
+}
+
+header h2 {
+
+    font-size: 28px;
+
+}
+
+#dashboardBtn {
+
+    background: #fff;
+
+    color: #0d6efd;
+
+    border: none;
+
+    padding: 10px 20px;
+
+    border-radius: 6px;
+
+    cursor: pointer;
+
+    font-size: 15px;
+
+    font-weight: bold;
+
+    transition: .3s;
+
+}
+
+#dashboardBtn:hover {
+
+    background: #e9ecef;
+
+}
+
+.container {
+
+    width: 95%;
+
+    max-width: 1200px;
+
+    margin: 30px auto;
+
+    display: grid;
+
+    grid-template-columns: 1fr 1.3fr;
+
+    gap: 25px;
 
 }
 
 .profile-card {
 
-    width: 500px;
-    background: #ffffff;
-    border-radius: 12px;
+    background: #fff;
+
     padding: 30px;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, .15);
+
+    border-radius: 10px;
+
+    box-shadow: 0 5px 15px rgba(0, 0, 0, .08);
+
+    text-align: center;
+
+}
+
+.profile-image {
+
+    margin-bottom: 20px;
+
+}
+
+.profile-image img {
+
+    width: 140px;
+
+    height: 140px;
+
+    border-radius: 50%;
+
+    object-fit: cover;
+
+    border: 4px solid #0d6efd;
 
 }
 
 .profile-card h2 {
 
-    color: #1565c0;
-    text-align: center;
-    margin-bottom: 10px;
+    color: #0d6efd;
+
+    margin-bottom: 8px;
 
 }
 
 .profile-card p {
 
-    text-align: center;
     color: #666;
+
     margin-bottom: 25px;
 
 }
 
 .form-group {
 
-    margin-bottom: 20px;
+    margin-bottom: 18px;
+
+    text-align: left;
 
 }
 
 .form-group label {
 
     display: block;
+
     margin-bottom: 8px;
+
     font-weight: bold;
-    color: #333;
 
 }
 
 .form-group input,
+
 .form-group textarea {
 
     width: 100%;
+
     padding: 12px;
+
     border: 1px solid #ccc;
+
     border-radius: 6px;
+
     outline: none;
+
     font-size: 15px;
-    transition: .3s;
 
 }
 
 .form-group input:focus,
+
 .form-group textarea:focus {
 
-    border-color: #1565c0;
+    border-color: #0d6efd;
 
 }
 
-.form-group textarea {
+textarea {
 
-    resize: none;
-
-}
-
-input[readonly] {
-
-    background: #eeeeee;
-    cursor: not-allowed;
+    resize: vertical;
 
 }
 
-button {
+#saveBtn,
+
+.logout {
 
     width: 100%;
+
     padding: 12px;
-    background: #1565c0;
-    color: #fff;
+
     border: none;
+
     border-radius: 6px;
+
     cursor: pointer;
+
+    color: #fff;
+
     font-size: 16px;
+
+    margin-top: 10px;
+
     transition: .3s;
 
 }
 
-button:hover {
+#saveBtn {
 
-    background: #0d47a1;
-
-}
-
-.back-btn {
-
-    display: block;
-    margin-top: 20px;
-    text-align: center;
-    text-decoration: none;
-    background: #28a745;
-    color: white;
-    padding: 12px;
-    border-radius: 6px;
-    transition: .3s;
+    background: #198754;
 
 }
 
-.back-btn:hover {
+#saveBtn:hover {
 
-    background: #218838;
+    background: #157347;
 
 }
 
-@media(max-width:600px) {
+.logout {
 
-    .profile-card {
+    background: #dc3545;
 
-        width: 100%;
+}
 
-        padding: 20px;
+.logout:hover {
+
+    background: #bb2d3b;
+
+}
+
+.posts-card {
+
+    background: #fff;
+
+    padding: 30px;
+
+    border-radius: 10px;
+
+    box-shadow: 0 5px 15px rgba(0, 0, 0, .08);
+
+}
+
+.posts-card h2 {
+
+    color: #0d6efd;
+
+    margin-bottom: 20px;
+
+}
+
+.post {
+
+    border: 1px solid #eee;
+
+    border-radius: 8px;
+
+    padding: 15px;
+
+    margin-bottom: 15px;
+
+}
+
+.post h3 {
+
+    color: #0d6efd;
+
+    margin-bottom: 8px;
+
+}
+
+.post p {
+
+    margin: 6px 0;
+
+}
+
+.status {
+
+    display: inline-block;
+
+    padding: 5px 12px;
+
+    border-radius: 20px;
+
+    font-size: 13px;
+
+    font-weight: bold;
+
+}
+
+.pending {
+
+    background: #fff3cd;
+
+    color: #856404;
+
+}
+
+.active {
+
+    background: #d1e7dd;
+
+    color: #198754;
+
+}
+
+.rejected {
+
+    background: #f8d7da;
+
+    color: #dc3545;
+
+}
+
+@media(max-width:900px) {
+
+    .container {
+
+        grid-template-columns: 1fr;
+
+    }
+
+}
+
+@media(max-width:768px) {
+
+    header {
+
+        flex-direction: column;
+
+        gap: 15px;
+
+    }
+
+}
+
+@media(max-width:480px) {
+
+    header h2 {
+
+        font-size: 22px;
+
+    }
+
+    .profile-image img {
+
+        width: 110px;
+
+        height: 110px;
 
     }
 

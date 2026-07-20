@@ -1,0 +1,154 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background: #f4f6f9;
+}
+
+header {
+    background: #0f4c81;
+    color: white;
+    padding: 15px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header h2 {
+    font-size: 28px;
+}
+
+nav {
+    display: flex;
+    gap: 20px;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+nav a:hover,
+nav .active {
+    color: #ffd700;
+}
+
+.search-section {
+    width: 90%;
+    margin: 30px auto;
+    display: flex;
+    gap: 20px;
+}
+
+.search-section input {
+    flex: 1;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 16px;
+}
+
+.search-section select {
+    width: 220px;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 16px;
+}
+
+.business-container {
+    width: 90%;
+    margin: 30px auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 25px;
+}
+
+.business-card {
+    background: white;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, .15);
+    transition: .3s;
+}
+
+.business-card:hover {
+    transform: translateY(-6px);
+}
+
+.business-card h2 {
+    color: #0f4c81;
+    margin-bottom: 15px;
+}
+
+.business-card p {
+    margin: 8px 0;
+    color: #444;
+}
+
+.business-card .rating {
+    color: #ff9800;
+    font-size: 18px;
+    margin: 10px 0;
+}
+
+.buttons {
+    margin-top: 20px;
+    display: flex;
+    gap: 10px;
+}
+
+.view-btn {
+    flex: 1;
+    padding: 10px;
+    border: none;
+    background: #0f4c81;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.view-btn:hover {
+    background: #08355a;
+}
+
+.call-btn {
+    flex: 1;
+    padding: 10px;
+    border: none;
+    background: #28a745;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.call-btn:hover {
+    background: #1f7e35;
+}
+
+@media(max-width:768px) {
+
+    header {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    nav {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .search-section {
+        flex-direction: column;
+    }
+
+    .search-section select {
+        width: 100%;
+    }
+
+}

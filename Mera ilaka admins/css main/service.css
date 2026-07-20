@@ -9,73 +9,151 @@ body {
     background: #f4f6f9;
 }
 
-.container {
-    width: 95%;
-    margin: 30px auto;
-}
-
 header {
+
+    background: #0d6efd;
+    color: #fff;
+    padding: 15px 40px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 25px;
+
 }
 
-header h1 {
-    color: #1565c0;
-    margin-bottom: 5px;
+header h2 {
+
+    font-size: 28px;
+
 }
 
-header p {
-    color: #666;
-}
+header button {
 
-.header-buttons {
-    display: flex;
-    gap: 10px;
-}
-
-#dashboardBtn,
-#addServiceBtn {
-
+    padding: 10px 18px;
     border: none;
-    padding: 12px 20px;
-    border-radius: 6px;
-    color: white;
+    border-radius: 5px;
+    background: #fff;
+    color: #0d6efd;
+    font-weight: bold;
+    cursor: pointer;
+
+}
+
+header button:hover {
+
+    background: #e9ecef;
+
+}
+
+.container {
+
+    width: 95%;
+    margin: 30px auto;
+
+}
+
+.container h1 {
+
+    color: #333;
+    margin-bottom: 20px;
+
+}
+
+.form-box {
+
+    background: #fff;
+    padding: 25px;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, .15);
+    margin-bottom: 30px;
+
+}
+
+.form-box h2 {
+
+    color: #0d6efd;
+    margin-bottom: 20px;
+
+}
+
+.form-group {
+
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 15px;
+
+}
+
+.form-group label {
+
+    font-weight: bold;
+    margin-bottom: 8px;
+
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 15px;
+
+}
+
+.form-group textarea {
+
+    height: 90px;
+    resize: none;
+
+}
+
+.buttons {
+
+    display: flex;
+    gap: 15px;
+    margin-top: 20px;
+
+}
+
+.buttons button {
+
+    padding: 12px 22px;
+    border: none;
+    border-radius: 5px;
     cursor: pointer;
     font-size: 15px;
-    transition: .3s;
 
 }
 
-#dashboardBtn {
+#saveServiceBtn {
 
-    background: #28a745;
-
-}
-
-#dashboardBtn:hover {
-
-    background: #218838;
+    background: #198754;
+    color: #fff;
 
 }
 
-#addServiceBtn {
+#saveServiceBtn:hover {
 
-    background: #1565c0;
+    background: #157347;
 
 }
 
-#addServiceBtn:hover {
+#clearBtn {
 
-    background: #0d47a1;
+    background: #dc3545;
+    color: #fff;
+
+}
+
+#clearBtn:hover {
+
+    background: #bb2d3b;
 
 }
 
 .search-box {
 
-    width: 350px;
-    position: relative;
     margin-bottom: 20px;
 
 }
@@ -83,26 +161,10 @@ header p {
 .search-box input {
 
     width: 100%;
-    padding: 12px 15px 12px 40px;
+    padding: 12px;
     border: 1px solid #ccc;
     border-radius: 5px;
-    outline: none;
-
-}
-
-.search-box input:focus {
-
-    border-color: #1565c0;
-
-}
-
-.search-box i {
-
-    position: absolute;
-    left: 12px;
-    top: 50%;
-    transform: translateY(-50%);
-    color: #777;
+    font-size: 15px;
 
 }
 
@@ -110,20 +172,20 @@ table {
 
     width: 100%;
     border-collapse: collapse;
-    background: white;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, .1);
+    background: #fff;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, .15);
 
 }
 
-table th {
+thead {
 
-    background: #1565c0;
-    color: white;
-    padding: 15px;
+    background: #0d6efd;
+    color: #fff;
 
 }
 
-table td {
+th,
+td {
 
     padding: 15px;
     text-align: center;
@@ -131,29 +193,23 @@ table td {
 
 }
 
-table tr:hover {
+tbody tr:hover {
 
     background: #f8f9fa;
 
 }
 
-.available {
+.active {
 
-    background: #28a745;
-    color: white;
-    padding: 5px 12px;
-    border-radius: 20px;
-    font-size: 13px;
+    color: green;
+    font-weight: bold;
 
 }
 
-.unavailable {
+.inactive {
 
-    background: #dc3545;
-    color: white;
-    padding: 5px 12px;
-    border-radius: 20px;
-    font-size: 13px;
+    color: red;
+    font-weight: bold;
 
 }
 
@@ -165,21 +221,14 @@ table tr:hover {
     padding: 8px 10px;
     margin: 2px;
     border-radius: 5px;
-    cursor: pointer;
     color: white;
-    transition: .3s;
+    cursor: pointer;
 
 }
 
 .view {
 
-    background: #17a2b8;
-
-}
-
-.view:hover {
-
-    background: #138496;
+    background: #0d6efd;
 
 }
 
@@ -190,52 +239,42 @@ table tr:hover {
 
 }
 
-.edit:hover {
-
-    background: #e0a800;
-
-}
-
 .delete {
 
     background: #dc3545;
 
 }
 
-.delete:hover {
+.view:hover {
 
-    background: #c82333;
+    background: #0b5ed7;
 
 }
 
+.edit:hover {
+
+    background: #e0a800;
+
+}
+
+.delete:hover {
+
+    background: #bb2d3b;
+
+}
 
 @media(max-width:768px) {
 
     header {
 
         flex-direction: column;
-        align-items: flex-start;
         gap: 15px;
 
     }
 
-    .header-buttons {
+    .buttons {
 
-        width: 100%;
         flex-direction: column;
-
-    }
-
-    #dashboardBtn,
-    #addServiceBtn {
-
-        width: 100%;
-
-    }
-
-    .search-box {
-
-        width: 100%;
 
     }
 

@@ -1,217 +1,271 @@
+/*=========================================
+        DASHBOARD
+=========================================*/
+
 const dashboardBtn = document.getElementById("dashboardBtn");
 
-dashboardBtn.addEventListener("click", function () {
+if (dashboardBtn) {
 
-    window.location.href = "dashboard.html";
+    dashboardBtn.addEventListener("click", function () {
 
-});
-
-// Elements
-const addNotificationBtn = document.getElementById("addNotificationBtn");
-const searchNotification = document.getElementById("searchNotification");
-const tableBody = document.querySelector("#notificationTable tbody");
-
-// Notifications Data
-let notifications = JSON.parse(localStorage.getItem("notifications")) || [
-
-    {
-
-        title: "Welcome",
-
-        message: "Welcome to Mera Ilaka.",
-
-        type: "Info",
-
-        date: "15-07-2026"
-
-    },
-
-    {
-
-        title: "Service Update",
-
-        message: "New services are available.",
-
-        type: "Success",
-
-        date: "16-07-2026"
-
-    }
-
-];
-
-function displayNotifications() {
-
-    tableBody.innerHTML = "";
-
-    notifications.forEach(function (notification, index) {
-
-        tableBody.innerHTML += `
-
-        <tr>
-
-            <td>${index + 1}</td>
-
-            <td>${notification.title}</td>
-
-            <td>${notification.message}</td>
-
-            <td>
-
-                <span class="${notification.type.toLowerCase()}">
-
-                    ${notification.type}
-
-                </span>
-
-            </td>
-
-            <td>${notification.date}</td>
-
-            <td>
-
-                <button class="view" onclick="viewNotification(${index})">
-
-                    <i class="fa-solid fa-eye"></i>
-
-                </button>
-
-                <button class="edit" onclick="editNotification(${index})">
-
-                    <i class="fa-solid fa-pen"></i>
-
-                </button>
-
-                <button class="delete" onclick="deleteNotification(${index})">
-
-                    <i class="fa-solid fa-trash"></i>
-
-                </button>
-
-            </td>
-
-        </tr>
-
-        `;
+        window.location.href = "dashboard.html";
 
     });
-
-    localStorage.setItem("notifications", JSON.stringify(notifications));
 
 }
 
-addNotificationBtn.addEventListener("click", function () {
+/*=========================================
+        ELEMENTS
+=========================================*/
 
-    let title = prompt("Enter Notification Title");
+const notificationList = document.getElementById("notificationList");
 
-    if (title == null || title.trim() == "") return;
+const clearAllBtn = document.getElementById("clearAllBtn");
 
-    let message = prompt("Enter Notification Message");
+/*=========================================
+        DATA
+=========================================*/
 
-    if (message == null || message.trim() == "") return;
+let adminNotifications = JSON.parse(localStorage.getItem("adminNotifications")) || [];
 
-    let type = prompt("Enter Type (Info / Success / Warning / Danger)");
+/*=========================================
+        SAMPLE DATA
+=========================================*/
 
-    if (type == null || type.trim() == "") return;
+if (adminNotifications.length === 0) {
 
-    let today = new Date().toLocaleDateString("en-GB");
+    adminNotifications = [
 
-    notifications.push({
+        {
 
-        title: title,
+            id: 1,
 
-        message: message,
+            title: "New Business Request",
 
-        type: type,
+            message: "Rahul submitted a new business for approval.",
 
-        date: today
+            date: "Today",
 
-    });
+            read: false
 
-    displayNotifications();
+        },
 
-    alert("Notification Added Successfully.");
+        {
 
-});
+            id: 2,
 
-function viewNotification(index) {
+            title: "New Community Post",
 
-    const notification = notifications[index];
+            message: "Arunsai submitted a community post.",
 
-    alert(
+            date: "Today",
 
-        "Title : " + notification.title +
+            read: false
 
-        "\n\nMessage : " + notification.message +
+        },
 
-        "\n\nType : " + notification.type +
+        {
 
-        "\n\nDate : " + notification.date
+            id: 3,
+
+            title: "New Support Request",
+
+            message: "Priya created a support request.",
+
+            date: "Yesterday",
+
+            read: true
+
+        }
+
+    ];
+
+    localStorage.setItem(
+
+        "adminNotifications",
+
+        JSON.stringify(adminNotifications)
 
     );
 
 }
 
-function editNotification(index) {
+/*=========================================
+        DISPLAY NOTIFICATIONS
+=========================================*/
 
-    let title = prompt("Edit Title", notifications[index].title);
+function displayNotifications() {
 
-    if (title == null) return;
+    notificationList.innerHTML = "";
 
-    let message = prompt("Edit Message", notifications[index].message);
+    if (adminNotifications.length === 0) {
 
-    if (message == null) return;
+        notificationList.innerHTML = `
 
-    let type = prompt("Edit Type", notifications[index].type);
+        <div class="empty">
 
-    if (type == null) return;
+            <h2>No Notifications</h2>
 
-    notifications[index].title = title;
-    notifications[index].message = message;
-    notifications[index].type = type;
+            <p>You're all caught up.</p>
+
+        </div>
+
+        `;
+
+        return;
+
+    }
+
+    adminNotifications.forEach(function (notification, index) {
+
+        notificationList.innerHTML += `
+
+        <div class="notification ${notification.read ? "" : "unread"}">
+
+            <h3>${notification.title}</h3>
+
+            <p>${notification.message}</p>
+
+            <small>${notification.date}</small>
+
+            <div class="actions">
+
+                ${notification.read
+
+                ?
+
+                ""
+
+                :
+
+                `<button class="readBtn"
+
+                    onclick="markRead(${index})">
+
+                    Mark as Read
+
+                    </button>`
+            }
+
+                <button class="deleteBtn"
+
+                    onclick="deleteNotification(${index})">
+
+                    Delete
+
+                </button>
+
+            </div>
+
+        </div>
+
+        `;
+
+    });
+
+}
+
+/*=========================================
+        MARK READ
+=========================================*/
+
+function markRead(index) {
+
+    adminNotifications[index].read = true;
+
+    localStorage.setItem(
+
+        "adminNotifications",
+
+        JSON.stringify(adminNotifications)
+
+    );
 
     displayNotifications();
 
-    alert("Notification Updated Successfully.");
-
 }
+
+/*=========================================
+        DELETE
+=========================================*/
 
 function deleteNotification(index) {
 
     if (confirm("Delete this notification?")) {
 
-        notifications.splice(index, 1);
+        adminNotifications.splice(index, 1);
+
+        localStorage.setItem(
+
+            "adminNotifications",
+
+            JSON.stringify(adminNotifications)
+
+        );
 
         displayNotifications();
-
-        alert("Notification Deleted Successfully.");
 
     }
 
 }
 
-searchNotification.addEventListener("keyup", function () {
+/*=========================================
+        CLEAR ALL
+=========================================*/
 
-    let value = this.value.toLowerCase();
+clearAllBtn.addEventListener("click", function () {
 
-    const rows = document.querySelectorAll("#notificationTable tbody tr");
+    if (confirm("Clear all notifications?")) {
 
-    rows.forEach(function (row) {
+        adminNotifications = [];
 
-        if (row.innerText.toLowerCase().includes(value)) {
+        localStorage.setItem(
 
-            row.style.display = "";
+            "adminNotifications",
 
-        }
+            JSON.stringify(adminNotifications)
 
-        else {
+        );
 
-            row.style.display = "none";
+        displayNotifications();
 
-        }
-
-    });
+    }
 
 });
 
+/*=========================================
+        LOAD
+=========================================*/
+
 displayNotifications();
+/*=========================================
+        ADD ADMIN NOTIFICATION
+=========================================*/
+
+function addAdminNotification(title, message) {
+
+    let adminNotifications = JSON.parse(localStorage.getItem("adminNotifications")) || [];
+
+    adminNotifications.unshift({
+
+        id: Date.now(),
+
+        title: title,
+
+        message: message,
+
+        date: new Date().toLocaleString(),
+
+        read: false
+
+    });
+
+    localStorage.setItem(
+
+        "adminNotifications",
+
+        JSON.stringify(adminNotifications)
+
+    );
+
+}

@@ -1,0 +1,189 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background: #f4f6f9;
+}
+
+header {
+    background: #0f4c81;
+    color: white;
+    padding: 15px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header h2 {
+    font-size: 28px;
+}
+
+nav {
+    display: flex;
+    gap: 20px;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+nav a:hover,
+nav .active {
+    color: #ffd700;
+}
+
+.container {
+    width: 95%;
+    max-width: 1200px;
+    margin: 30px auto;
+}
+
+.container h1 {
+    text-align: center;
+    color: #0f4c81;
+    margin-bottom: 30px;
+}
+
+.orders-container {
+    display: grid;
+    gap: 20px;
+}
+
+.order-card {
+    background: white;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, .15);
+}
+
+.order-card h2 {
+    color: #0f4c81;
+    margin-bottom: 15px;
+}
+
+.order-card p {
+    margin: 8px 0;
+    color: #444;
+}
+
+.products {
+    margin-top: 15px;
+    padding: 15px;
+    background: #f8f9fa;
+    border-radius: 6px;
+}
+
+.products h3 {
+    color: #0f4c81;
+    margin-bottom: 10px;
+}
+
+.product {
+    border-bottom: 1px solid #ddd;
+    padding: 8px 0;
+}
+
+.product:last-child {
+    border-bottom: none;
+}
+
+.status {
+    display: inline-block;
+    padding: 6px 12px;
+    border-radius: 20px;
+    color: white;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+.Paid {
+    background: #28a745;
+}
+
+.Pending {
+    background: #ffc107;
+    color: black;
+}
+
+.Cancelled {
+    background: #dc3545;
+}
+
+.Cash {
+    background: #17a2b8;
+}
+
+.buttons {
+    margin-top: 20px;
+}
+
+.cancel-btn {
+    background: #dc3545;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.cancel-btn:hover {
+    opacity: .9;
+}
+
+@media(max-width:768px) {
+
+    header {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    nav {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+}
+
+.status {
+
+    padding: 6px 15px;
+
+    border-radius: 20px;
+
+    color: white;
+
+    font-weight: bold;
+
+}
+
+.Paid {
+
+    background: #28a745;
+
+}
+
+.Pending {
+
+    background: #ffc107;
+
+    color: black;
+
+}
+
+.Cancelled {
+
+    background: #dc3545;
+
+}
+
+.CashonDelivery {
+
+    background: #17a2b8;
+
+}

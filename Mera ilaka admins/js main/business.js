@@ -1,8 +1,3 @@
-/*=========================================
-        BUSINESS MANAGEMENT
-=========================================*/
-
-// Dashboard Button
 const dashboardBtn = document.getElementById("dashboardBtn");
 
 dashboardBtn.addEventListener("click", function () {
@@ -11,61 +6,46 @@ dashboardBtn.addEventListener("click", function () {
 
 });
 
-// Elements
-const addBusinessBtn = document.getElementById("addBusinessBtn");
+const businessName = document.getElementById("businessName");
+const ownerName = document.getElementById("ownerName");
+const category = document.getElementById("category");
+const address = document.getElementById("address");
+const phone = document.getElementById("phone");
+const email = document.getElementById("email");
+const description = document.getElementById("description");
+const image = document.getElementById("image");
+const status = document.getElementById("status");
+
+const saveBusinessBtn = document.getElementById("saveBusinessBtn");
+const clearBtn = document.getElementById("clearBtn");
+
 const searchBusiness = document.getElementById("searchBusiness");
+
 const tableBody = document.querySelector("#businessTable tbody");
 
-// Business Data
-let businesses = JSON.parse(localStorage.getItem("businesses")) || [
+let businesses = JSON.parse(localStorage.getItem("businesses")) || [];
 
-    {
+let editIndex = -1;
 
-        name: "Sai Electronics",
-
-        owner: "Arun",
-
-        category: "Electronics",
-
-        status: "Active"
-
-    },
-
-    {
-
-        name: "Fresh Mart",
-
-        owner: "Laxman",
-
-        category: "Grocery",
-
-        status: "Active"
-
-    }
-
-];
-
-/*=========================================
-        DISPLAY BUSINESSES
-=========================================*/
-
-function displayBusinesses(){
+function displayBusinesses() {
 
     tableBody.innerHTML = "";
 
-    businesses.forEach(function(business,index){
+    businesses.forEach(function (business, index) {
 
         tableBody.innerHTML += `
 
         <tr>
 
-            <td>${index+1}</td>
+            <td>${index + 1}</td>
 
             <td>${business.name}</td>
 
             <td>${business.owner}</td>
 
             <td>${business.category}</td>
+
+            <td>${business.phone}</td>
 
             <td>
 
@@ -79,19 +59,25 @@ function displayBusinesses(){
 
             <td>
 
-                <button class="view" onclick="viewBusiness(${index})">
+                <button class="view"
+
+                    onclick="viewBusiness(${index})">
 
                     <i class="fa-solid fa-eye"></i>
 
                 </button>
 
-                <button class="edit" onclick="editBusiness(${index})">
+                <button class="edit"
+
+                    onclick="editBusiness(${index})">
 
                     <i class="fa-solid fa-pen"></i>
 
                 </button>
 
-                <button class="delete" onclick="deleteBusiness(${index})">
+                <button class="delete"
+
+                    onclick="deleteBusiness(${index})">
 
                     <i class="fa-solid fa-trash"></i>
 
@@ -109,129 +95,190 @@ function displayBusinesses(){
 
 }
 
-/*=========================================
-        ADD BUSINESS
-=========================================*/
+saveBusinessBtn.addEventListener("click", function () {
 
-addBusinessBtn.addEventListener("click", function(){
+    if (
 
-    let name = prompt("Enter Business Name");
+        businessName.value.trim() === "" ||
+        ownerName.value.trim() === "" ||
 
-    if(name == null || name.trim() == "") return;
+        category.value === "" ||
 
-    let owner = prompt("Enter Owner Name");
+        address.value.trim() === "" ||
 
-    if(owner == null || owner.trim() == "") return;
+        phone.value.trim() === ""
 
-    let category = prompt("Enter Business Category");
+    ) {
 
-    if(category == null || category.trim() == "") return;
+        alert("Please fill all required fields.");
 
-    businesses.push({
+        return;
 
-        name: name,
+    }
 
-        owner: owner,
+    const business = {
 
-        category: category,
+        name: businessName.value,
 
-        status: "Active"
+        owner: ownerName.value,
 
-    });
+        category: category.value,
+
+        address: address.value,
+
+        phone: phone.value,
+
+        email: email.value,
+
+        description: description.value,
+
+        image: image.value,
+
+        status: status.value
+
+    };
+
+    if (editIndex === -1) {
+
+        businesses.push(business);
+
+        alert("Business Added Successfully.");
+
+    }
+
+    else {
+
+        businesses[editIndex] = business;
+
+        alert("Business Updated Successfully.");
+
+        editIndex = -1;
+
+    }
+
+    localStorage.setItem("businesses", JSON.stringify(businesses));
+
+    clearForm();
 
     displayBusinesses();
 
-    alert("Business Added Successfully.");
-
 });
 
-/*=========================================
-        VIEW BUSINESS
-=========================================*/
+function viewBusiness(index) {
 
-function viewBusiness(index){
-
-    const business = businesses[index];
+    const b = businesses[index];
 
     alert(
 
-        "Business Name : " + business.name +
+        "Business : " + b.name +
 
-        "\n\nOwner : " + business.owner +
+        "\nOwner : " + b.owner +
 
-        "\n\nCategory : " + business.category +
+        "\nCategory : " + b.category +
 
-        "\n\nStatus : " + business.status
+        "\nAddress : " + b.address +
+
+        "\nPhone : " + b.phone +
+
+        "\nEmail : " + b.email +
+
+        "\nDescription : " + b.description +
+
+        "\nStatus : " + b.status
 
     );
 
 }
 
-/*=========================================
-        EDIT BUSINESS
-=========================================*/
+function editBusiness(index) {
 
-function editBusiness(index){
+    editIndex = index;
 
-    let name = prompt("Edit Business Name", businesses[index].name);
+    const b = businesses[index];
 
-    if(name == null) return;
+    businessName.value = b.name;
 
-    let owner = prompt("Edit Owner Name", businesses[index].owner);
+    ownerName.value = b.owner;
 
-    if(owner == null) return;
+    category.value = b.category;
 
-    let category = prompt("Edit Category", businesses[index].category);
+    address.value = b.address;
 
-    if(category == null) return;
+    phone.value = b.phone;
 
-    businesses[index].name = name;
-    businesses[index].owner = owner;
-    businesses[index].category = category;
+    email.value = b.email;
 
-    displayBusinesses();
+    description.value = b.description;
 
-    alert("Business Updated Successfully.");
+    image.value = b.image;
+
+    status.value = b.status;
+
+    window.scrollTo({
+
+        top: 0,
+
+        behavior: "smooth"
+
+    });
 
 }
 
-/*=========================================
-        DELETE BUSINESS
-=========================================*/
+function deleteBusiness(index) {
 
-function deleteBusiness(index){
+    if (confirm("Delete this Business?")) {
 
-    if(confirm("Delete this business?")){
+        businesses.splice(index, 1);
 
-        businesses.splice(index,1);
+        localStorage.setItem("businesses", JSON.stringify(businesses));
 
         displayBusinesses();
 
-        alert("Business Deleted Successfully.");
+        alert("Business Deleted.");
 
     }
 
 }
 
-/*=========================================
-        SEARCH BUSINESS
-=========================================*/
+function clearForm() {
 
-searchBusiness.addEventListener("keyup", function(){
+    businessName.value = "";
+
+    ownerName.value = "";
+
+    category.value = "";
+
+    address.value = "";
+
+    phone.value = "";
+
+    email.value = "";
+
+    description.value = "";
+
+    image.value = "";
+
+    status.value = "Active";
+
+}
+
+clearBtn.addEventListener("click", clearForm);
+
+searchBusiness.addEventListener("keyup", function () {
 
     let value = this.value.toLowerCase();
 
     const rows = document.querySelectorAll("#businessTable tbody tr");
 
-    rows.forEach(function(row){
+    rows.forEach(function (row) {
 
-        if(row.innerText.toLowerCase().includes(value)){
+        if (row.innerText.toLowerCase().includes(value)) {
 
             row.style.display = "";
 
         }
 
-        else{
+        else {
 
             row.style.display = "none";
 
@@ -240,9 +287,5 @@ searchBusiness.addEventListener("keyup", function(){
     });
 
 });
-
-/*=========================================
-        LOAD BUSINESSES
-=========================================*/
 
 displayBusinesses();

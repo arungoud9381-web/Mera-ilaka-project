@@ -1,14 +1,6 @@
-// ========================================
-// Mera Ilaka - Landing Page JavaScript
-// ========================================
-
 document.addEventListener("DOMContentLoaded", function () {
 
     console.log("Welcome to Mera Ilaka");
-
-    // ========================================
-    // Buttons
-    // ========================================
 
     const loginBtn = document.getElementById("loginBtn");
     const registerBtn = document.getElementById("registerBtn");
@@ -46,10 +38,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
     }
 
-    // ========================================
-    // Smooth Scrolling
-    // ========================================
-
     const navLinks = document.querySelectorAll('nav a[href^="#"]');
 
     navLinks.forEach(function (link) {
@@ -74,10 +62,6 @@ document.addEventListener("DOMContentLoaded", function () {
         });
 
     });
-
-    // ========================================
-    // Active Navigation on Scroll
-    // ========================================
 
     const sections = document.querySelectorAll("section");
 
@@ -111,10 +95,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
     });
 
-    // ========================================
-    // Hero Button Animation
-    // ========================================
-
     if (startBtn) {
 
         startBtn.addEventListener("mouseenter", function () {
@@ -131,10 +111,6 @@ document.addEventListener("DOMContentLoaded", function () {
         });
 
     }
-
-    // ========================================
-    // Feature Card Hover Effect
-    // ========================================
 
     const cards = document.querySelectorAll(".card");
 
@@ -154,10 +130,6 @@ document.addEventListener("DOMContentLoaded", function () {
         });
 
     });
-
-    // ========================================
-    // Footer
-    // ========================================
 
     console.log("Landing Page Loaded Successfully");
 

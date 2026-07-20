@@ -1,28 +1,28 @@
 const orderItems = document.getElementById("orderItems");
-
 const grandTotal = document.getElementById("grandTotal");
-
 const placeOrderBtn = document.getElementById("placeOrderBtn");
 
+// Load Products
 let checkoutItems = JSON.parse(localStorage.getItem("checkoutItems")) || [];
-
 let buyNow = JSON.parse(localStorage.getItem("buyNow"));
 
+// Buy Now Support
 if (checkoutItems.length === 0 && buyNow) {
 
     checkoutItems.push(buyNow);
 
 }
 
+// Display Order
 function displayOrder() {
 
     orderItems.innerHTML = "";
 
     if (checkoutItems.length === 0) {
 
-        orderItems.innerHTML = "<h3>No Products Found</h3>";
-
+        orderItems.innerHTML = "<h3>No Products Selected</h3>";
         grandTotal.innerHTML = "₹0";
+        placeOrderBtn.disabled = true;
 
         return;
 
@@ -30,31 +30,35 @@ function displayOrder() {
 
     let total = 0;
 
-    checkoutItems.forEach(function (product) {
+    checkoutItems.forEach(function (item) {
 
         let price = Number(
-
-            product.price.replace("₹", "").replace(/,/g, "")
-
+            item.price.replace("₹", "").replace(/,/g, "")
         );
 
-        let itemTotal = price * product.quantity;
+        let quantity = item.quantity || 1;
+
+        let itemTotal = price * quantity;
 
         total += itemTotal;
 
         orderItems.innerHTML += `
 
-        <div class="order-item">
+            <div class="order-item">
 
-            <h4>${product.product}</h4>
+                <h3>${item.product}</h3>
 
-            <p>Price : ${product.price}</p>
+                <p><strong>Seller :</strong> ${item.seller}</p>
 
-            <p>Quantity : ${product.quantity}</p>
+                <p><strong>Category :</strong> ${item.category}</p>
 
-            <p>Total : ₹${itemTotal}</p>
+                <p><strong>Price :</strong> ${item.price}</p>
 
-        </div>
+                <p><strong>Quantity :</strong> ${quantity}</p>
+
+                <p><strong>Total :</strong> ₹${itemTotal}</p>
+
+            </div>
 
         `;
 
@@ -66,18 +70,14 @@ function displayOrder() {
 
 displayOrder();
 
+// Place Order
 placeOrderBtn.addEventListener("click", function () {
 
     const customerName = document.getElementById("customerName").value.trim();
-
     const phone = document.getElementById("phone").value.trim();
-
     const address = document.getElementById("address").value.trim();
-
     const city = document.getElementById("city").value.trim();
-
     const pincode = document.getElementById("pincode").value.trim();
-
     const paymentMethod = document.getElementById("paymentMethod").value;
 
     if (
@@ -89,8 +89,7 @@ placeOrderBtn.addEventListener("click", function () {
         paymentMethod === ""
     ) {
 
-        alert("Please fill all the fields.");
-
+        alert("Please fill all fields.");
         return;
 
     }
@@ -129,13 +128,11 @@ placeOrderBtn.addEventListener("click", function () {
 
     localStorage.setItem("currentOrder", JSON.stringify(order));
 
+    localStorage.removeItem("checkoutItems");
+    localStorage.removeItem("buyNow");
     localStorage.removeItem("cart");
 
-    localStorage.removeItem("checkoutItems");
-
-    localStorage.removeItem("buyNow");
-
-    alert("Order Placed Successfully!");
+    alert("Order Placed Successfully.");
 
     window.location.href = "payment.html";
 

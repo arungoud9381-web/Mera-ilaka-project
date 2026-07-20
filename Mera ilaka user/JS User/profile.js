@@ -1,83 +1,158 @@
-const currentUser = JSON.parse(localStorage.getItem("currentUser"));
-
-if (!currentUser) {
-
-    alert("Please login first.");
-
-    window.location.href = "login.html";
-
-}
+const dashboardBtn = document.getElementById("dashboardBtn");
 
 const profileForm = document.getElementById("profileForm");
 
-const name = document.getElementById("name");
+const logoutBtn = document.getElementById("logoutBtn");
 
-const email = document.getElementById("email");
+const nameInput = document.getElementById("name");
+const phoneInput = document.getElementById("phone");
+const addressInput = document.getElementById("address");
 
-const phone = document.getElementById("phone");
+const userName = document.getElementById("userName");
+const userEmail = document.getElementById("userEmail");
 
-const address = document.getElementById("address");
+const myPosts = document.getElementById("myPosts");
 
-name.value = currentUser.name || "";
+let currentUser = JSON.parse(localStorage.getItem("currentUser")) || {
 
-email.value = currentUser.email || "";
+    id: "USR001",
 
-phone.value = currentUser.phone || "";
+    name: "Guest User",
 
-address.value = currentUser.address || "";
+    email: "guest@gmail.com",
+
+    phone: "",
+
+    address: ""
+
+};
+
+function loadProfile() {
+
+    userName.innerText = currentUser.name;
+
+    userEmail.innerText = currentUser.email;
+
+    nameInput.value = currentUser.name;
+
+    phoneInput.value = currentUser.phone || "";
+
+    addressInput.value = currentUser.address || "";
+
+}
 
 profileForm.addEventListener("submit", function (e) {
 
     e.preventDefault();
 
-    if (
+    currentUser.name = nameInput.value;
 
-        name.value.trim() === "" ||
+    currentUser.phone = phoneInput.value;
 
-        phone.value.trim() === "" ||
+    currentUser.address = addressInput.value;
 
-        address.value.trim() === ""
+    localStorage.setItem(
 
-    ) {
+        "currentUser",
 
-        alert("Please fill all fields.");
+        JSON.stringify(currentUser)
+
+    );
+
+    userName.innerText = currentUser.name;
+
+    alert("Profile Updated Successfully.");
+
+});
+
+function loadMyPosts() {
+
+    let posts = JSON.parse(
+
+        localStorage.getItem("communityPosts")
+
+    ) || [];
+
+    let userPosts = posts.filter(function (post) {
+
+        return post.userId === currentUser.id;
+
+    });
+
+    myPosts.innerHTML = "";
+
+    if (userPosts.length === 0) {
+
+        myPosts.innerHTML = `
+
+        <p>No Community Posts Yet.</p>
+
+        `;
 
         return;
 
     }
 
-    // Update Current User
+    userPosts.forEach(function (post) {
 
-    currentUser.name = name.value.trim();
+        myPosts.innerHTML += `
 
-    currentUser.phone = phone.value.trim();
+        <div class="post">
 
-    currentUser.address = address.value.trim();
+            <h3>${post.title}</h3>
 
-    // Save Current User
+            <p>
 
-    localStorage.setItem("currentUser", JSON.stringify(currentUser));
+                <strong>Category :</strong>
 
-    // Update User List
+                ${post.category}
 
-    let users = JSON.parse(localStorage.getItem("users")) || [];
+            </p>
 
-    users = users.map(function (user) {
+            <p>
 
-        if (user.email === currentUser.email) {
+                <strong>Date :</strong>
 
-            return currentUser;
+                ${post.date}
 
-        }
+            </p>
 
-        return user;
+            <p>
+
+                <span class="status ${post.status.toLowerCase()}">
+
+                    ${post.status}
+
+                </span>
+
+            </p>
+
+        </div>
+
+        `;
 
     });
 
-    localStorage.setItem("users", JSON.stringify(users));
+}
 
-    alert("Profile updated successfully!");
+dashboardBtn.addEventListener("click", function () {
+
+    window.location.href = "dashboard.html";
 
 });
 
-console.log("Profile Loaded Successfully");
+logoutBtn.addEventListener("click", function () {
+
+    if (confirm("Are you sure you want to logout?")) {
+
+        localStorage.removeItem("currentUser");
+
+        window.location.href = "../index.html";
+
+    }
+
+});
+
+loadProfile();
+
+loadMyPosts();

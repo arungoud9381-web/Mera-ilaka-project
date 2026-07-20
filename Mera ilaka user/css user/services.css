@@ -1,0 +1,293 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+    background: #f4f6f9;
+    color: #333;
+}
+
+header {
+
+    background: #0d6efd;
+    color: white;
+    padding: 18px;
+    text-align: center;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, .15);
+
+}
+
+header h2 {
+
+    font-size: 28px;
+
+}
+
+.container {
+
+    width: 95%;
+    max-width: 1400px;
+    margin: 30px auto;
+
+}
+
+.container h1 {
+
+    margin-bottom: 20px;
+    color: #0d6efd;
+
+}
+
+.search-box {
+
+    margin-bottom: 15px;
+
+}
+
+.search-box input {
+
+    width: 100%;
+    padding: 14px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 16px;
+    outline: none;
+
+}
+
+.search-box input:focus {
+
+    border-color: #0d6efd;
+
+}
+
+.filter-box {
+
+    margin-bottom: 30px;
+
+}
+
+.filter-box select {
+
+    width: 250px;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 15px;
+    cursor: pointer;
+
+}
+
+#serviceContainer {
+
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 25px;
+
+}
+
+.service-card {
+
+    background: white;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 5px 18px rgba(0, 0, 0, .12);
+    transition: .3s;
+
+}
+
+.service-card:hover {
+
+    transform: translateY(-8px);
+
+}
+
+.service-card img {
+
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+
+}
+
+.service-content {
+
+    padding: 20px;
+
+}
+
+.service-content h2 {
+
+    color: #0d6efd;
+    margin-bottom: 12px;
+    font-size: 24px;
+
+}
+
+.service-content p {
+
+    margin: 8px 0;
+    color: #555;
+    line-height: 1.6;
+
+}
+
+.service-content strong {
+
+    color: #222;
+
+}
+
+.price {
+
+    margin-top: 15px;
+    color: #198754;
+    font-size: 22px;
+    font-weight: bold;
+
+}
+
+.status {
+
+    display: inline-block;
+    margin-top: 12px;
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-size: 14px;
+    font-weight: bold;
+
+}
+
+.active {
+
+    background: #d1e7dd;
+    color: #146c43;
+
+}
+
+.inactive {
+
+    background: #f8d7da;
+    color: #b02a37;
+
+}
+
+.buttons {
+
+    display: flex;
+    gap: 12px;
+    margin-top: 20px;
+
+}
+
+.buttons button {
+
+    flex: 1;
+    border: none;
+    padding: 12px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 15px;
+    transition: .3s;
+
+}
+
+.view-btn {
+
+    background: #0d6efd;
+    color: white;
+
+}
+
+.view-btn:hover {
+
+    background: #0b5ed7;
+
+}
+
+.call-btn {
+
+    background: #198754;
+    color: white;
+
+}
+
+.call-btn:hover {
+
+    background: #157347;
+
+}
+
+.no-services {
+
+    grid-column: 1/-1;
+    background: white;
+    padding: 50px;
+    text-align: center;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, .1);
+
+}
+
+.no-services h2 {
+
+    color: #666;
+
+}
+
+@media(max-width:992px) {
+
+    #serviceContainer {
+
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+
+    }
+
+}
+
+@media(max-width:768px) {
+
+    .container {
+
+        width: 92%;
+
+    }
+
+    .filter-box select {
+
+        width: 100%;
+
+    }
+
+    .buttons {
+
+        flex-direction: column;
+
+    }
+
+}
+
+@media(max-width:480px) {
+
+    header h2 {
+
+        font-size: 22px;
+
+    }
+
+    .service-card img {
+
+        height: 180px;
+
+    }
+
+    .service-content h2 {
+
+        font-size: 20px;
+
+    }
+
+}

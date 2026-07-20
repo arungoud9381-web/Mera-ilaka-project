@@ -7,7 +7,7 @@
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Support Management</title>
+    <title>Support | Admin</title>
 
     <link rel="stylesheet" href="../css main/support.css">
 
@@ -17,49 +17,49 @@
 
 <body>
 
+    <header>
+
+        <h2>Mera Ilaka - Admin</h2>
+
+        <button id="dashboardBtn">
+
+            <i class="fa-solid fa-house"></i>
+
+            Dashboard
+
+        </button>
+
+    </header>
+
     <div class="container">
 
-        <header>
+        <h1>Support Management</h1>
 
-            <div>
+        <!-- Search -->
 
-                <h1>Support Management</h1>
+        <div class="top-bar">
 
-                <p>Manage Support Tickets</p>
+            <input type="text" id="searchSupport" placeholder="Search support requests...">
 
-            </div>
+            <select id="statusFilter">
 
-            <div class="header-buttons">
+                <option value="All">All Status</option>
 
-                <button id="dashboardBtn">
+                <option value="Pending">Pending</option>
 
-                    <i class="fa-solid fa-house"></i>
+                <option value="In Progress">In Progress</option>
 
-                    Dashboard
+                <option value="Resolved">Resolved</option>
 
-                </button>
+                <option value="Rejected">Rejected</option>
 
-                <button id="addTicketBtn">
-
-                    <i class="fa-solid fa-plus"></i>
-
-                    Add Ticket
-
-                </button>
-
-            </div>
-
-        </header>
-
-        <div class="search-box">
-
-            <i class="fa-solid fa-magnifying-glass"></i>
-
-            <input type="text" id="searchTicket" placeholder="Search Ticket">
+            </select>
 
         </div>
 
-        <table id="ticketTable">
+        <!-- Table -->
+
+        <table id="supportTable">
 
             <thead>
 
@@ -69,9 +69,11 @@
 
                     <th>User</th>
 
-                    <th>Issue</th>
+                    <th>Title</th>
 
-                    <th>Priority</th>
+                    <th>Category</th>
+
+                    <th>Date</th>
 
                     <th>Status</th>
 

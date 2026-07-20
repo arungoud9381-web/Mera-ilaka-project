@@ -7,7 +7,7 @@
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Community Management</title>
+    <title>Community Management | Admin</title>
 
     <link rel="stylesheet" href="../css main/community.css">
 
@@ -17,49 +17,39 @@
 
 <body>
 
+    <!-- Header -->
+
+    <header>
+
+        <h2>🏘️ Mera Ilaka Admin</h2>
+
+        <button id="dashboardBtn">
+
+            <i class="fa-solid fa-house"></i>
+
+            Dashboard
+
+        </button>
+
+    </header>
+
+    <!-- Main Container -->
+
     <div class="container">
 
-        <header>
+        <h1>Community Management</h1>
 
-            <div>
-
-                <h1>Community Management</h1>
-
-                <p>Manage Community Posts</p>
-
-            </div>
-
-            <div class="header-buttons">
-
-                <button id="dashboardBtn">
-
-                    <i class="fa-solid fa-house"></i>
-
-                    Dashboard
-
-                </button>
-
-                <button id="addPostBtn">
-
-                    <i class="fa-solid fa-plus"></i>
-
-                    Add Post
-
-                </button>
-
-            </div>
-
-        </header>
+        <!-- Search -->
 
         <div class="search-box">
 
-            <i class="fa-solid fa-magnifying-glass"></i>
-
-            <input type="text" id="searchPost" placeholder="Search Post">
+            <input type="text" id="searchPost" placeholder="Search by User, Title or Category">
 
         </div>
 
-        <table id="postTable">
+        <!-- Table -->
+
+        <table id="communityTable">
 
             <thead>
 
@@ -69,7 +59,9 @@
 
                     <th>User</th>
 
-                    <th>Post</th>
+                    <th>Title</th>
+
+                    <th>Category</th>
 
                     <th>Date</th>
 
@@ -82,6 +74,8 @@
             </thead>
 
             <tbody>
+
+                <!-- JavaScript -->
 
             </tbody>
 

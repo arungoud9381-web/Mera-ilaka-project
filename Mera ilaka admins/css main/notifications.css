@@ -1,267 +1,249 @@
+/*=========================================
+            RESET
+=========================================*/
+
 * {
+
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     font-family: Arial, Helvetica, sans-serif;
+
 }
 
 body {
+
     background: #f4f6f9;
+    color: #333;
+
 }
 
-.container {
-    width: 95%;
-    margin: 30px auto;
-}
+/*=========================================
+            HEADER
+=========================================*/
 
 header {
+
+    background: #0d6efd;
+    color: #fff;
+
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 25px;
+
+    padding: 15px 30px;
+
+    box-shadow: 0 2px 10px rgba(0, 0, 0, .15);
+
 }
 
-header h1 {
-    color: #1565c0;
-    margin-bottom: 5px;
-}
+header h2 {
 
-header p {
-    color: #666;
-}
-
-.header-buttons {
-    display: flex;
-    gap: 10px;
-}
-
-#dashboardBtn,
-#addNotificationBtn {
-
-    padding: 12px 20px;
-    border: none;
-    border-radius: 6px;
-    color: white;
-    cursor: pointer;
-    font-size: 15px;
-    transition: .3s;
+    font-size: 28px;
 
 }
 
 #dashboardBtn {
 
-    background: #28a745;
+    background: #fff;
+    color: #0d6efd;
+
+    border: none;
+
+    padding: 10px 20px;
+
+    border-radius: 6px;
+
+    cursor: pointer;
+
+    font-weight: bold;
+
+    transition: .3s;
 
 }
 
 #dashboardBtn:hover {
 
-    background: #218838;
+    background: #e9ecef;
 
 }
 
-#addNotificationBtn {
+/*=========================================
+            CONTAINER
+=========================================*/
 
-    background: #1565c0;
+.container {
 
-}
-
-#addNotificationBtn:hover {
-
-    background: #0d47a1;
-
-}
-
-.search-box {
-
-    width: 350px;
-    position: relative;
-    margin-bottom: 20px;
+    width: 95%;
+    max-width: 900px;
+    margin: 30px auto;
 
 }
 
-.search-box input {
+.top {
 
-    width: 100%;
-    padding: 12px 15px 12px 40px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    outline: none;
-
-}
-
-.search-box input:focus {
-
-    border-color: #1565c0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
 
 }
 
-.search-box i {
+.top h1 {
 
-    position: absolute;
-    left: 12px;
-    top: 50%;
-    transform: translateY(-50%);
-    color: #777;
+    color: #0d6efd;
 
 }
 
-table {
-
-    width: 100%;
-    border-collapse: collapse;
-    background: white;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, .1);
-
-}
-
-table th {
-
-    background: #1565c0;
-    color: white;
-    padding: 15px;
-
-}
-
-table td {
-
-    padding: 15px;
-    text-align: center;
-    border-bottom: 1px solid #ddd;
-
-}
-
-table tr:hover {
-
-    background: #f8f9fa;
-
-}
-
-.info {
-
-    background: #17a2b8;
-    color: white;
-    padding: 5px 12px;
-    border-radius: 20px;
-    font-size: 13px;
-
-}
-
-.success {
-
-    background: #28a745;
-    color: white;
-    padding: 5px 12px;
-    border-radius: 20px;
-    font-size: 13px;
-
-}
-
-.warning {
-
-    background: #ffc107;
-    color: black;
-    padding: 5px 12px;
-    border-radius: 20px;
-    font-size: 13px;
-
-}
-
-.danger {
+#clearAllBtn {
 
     background: #dc3545;
-    color: white;
-    padding: 5px 12px;
-    border-radius: 20px;
-    font-size: 13px;
-
-}
-
-.view,
-.edit,
-.delete {
+    color: #fff;
 
     border: none;
-    padding: 8px 10px;
-    margin: 2px;
-    border-radius: 5px;
+
+    padding: 10px 18px;
+
+    border-radius: 6px;
+
     cursor: pointer;
-    color: white;
+
     transition: .3s;
 
 }
 
-.view {
+#clearAllBtn:hover {
 
-    background: #17a2b8;
-
-}
-
-.view:hover {
-
-    background: #138496;
+    background: #bb2d3b;
 
 }
 
-.edit {
+/*=========================================
+        NOTIFICATION CARD
+=========================================*/
 
-    background: #ffc107;
-    color: black;
+.notification {
+
+    background: #fff;
+
+    padding: 20px;
+
+    margin-bottom: 15px;
+
+    border-left: 6px solid #0d6efd;
+
+    border-radius: 10px;
+
+    box-shadow: 0 4px 10px rgba(0, 0, 0, .08);
 
 }
 
-.edit:hover {
+.notification.unread {
 
-    background: #e0a800;
+    background: #f8fff9;
+
+    border-left-color: #198754;
 
 }
 
-.delete {
+.notification h3 {
+
+    color: #222;
+
+    margin-bottom: 10px;
+
+}
+
+.notification p {
+
+    color: #555;
+
+    margin-bottom: 10px;
+
+}
+
+.notification small {
+
+    color: #888;
+
+}
+
+/*=========================================
+            ACTIONS
+=========================================*/
+
+.actions {
+
+    margin-top: 15px;
+
+}
+
+.actions button {
+
+    border: none;
+
+    color: #fff;
+
+    padding: 8px 14px;
+
+    margin-right: 10px;
+
+    border-radius: 5px;
+
+    cursor: pointer;
+
+}
+
+.readBtn {
+
+    background: #198754;
+
+}
+
+.deleteBtn {
 
     background: #dc3545;
 
 }
 
-.delete:hover {
+/*=========================================
+        EMPTY
+=========================================*/
 
-    background: #c82333;
+.empty {
+
+    background: #fff;
+
+    padding: 40px;
+
+    text-align: center;
+
+    border-radius: 10px;
+
+    box-shadow: 0 4px 10px rgba(0, 0, 0, .08);
+
+    color: #777;
 
 }
+
+/*=========================================
+        RESPONSIVE
+=========================================*/
 
 @media(max-width:768px) {
 
     header {
 
         flex-direction: column;
-        align-items: flex-start;
         gap: 15px;
 
     }
 
-    .header-buttons {
+    .top {
 
-        width: 100%;
         flex-direction: column;
-
-    }
-
-    #dashboardBtn,
-    #addNotificationBtn {
-
-        width: 100%;
-
-    }
-
-    .search-box {
-
-        width: 100%;
-
-    }
-
-    table {
-
-        display: block;
-        overflow-x: auto;
+        gap: 15px;
+        align-items: flex-start;
 
     }
 

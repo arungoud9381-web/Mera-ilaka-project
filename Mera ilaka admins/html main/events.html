@@ -17,47 +17,123 @@
 
 <body>
 
+    <header>
+
+        <h2>🎉 Mera Ilaka Admin</h2>
+
+        <button id="dashboardBtn">
+
+            <i class="fa-solid fa-house"></i>
+
+            Dashboard
+
+        </button>
+
+    </header>
+
     <div class="container">
 
-        <header>
+        <h1>Events Management</h1>
 
-            <div>
+        <!-- Add Event -->
 
-                <h1>Events Management</h1>
+        <div class="form-box">
 
-                <p>Manage All Events</p>
+            <h2>Add New Event</h2>
+
+            <div class="row">
+
+                <input type="text" id="eventName" placeholder="Event Name">
+
+                <select id="category">
+
+                    <option value="">Select Category</option>
+
+                    <option>Festival</option>
+
+                    <option>Health</option>
+
+                    <option>Education</option>
+
+                    <option>Career</option>
+
+                    <option>Sports</option>
+
+                    <option>Entertainment</option>
+
+                    <option>Community</option>
+
+                    <option>Others</option>
+
+                </select>
 
             </div>
 
-            <div class="header-buttons">
+            <div class="row">
 
-                <button id="dashboardBtn">
+                <input type="date" id="date">
 
-                    <i class="fa-solid fa-house"></i>
+                <input type="time" id="time">
 
-                    Dashboard
+            </div>
+
+            <div class="row">
+
+                <input type="text" id="location" placeholder="Location">
+
+                <input type="text" id="organizer" placeholder="Organizer">
+
+            </div>
+
+            <div class="row">
+
+                <input type="text" id="phone" placeholder="Phone Number">
+
+                <select id="status">
+
+                    <option>Active</option>
+
+                    <option>Inactive</option>
+
+                </select>
+
+            </div>
+
+            <textarea id="description" placeholder="Event Description"></textarea>
+
+            <input type="text" id="image" placeholder="Image URL">
+
+            <div class="buttons">
+
+                <button id="saveEventBtn">
+
+                    <i class="fa-solid fa-floppy-disk"></i>
+
+                    Save Event
 
                 </button>
 
-                <button id="addEventBtn">
+                <button id="clearBtn">
 
-                    <i class="fa-solid fa-calendar-plus"></i>
+                    <i class="fa-solid fa-eraser"></i>
 
-                    Add Event
+                    Clear
 
                 </button>
 
             </div>
 
-        </header>
+        </div>
+
+        <!-- Search -->
 
         <div class="search-box">
 
-            <i class="fa-solid fa-magnifying-glass"></i>
-
-            <input type="text" id="searchEvent" placeholder="Search Event">
+            <input type="text" id="searchEvent" placeholder="Search Event...">
 
         </div>
+
+        <!-- Events Table -->
 
         <table id="eventTable">
 
@@ -69,9 +145,11 @@
 
                     <th>Event</th>
 
-                    <th>Organizer</th>
+                    <th>Category</th>
 
                     <th>Date</th>
+
+                    <th>Location</th>
 
                     <th>Status</th>
 

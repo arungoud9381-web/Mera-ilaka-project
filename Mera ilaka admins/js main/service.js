@@ -6,37 +6,28 @@ dashboardBtn.addEventListener("click", function () {
 
 });
 
-const addServiceBtn = document.getElementById("addServiceBtn");
+const serviceName = document.getElementById("serviceName");
+const providerName = document.getElementById("providerName");
+const category = document.getElementById("category");
+const address = document.getElementById("address");
+const phone = document.getElementById("phone");
+const email = document.getElementById("email");
+const experience = document.getElementById("experience");
+const price = document.getElementById("price");
+const description = document.getElementById("description");
+const image = document.getElementById("image");
+const status = document.getElementById("status");
+
+const saveServiceBtn = document.getElementById("saveServiceBtn");
+const clearBtn = document.getElementById("clearBtn");
+
 const searchService = document.getElementById("searchService");
+
 const tableBody = document.querySelector("#serviceTable tbody");
 
-let services = JSON.parse(localStorage.getItem("services")) || [
+let services = JSON.parse(localStorage.getItem("services")) || [];
 
-    {
-
-        service: "Electrician",
-
-        provider: "Krishna",
-
-        category: "Home Repair",
-
-        status: "Available"
-
-    },
-
-    {
-
-        service: "Plumber",
-
-        provider: "Hari",
-
-        category: "Home Repair",
-
-        status: "Available"
-
-    }
-
-];
+let editIndex = -1;
 
 function displayServices() {
 
@@ -50,11 +41,15 @@ function displayServices() {
 
             <td>${index + 1}</td>
 
-            <td>${service.service}</td>
+            <td>${service.serviceName}</td>
 
-            <td>${service.provider}</td>
+            <td>${service.providerName}</td>
 
             <td>${service.category}</td>
+
+            <td>${service.phone}</td>
+
+            <td>${service.price}</td>
 
             <td>
 
@@ -68,19 +63,22 @@ function displayServices() {
 
             <td>
 
-                <button class="view" onclick="viewService(${index})">
+                <button class="view"
+                    onclick="viewService(${index})">
 
                     <i class="fa-solid fa-eye"></i>
 
                 </button>
 
-                <button class="edit" onclick="editService(${index})">
+                <button class="edit"
+                    onclick="editService(${index})">
 
                     <i class="fa-solid fa-pen"></i>
 
                 </button>
 
-                <button class="delete" onclick="deleteService(${index})">
+                <button class="delete"
+                    onclick="deleteService(${index})">
 
                     <i class="fa-solid fa-trash"></i>
 
@@ -98,51 +96,109 @@ function displayServices() {
 
 }
 
-addServiceBtn.addEventListener("click", function () {
+saveServiceBtn.addEventListener("click", function () {
 
-    let service = prompt("Enter Service Name");
+    if (
 
-    if (service == null || service.trim() == "") return;
+        serviceName.value.trim() === "" ||
 
-    let provider = prompt("Enter Provider Name");
+        providerName.value.trim() === "" ||
 
-    if (provider == null || provider.trim() == "") return;
+        category.value === "" ||
 
-    let category = prompt("Enter Category");
+        address.value.trim() === "" ||
 
-    if (category == null || category.trim() == "") return;
+        phone.value.trim() === "" ||
 
-    services.push({
+        experience.value.trim() === "" ||
 
-        service: service,
+        price.value.trim() === ""
 
-        provider: provider,
+    ) {
 
-        category: category,
+        alert("Please fill all required fields.");
 
-        status: "Available"
+        return;
 
-    });
+    }
+
+    const service = {
+
+        serviceName: serviceName.value,
+
+        providerName: providerName.value,
+
+        category: category.value,
+
+        address: address.value,
+
+        phone: phone.value,
+
+        email: email.value,
+
+        experience: experience.value,
+
+        price: price.value,
+
+        description: description.value,
+
+        image: image.value,
+
+        status: status.value
+
+    };
+
+    if (editIndex === -1) {
+
+        services.push(service);
+
+        alert("Service Added Successfully.");
+
+    }
+
+    else {
+
+        services[editIndex] = service;
+
+        alert("Service Updated Successfully.");
+
+        editIndex = -1;
+
+    }
+
+    localStorage.setItem("services", JSON.stringify(services));
+
+    clearForm();
 
     displayServices();
-
-    alert("Service Added Successfully.");
 
 });
 
 function viewService(index) {
 
-    const service = services[index];
+    const s = services[index];
 
     alert(
 
-        "Service : " + service.service +
+        "Service : " + s.serviceName +
 
-        "\n\nProvider : " + service.provider +
+        "\nProvider : " + s.providerName +
 
-        "\n\nCategory : " + service.category +
+        "\nCategory : " + s.category +
 
-        "\n\nStatus : " + service.status
+        "\nPhone : " + s.phone +
+
+        "\nEmail : " + s.email +
+
+        "\nExperience : " + s.experience +
+
+        "\nPrice : " + s.price +
+
+        "\nStatus : " + s.status +
+
+        "\nAddress : " + s.address +
+
+        "\nDescription : " + s.description
 
     );
 
@@ -150,33 +206,49 @@ function viewService(index) {
 
 function editService(index) {
 
-    let serviceName = prompt("Edit Service Name", services[index].service);
+    editIndex = index;
 
-    if (serviceName == null) return;
+    const s = services[index];
 
-    let provider = prompt("Edit Provider Name", services[index].provider);
+    serviceName.value = s.serviceName;
 
-    if (provider == null) return;
+    providerName.value = s.providerName;
 
-    let category = prompt("Edit Category", services[index].category);
+    category.value = s.category;
 
-    if (category == null) return;
+    address.value = s.address;
 
-    services[index].service = serviceName;
-    services[index].provider = provider;
-    services[index].category = category;
+    phone.value = s.phone;
 
-    displayServices();
+    email.value = s.email;
 
-    alert("Service Updated Successfully.");
+    experience.value = s.experience;
+
+    price.value = s.price;
+
+    description.value = s.description;
+
+    image.value = s.image;
+
+    status.value = s.status;
+
+    window.scrollTo({
+
+        top: 0,
+
+        behavior: "smooth"
+
+    });
 
 }
 
 function deleteService(index) {
 
-    if (confirm("Delete this service?")) {
+    if (confirm("Delete this Service?")) {
 
         services.splice(index, 1);
+
+        localStorage.setItem("services", JSON.stringify(services));
 
         displayServices();
 
@@ -185,6 +257,34 @@ function deleteService(index) {
     }
 
 }
+
+function clearForm() {
+
+    serviceName.value = "";
+
+    providerName.value = "";
+
+    category.value = "";
+
+    address.value = "";
+
+    phone.value = "";
+
+    email.value = "";
+
+    experience.value = "";
+
+    price.value = "";
+
+    description.value = "";
+
+    image.value = "";
+
+    status.value = "Active";
+
+}
+
+clearBtn.addEventListener("click", clearForm);
 
 searchService.addEventListener("keyup", function () {
 

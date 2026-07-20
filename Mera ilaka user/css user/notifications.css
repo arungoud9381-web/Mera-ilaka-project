@@ -1,0 +1,256 @@
+/*=========================================
+            RESET
+=========================================*/
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+    background: #f4f6f9;
+    color: #333;
+}
+
+/*=========================================
+            HEADER
+=========================================*/
+
+header {
+
+    background: #0d6efd;
+    color: #fff;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    padding: 15px 30px;
+
+    box-shadow: 0 2px 10px rgba(0, 0, 0, .15);
+
+}
+
+header h2 {
+
+    font-size: 28px;
+
+}
+
+#dashboardBtn {
+
+    background: #fff;
+
+    color: #0d6efd;
+
+    border: none;
+
+    padding: 10px 20px;
+
+    border-radius: 6px;
+
+    cursor: pointer;
+
+    font-weight: bold;
+
+    transition: .3s;
+
+}
+
+#dashboardBtn:hover {
+
+    background: #e9ecef;
+
+}
+
+/*=========================================
+            CONTAINER
+=========================================*/
+
+.container {
+
+    width: 95%;
+
+    max-width: 900px;
+
+    margin: 30px auto;
+
+}
+
+.top {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    margin-bottom: 25px;
+
+}
+
+.top h1 {
+
+    color: #0d6efd;
+
+}
+
+#clearAllBtn {
+
+    background: #dc3545;
+
+    color: #fff;
+
+    border: none;
+
+    padding: 10px 18px;
+
+    border-radius: 6px;
+
+    cursor: pointer;
+
+    transition: .3s;
+
+}
+
+#clearAllBtn:hover {
+
+    background: #bb2d3b;
+
+}
+
+/*=========================================
+        NOTIFICATION CARD
+=========================================*/
+
+.notification {
+
+    background: #fff;
+
+    padding: 20px;
+
+    border-radius: 10px;
+
+    box-shadow: 0 4px 10px rgba(0, 0, 0, .08);
+
+    margin-bottom: 15px;
+
+    border-left: 6px solid #0d6efd;
+
+}
+
+.notification.unread {
+
+    border-left-color: #198754;
+
+    background: #f8fff9;
+
+}
+
+.notification h3 {
+
+    margin-bottom: 8px;
+
+    color: #222;
+
+}
+
+.notification p {
+
+    color: #555;
+
+    margin-bottom: 10px;
+
+}
+
+.notification small {
+
+    color: #888;
+
+}
+
+/*=========================================
+            BUTTONS
+=========================================*/
+
+.actions {
+
+    margin-top: 15px;
+
+}
+
+.actions button {
+
+    border: none;
+
+    padding: 8px 14px;
+
+    margin-right: 10px;
+
+    border-radius: 5px;
+
+    cursor: pointer;
+
+    color: #fff;
+
+}
+
+.readBtn {
+
+    background: #198754;
+
+}
+
+.deleteBtn {
+
+    background: #dc3545;
+
+}
+
+/*=========================================
+        EMPTY STATE
+=========================================*/
+
+.empty {
+
+    background: #fff;
+
+    padding: 40px;
+
+    text-align: center;
+
+    border-radius: 10px;
+
+    box-shadow: 0 4px 10px rgba(0, 0, 0, .08);
+
+    color: #777;
+
+}
+
+/*=========================================
+        RESPONSIVE
+=========================================*/
+
+@media(max-width:768px) {
+
+    header {
+
+        flex-direction: column;
+
+        gap: 15px;
+
+    }
+
+    .top {
+
+        flex-direction: column;
+
+        gap: 15px;
+
+        align-items: flex-start;
+
+    }
+
+}

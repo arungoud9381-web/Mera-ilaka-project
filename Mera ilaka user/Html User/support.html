@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Support | Mera Ilaka</title>
+
+    <link rel="stylesheet" href="../css user/support.css">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+
+</head>
+
+<body>
+
+    <header>
+
+        <h2>🏘️ Mera Ilaka</h2>
+
+        <button id="dashboardBtn">
+
+            <i class="fa-solid fa-house"></i>
+
+            Dashboard
+
+        </button>
+
+    </header>
+
+    <div class="container">
+
+        <div class="top-bar">
+
+            <h1>Support</h1>
+
+            <button id="newTicketBtn">
+
+                <i class="fa-solid fa-plus"></i>
+
+                New Request
+
+            </button>
+
+        </div>
+
+        <div class="search-filter">
+
+            <input type="text" id="searchSupport" placeholder="Search support request...">
+
+            <select id="statusFilter">
+
+                <option value="All">All Status</option>
+
+                <option value="Pending">Pending</option>
+
+                <option value="In Progress">In Progress</option>
+
+                <option value="Resolved">Resolved</option>
+
+                <option value="Rejected">Rejected</option>
+
+            </select>
+
+        </div>
+
+        <table id="supportTable">
+
+            <thead>
+
+                <tr>
+
+                    <th>ID</th>
+
+                    <th>Title</th>
+
+                    <th>Category</th>
+
+                    <th>Date</th>
+
+                    <th>Status</th>
+
+                    <th>Response</th>
+
+                </tr>
+
+            </thead>
+
+            <tbody>
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+    <script src="../js user/support.js"></script>
+
+</body>
+
+</html>

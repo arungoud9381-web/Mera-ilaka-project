@@ -1,50 +1,92 @@
+/*=========================================
+        DASHBOARD
+=========================================*/
+
 const dashboardBtn = document.getElementById("dashboardBtn");
 
-dashboardBtn.addEventListener("click", function () {
+if (dashboardBtn) {
 
-    window.location.href = "dashboard.html";
+    dashboardBtn.addEventListener("click", function () {
 
-});
+        window.location.href = "dashboard.html";
 
+    });
 
-const addTicketBtn = document.getElementById("addTicketBtn");
-const searchTicket = document.getElementById("searchTicket");
-const tableBody = document.querySelector("#ticketTable tbody");
+}
 
-// Support Tickets
-let tickets = JSON.parse(localStorage.getItem("supportTickets")) || [
+/*=========================================
+        ELEMENTS
+=========================================*/
 
-    {
+const tableBody = document.querySelector("#supportTable tbody");
 
-        user: "Arun",
+const searchSupport = document.getElementById("searchSupport");
 
-        issue: "Unable to Login",
+const statusFilter = document.getElementById("statusFilter");
 
-        priority: "High",
+/*=========================================
+        DATA
+=========================================*/
 
-        status: "Open"
+let supports = JSON.parse(localStorage.getItem("supportRequests")) || [];
 
-    },
+/*=========================================
+        DISPLAY SUPPORT REQUESTS
+=========================================*/
 
-    {
-
-        user: "Prem",
-
-        issue: "Marketplace Product Not Visible",
-
-        priority: "Medium",
-
-        status: "Closed"
-
-    }
-
-];
-
-function displayTickets() {
+function displaySupport() {
 
     tableBody.innerHTML = "";
 
-    tickets.forEach(function (ticket, index) {
+    let search = searchSupport.value.toLowerCase();
+
+    let status = statusFilter.value;
+
+    let filtered = supports.filter(function (request) {
+
+        let matchSearch =
+
+            (request.title || "").toLowerCase().includes(search) ||
+
+            (request.userName || "").toLowerCase().includes(search) ||
+
+            (request.category || "").toLowerCase().includes(search);
+
+        let matchStatus =
+
+            status === "All" ||
+
+            request.status === status;
+
+        return matchSearch && matchStatus;
+
+    });
+
+    if (filtered.length === 0) {
+
+        tableBody.innerHTML = `
+
+        <tr>
+
+            <td colspan="7">
+
+                No Support Requests Found
+
+            </td>
+
+        </tr>
+
+        `;
+
+        return;
+
+    }
+
+    filtered.forEach(function (request, index) {
+
+        let statusClass = request.status
+            .toLowerCase()
+            .replace(" ", "-");
 
         tableBody.innerHTML += `
 
@@ -52,21 +94,19 @@ function displayTickets() {
 
             <td>${index + 1}</td>
 
-            <td>${ticket.user}</td>
+            <td>${request.userName}</td>
 
-            <td>${ticket.issue}</td>
+            <td>${request.title}</td>
 
-            <td class="${ticket.priority.toLowerCase()}">
+            <td>${request.category}</td>
 
-                ${ticket.priority}
-
-            </td>
+            <td>${request.date}</td>
 
             <td>
 
-                <span class="${ticket.status.toLowerCase()}">
+                <span class="${statusClass}">
 
-                    ${ticket.status}
+                    ${request.status}
 
                 </span>
 
@@ -74,19 +114,25 @@ function displayTickets() {
 
             <td>
 
-                <button class="view" onclick="viewTicket(${index})">
+                <button class="view"
+
+                    onclick="viewSupport(${index})">
 
                     <i class="fa-solid fa-eye"></i>
 
                 </button>
 
-                <button class="edit" onclick="editTicket(${index})">
+                <button class="edit"
+
+                    onclick="updateStatus(${index})">
 
                     <i class="fa-solid fa-pen"></i>
 
                 </button>
 
-                <button class="delete" onclick="deleteTicket(${index})">
+                <button class="delete"
+
+                    onclick="deleteSupport(${index})">
 
                     <i class="fa-solid fa-trash"></i>
 
@@ -100,120 +146,146 @@ function displayTickets() {
 
     });
 
-    localStorage.setItem("supportTickets", JSON.stringify(tickets));
-
 }
 
-addTicketBtn.addEventListener("click", function () {
+/*=========================================
+        VIEW SUPPORT
+=========================================*/
 
-    let user = prompt("Enter User Name");
+function viewSupport(index) {
 
-    if (user == null || user.trim() == "") return;
-
-    let issue = prompt("Enter Issue");
-
-    if (issue == null || issue.trim() == "") return;
-
-    let priority = prompt("Enter Priority (High / Medium / Low)");
-
-    if (priority == null || priority.trim() == "") return;
-
-    tickets.push({
-
-        user: user,
-
-        issue: issue,
-
-        priority: priority,
-
-        status: "Open"
-
-    });
-
-    displayTickets();
-
-    alert("Support Ticket Added Successfully.");
-
-});
-
-function viewTicket(index) {
-
-    const ticket = tickets[index];
+    let request = supports[index];
 
     alert(
 
-        "User : " + ticket.user +
+        "Title : " + request.title +
 
-        "\n\nIssue : " + ticket.issue +
+        "\n\nUser : " + request.userName +
 
-        "\n\nPriority : " + ticket.priority +
+        "\n\nCategory : " + request.category +
 
-        "\n\nStatus : " + ticket.status
+        "\n\nDate : " + request.date +
+
+        "\n\nStatus : " + request.status +
+
+        "\n\nDescription :\n\n" +
+
+        request.description +
+
+        "\n\nResponse :\n\n" +
+
+        (request.response || "No Response Yet")
 
     );
 
 }
 
-function editTicket(index) {
+/*=========================================
+        UPDATE STATUS
+=========================================*/
 
-    let user = prompt("Edit User Name", tickets[index].user);
+function updateStatus(index) {
 
-    if (user == null) return;
+    let status = prompt(
 
-    let issue = prompt("Edit Issue", tickets[index].issue);
+        "Enter Status\n\nPending\nIn Progress\nResolved\nRejected",
 
-    if (issue == null) return;
+        supports[index].status
 
-    let priority = prompt("Edit Priority", tickets[index].priority);
+    );
 
-    if (priority == null) return;
+    if (status == null) {
 
-    tickets[index].user = user;
-    tickets[index].issue = issue;
-    tickets[index].priority = priority;
+        return;
 
-    displayTickets();
+    }
 
-    alert("Support Ticket Updated Successfully.");
+    status = status.trim();
+
+    if (
+
+        status !== "Pending" &&
+
+        status !== "In Progress" &&
+
+        status !== "Resolved" &&
+
+        status !== "Rejected"
+
+    ) {
+
+        alert("Invalid Status");
+
+        return;
+
+    }
+
+    let response = prompt(
+
+        "Admin Response",
+
+        supports[index].response || ""
+
+    );
+
+    supports[index].status = status;
+
+    supports[index].response = response || "";
+
+    localStorage.setItem(
+
+        "supportRequests",
+
+        JSON.stringify(supports)
+
+    );
+
+    displaySupport();
+
+    alert("Support Updated Successfully.");
 
 }
 
-function deleteTicket(index) {
+/*=========================================
+        DELETE SUPPORT
+=========================================*/
 
-    if (confirm("Delete this support ticket?")) {
+function deleteSupport(index) {
 
-        tickets.splice(index, 1);
+    if (confirm("Delete this support request?")) {
 
-        displayTickets();
+        supports.splice(index, 1);
 
-        alert("Support Ticket Deleted Successfully.");
+        localStorage.setItem(
+
+            "supportRequests",
+
+            JSON.stringify(supports)
+
+        );
+
+        displaySupport();
+
+        alert("Support Request Deleted.");
 
     }
 
 }
 
-searchTicket.addEventListener("keyup", function () {
+/*=========================================
+        SEARCH
+=========================================*/
 
-    let value = this.value.toLowerCase();
+searchSupport.addEventListener("keyup", displaySupport);
 
-    const rows = document.querySelectorAll("#ticketTable tbody tr");
+/*=========================================
+        FILTER
+=========================================*/
 
-    rows.forEach(function (row) {
+statusFilter.addEventListener("change", displaySupport);
 
-        if (row.innerText.toLowerCase().includes(value)) {
+/*=========================================
+        LOAD
+=========================================*/
 
-            row.style.display = "";
-
-        }
-
-        else {
-
-            row.style.display = "none";
-
-        }
-
-    });
-
-});
-
-displayTickets();
+displaySupport();

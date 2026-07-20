@@ -1,48 +1,55 @@
 const dashboardBtn = document.getElementById("dashboardBtn");
 
-dashboardBtn.addEventListener("click", function () {
+if (dashboardBtn) {
 
-    window.location.href = "dashboard.html";
+    dashboardBtn.addEventListener("click", function () {
 
-});
+        window.location.href = "dashboard.html";
 
-// Elements
-const addEventBtn = document.getElementById("addEventBtn");
+    });
+
+}
+
+const eventName = document.getElementById("eventName");
+const category = document.getElementById("category");
+const date = document.getElementById("date");
+const time = document.getElementById("time");
+const eventLocation = document.getElementById("location");
+const organizer = document.getElementById("organizer");
+const phone = document.getElementById("phone");
+const description = document.getElementById("description");
+const image = document.getElementById("image");
+const status = document.getElementById("status");
+
+const saveEventBtn = document.getElementById("saveEventBtn");
+const clearBtn = document.getElementById("clearBtn");
 const searchEvent = document.getElementById("searchEvent");
+
 const tableBody = document.querySelector("#eventTable tbody");
 
-// Events Data
-let events = JSON.parse(localStorage.getItem("events")) || [
+let events = JSON.parse(localStorage.getItem("events")) || [];
 
-    {
-
-        event: "Blood Donation Camp",
-
-        organizer: "Red Cross",
-
-        date: "20-Jul-2026",
-
-        status: "Upcoming"
-
-    },
-
-    {
-
-        event: "Clean City Drive",
-
-        organizer: "Municipality",
-
-        date: "15-Jul-2026",
-
-        status: "Completed"
-
-    }
-
-];
+let editIndex = -1;
 
 function displayEvents() {
 
     tableBody.innerHTML = "";
+
+    if (events.length === 0) {
+
+        tableBody.innerHTML = `
+
+        <tr>
+
+            <td colspan="7">No Events Available</td>
+
+        </tr>
+
+        `;
+
+        return;
+
+    }
 
     events.forEach(function (event, index) {
 
@@ -52,11 +59,13 @@ function displayEvents() {
 
             <td>${index + 1}</td>
 
-            <td>${event.event}</td>
+            <td>${event.eventName}</td>
 
-            <td>${event.organizer}</td>
+            <td>${event.category}</td>
 
             <td>${event.date}</td>
+
+            <td>${event.location}</td>
 
             <td>
 
@@ -96,39 +105,85 @@ function displayEvents() {
 
     });
 
-    localStorage.setItem("events", JSON.stringify(events));
-
 }
 
-addEventBtn.addEventListener("click", function () {
+saveEventBtn.addEventListener("click", function () {
 
-    let eventName = prompt("Enter Event Name");
+    if (
 
-    if (eventName == null || eventName.trim() == "") return;
+        eventName.value.trim() === "" ||
 
-    let organizer = prompt("Enter Organizer Name");
+        category.value === "" ||
 
-    if (organizer == null || organizer.trim() == "") return;
+        date.value === "" ||
 
-    let date = prompt("Enter Event Date");
+        time.value === "" ||
 
-    if (date == null || date.trim() == "") return;
+        eventLocation.value.trim() === "" ||
 
-    events.push({
+        organizer.value.trim() === "" ||
 
-        event: eventName,
+        phone.value.trim() === ""
 
-        organizer: organizer,
+    ) {
 
-        date: date,
+        alert("Please fill all required fields.");
 
-        status: "Upcoming"
+        return;
 
-    });
+    }
+
+    const event = {
+
+        id: Date.now(),
+
+        eventName: eventName.value,
+
+        category: category.value,
+
+        date: date.value,
+
+        time: time.value,
+
+        location: eventLocation.value,
+
+        organizer: organizer.value,
+
+        phone: phone.value,
+
+        description: description.value,
+
+        image: image.value,
+
+        status: status.value
+
+    };
+
+    if (editIndex === -1) {
+
+        events.push(event);
+
+        alert("Event Added Successfully.");
+
+    }
+
+    else {
+
+        event.id = events[editIndex].id;
+
+        events[editIndex] = event;
+
+        editIndex = -1;
+
+        alert("Event Updated Successfully.");
+
+    }
+
+    localStorage.setItem("events", JSON.stringify(events));
+
+    clearForm();
 
     displayEvents();
-
-    alert("Event Added Successfully.");
 
 });
 
@@ -138,13 +193,23 @@ function viewEvent(index) {
 
     alert(
 
-        "Event : " + event.event +
+        "Event Name : " + event.eventName +
 
-        "\n\nOrganizer : " + event.organizer +
+        "\n\nCategory : " + event.category +
 
         "\n\nDate : " + event.date +
 
-        "\n\nStatus : " + event.status
+        "\n\nTime : " + event.time +
+
+        "\n\nLocation : " + event.location +
+
+        "\n\nOrganizer : " + event.organizer +
+
+        "\n\nPhone : " + event.phone +
+
+        "\n\nStatus : " + event.status +
+
+        "\n\nDescription : " + event.description
 
     );
 
@@ -152,25 +217,37 @@ function viewEvent(index) {
 
 function editEvent(index) {
 
-    let eventName = prompt("Edit Event Name", events[index].event);
+    editIndex = index;
 
-    if (eventName == null) return;
+    const event = events[index];
 
-    let organizer = prompt("Edit Organizer", events[index].organizer);
+    eventName.value = event.eventName;
 
-    if (organizer == null) return;
+    category.value = event.category;
 
-    let date = prompt("Edit Date", events[index].date);
+    date.value = event.date;
 
-    if (date == null) return;
+    time.value = event.time;
 
-    events[index].event = eventName;
-    events[index].organizer = organizer;
-    events[index].date = date;
+    eventLocation.value = event.location;
 
-    displayEvents();
+    organizer.value = event.organizer;
 
-    alert("Event Updated Successfully.");
+    phone.value = event.phone;
+
+    description.value = event.description;
+
+    image.value = event.image;
+
+    status.value = event.status;
+
+    window.scrollTo({
+
+        top: 0,
+
+        behavior: "smooth"
+
+    });
 
 }
 
@@ -180,6 +257,8 @@ function deleteEvent(index) {
 
         events.splice(index, 1);
 
+        localStorage.setItem("events", JSON.stringify(events));
+
         displayEvents();
 
         alert("Event Deleted Successfully.");
@@ -188,9 +267,35 @@ function deleteEvent(index) {
 
 }
 
+function clearForm() {
+
+    eventName.value = "";
+
+    category.value = "";
+
+    date.value = "";
+
+    time.value = "";
+
+    eventLocation.value = "";
+
+    organizer.value = "";
+
+    phone.value = "";
+
+    description.value = "";
+
+    image.value = "";
+
+    status.value = "Active";
+
+}
+
+clearBtn.addEventListener("click", clearForm);
+
 searchEvent.addEventListener("keyup", function () {
 
-    let value = this.value.toLowerCase();
+    const value = this.value.toLowerCase();
 
     const rows = document.querySelectorAll("#eventTable tbody tr");
 

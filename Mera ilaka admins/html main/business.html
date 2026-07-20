@@ -7,7 +7,7 @@
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Business Management</title>
+    <title>Business | Admin</title>
 
     <link rel="stylesheet" href="../css main/business.css">
 
@@ -17,48 +17,157 @@
 
 <body>
 
+    <!-- Header -->
+
+    <header>
+
+        <h2>Mera Ilaka - Admin</h2>
+
+        <button id="dashboardBtn">
+            <i class="fa-solid fa-house"></i>
+            Dashboard
+        </button>
+
+    </header>
+
+    <!-- Main Container -->
+
     <div class="container">
 
-        <header>
+        <h1>Business</h1>
 
-            <div>
+        <!-- =======================
+                Add Business Form
+        ======================== -->
 
-                <h1>Business Management</h1>
+        <div class="form-box">
 
-                <p>Manage Registered Businesses</p>
+            <h2>Add New Business</h2>
 
-            </div>
+            <div class="form-group">
 
-            <div class="header-buttons">
+                <label>Business Name</label>
 
-                <button id="dashboardBtn">
-
-                    <i class="fa-solid fa-house"></i>
-
-                    Dashboard
-
-                </button>
-
-                <button id="addBusinessBtn">
-
-                    <i class="fa-solid fa-plus"></i>
-
-                    Add Business
-
-                </button>
+                <input type="text" id="businessName">
 
             </div>
 
-        </header>
+            <div class="form-group">
 
-        <div class="search-box">
+                <label>Owner Name</label>
 
-            <i class="fa-solid fa-magnifying-glass"></i>
+                <input type="text" id="ownerName">
 
-            <input type="text" id="searchBusiness" placeholder="Search Business">
+            </div>
+
+            <div class="form-group">
+
+                <label>Category</label>
+
+                <select id="category">
+
+                    <option value="">Select Category</option>
+
+                    <option>Electronics</option>
+
+                    <option>Grocery</option>
+
+                    <option>Restaurant</option>
+
+                    <option>Medical</option>
+
+                    <option>Education</option>
+
+                    <option>Fashion</option>
+
+                    <option>Services</option>
+
+                    <option>Others</option>
+
+                </select>
+
+            </div>
+
+            <div class="form-group">
+
+                <label>Address</label>
+
+                <textarea id="address"></textarea>
+
+            </div>
+
+            <div class="form-group">
+
+                <label>Phone Number</label>
+
+                <input type="text" id="phone">
+
+            </div>
+
+            <div class="form-group">
+
+                <label>Email</label>
+
+                <input type="email" id="email">
+
+            </div>
+
+            <div class="form-group">
+
+                <label>Description</label>
+
+                <textarea id="description"></textarea>
+
+            </div>
+
+            <div class="form-group">
+
+                <label>Business Image URL</label>
+
+                <input type="text" id="image" placeholder="Paste Image URL">
+            </div>
+
+            <div class="form-group">
+
+                <label>Status</label>
+
+                <select id="status">
+
+                    <option>Active</option>
+
+                    <option>Inactive</option>
+
+                </select>
+
+            </div>
+
+            <div class="buttons">
+
+                <button id="saveBusinessBtn">
+
+                    <i class="fa-solid fa-floppy-disk"></i>
+
+                    Save Business
+
+                </button>
+
+                <button id="clearBtn">
+
+                    <i class="fa-solid fa-eraser"></i>
+
+                    Clear
+
+                </button>
+
+            </div>
 
         </div>
 
+        <div class="search-box">
+
+            <input type="text" id="searchBusiness" placeholder="Search Business...">
+
+        </div>
         <table id="businessTable">
 
             <thead>
@@ -67,11 +176,13 @@
 
                     <th>ID</th>
 
-                    <th>Business Name</th>
+                    <th>Business</th>
 
                     <th>Owner</th>
 
                     <th>Category</th>
+
+                    <th>Phone</th>
 
                     <th>Status</th>
 

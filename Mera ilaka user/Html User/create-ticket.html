@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Create Support Request | Mera Ilaka</title>
+
+    <link rel="stylesheet" href="../css user/create-ticket.css">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+
+</head>
+
+<body>
+
+    <header>
+
+        <h2>🏘️ Mera Ilaka</h2>
+
+        <button id="supportBtn">
+
+            <i class="fa-solid fa-arrow-left"></i>
+
+            Support
+
+        </button>
+
+    </header>
+
+    <div class="container">
+
+        <div class="form-box">
+
+            <h1>Create Support Request</h1>
+
+            <div class="form-group">
+
+                <label>Issue Title</label>
+
+                <input type="text" id="title">
+
+            </div>
+
+            <div class="form-group">
+
+                <label>Category</label>
+
+                <select id="category">
+
+                    <option value="">Select Category</option>
+
+                    <option>Water Supply</option>
+
+                    <option>Electricity</option>
+
+                    <option>Roads</option>
+
+                    <option>Garbage Collection</option>
+
+                    <option>Street Lights</option>
+
+                    <option>Public Safety</option>
+
+                    <option>Parks</option>
+
+                    <option>Drainage</option>
+
+                    <option>Government Services</option>
+
+                    <option>Others</option>
+
+                </select>
+
+            </div>
+
+            <div class="form-group">
+
+                <label>Description</label>
+
+                <textarea id="description" rows="6"></textarea>
+
+            </div>
+
+            <div class="buttons">
+
+                <button id="submitBtn">
+
+                    <i class="fa-solid fa-paper-plane"></i>
+
+                    Submit Request
+
+                </button>
+
+                <button id="clearBtn" type="button">
+
+                    <i class="fa-solid fa-eraser"></i>
+
+                    Clear
+
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <script src="../JS User/create-ticket.js"></script>
+
+</body>
+
+</html>

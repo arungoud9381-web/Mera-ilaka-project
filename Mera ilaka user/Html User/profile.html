@@ -17,13 +17,39 @@
 
 <body>
 
-    <div class="profile-container">
+    <!-- Header -->
+
+    <header>
+
+        <h2>🏘️ Mera Ilaka</h2>
+
+        <button id="dashboardBtn">
+
+            <i class="fa-solid fa-house"></i>
+
+            Dashboard
+
+        </button>
+
+    </header>
+
+    <!-- Profile Container -->
+
+    <div class="container">
+
+        <!-- Profile Card -->
 
         <div class="profile-card">
 
-            <h2>👤 My Profile</h2>
+            <div class="profile-image">
 
-            <p>Manage your account information</p>
+                <img id="profileImage" src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png" alt="Profile">
+
+            </div>
+
+            <h2 id="userName">User Name</h2>
+
+            <p id="userEmail">user@email.com</p>
 
             <form id="profileForm">
 
@@ -31,23 +57,15 @@
 
                     <label>Full Name</label>
 
-                    <input type="text" id="name" required>
+                    <input type="text" id="name">
 
                 </div>
 
                 <div class="form-group">
 
-                    <label>Email</label>
+                    <label>Phone Number</label>
 
-                    <input type="email" id="email" readonly>
-
-                </div>
-
-                <div class="form-group">
-
-                    <label>Mobile Number</label>
-
-                    <input type="tel" id="phone" placeholder="Enter Mobile Number">
+                    <input type="text" id="phone">
 
                 </div>
 
@@ -55,23 +73,41 @@
 
                     <label>Address</label>
 
-                    <textarea id="address" rows="4" placeholder="Enter Address"></textarea>
+                    <textarea id="address" rows="4"></textarea>
 
                 </div>
 
-                <button type="submit">
+                <button type="submit" id="saveBtn">
 
-                    💾 Save Changes
+                    <i class="fa-solid fa-floppy-disk"></i>
+
+                    Save Changes
 
                 </button>
 
             </form>
 
-            <a href="dashboard.html" class="back-btn">
+            <button id="logoutBtn" class="logout">
 
-                ⬅ Back to Dashboard
+                <i class="fa-solid fa-right-from-bracket"></i>
 
-            </a>
+                Logout
+
+            </button>
+
+        </div>
+
+        <!-- Community Posts -->
+
+        <div class="posts-card">
+
+            <h2>🏘️ My Community Posts</h2>
+
+            <div id="myPosts">
+
+                <!-- JavaScript -->
+
+            </div>
 
         </div>
 

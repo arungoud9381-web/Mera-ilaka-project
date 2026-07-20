@@ -6,33 +6,30 @@ dashboardBtn.addEventListener("click", function () {
 
 });
 
-// Elements
-const addPostBtn = document.getElementById("addPostBtn");
+const tableBody = document.querySelector("#communityTable tbody");
 const searchPost = document.getElementById("searchPost");
-const tableBody = document.querySelector("#postTable tbody");
 
-// Community Posts
-let posts = JSON.parse(localStorage.getItem("communityPosts")) || [
-
-    {
-        user: "Arun",
-        post: "Need an Electrician in my area.",
-        date: "15-Jul-2026",
-        status: "Pending"
-    },
-
-    {
-        user: "Prem",
-        post: "Blood Donation Camp this Sunday.",
-        date: "14-Jul-2026",
-        status: "Approved"
-    }
-
-];
+let posts = JSON.parse(localStorage.getItem("communityPosts")) || [];
 
 function displayPosts() {
 
     tableBody.innerHTML = "";
+
+    if (posts.length === 0) {
+
+        tableBody.innerHTML = `
+
+        <tr>
+
+            <td colspan="7">No Community Posts Found</td>
+
+        </tr>
+
+        `;
+
+        return;
+
+    }
 
     posts.forEach(function (post, index) {
 
@@ -42,9 +39,11 @@ function displayPosts() {
 
             <td>${index + 1}</td>
 
-            <td>${post.user}</td>
+            <td>${post.userName}</td>
 
-            <td>${post.post}</td>
+            <td>${post.title}</td>
+
+            <td>${post.category}</td>
 
             <td>${post.date}</td>
 
@@ -60,25 +59,29 @@ function displayPosts() {
 
             <td>
 
-                <button class="view" onclick="viewPost(${index})">
+                <button class="view"
+                    onclick="viewPost(${index})">
 
                     <i class="fa-solid fa-eye"></i>
 
                 </button>
 
-                <button class="approve" onclick="approvePost(${index})">
+                <button class="approve"
+                    onclick="approvePost(${index})">
 
                     <i class="fa-solid fa-check"></i>
 
                 </button>
 
-                <button class="reject" onclick="rejectPost(${index})">
+                <button class="reject"
+                    onclick="rejectPost(${index})">
 
                     <i class="fa-solid fa-xmark"></i>
 
                 </button>
 
-                <button class="delete" onclick="deletePost(${index})">
+                <button class="delete"
+                    onclick="deletePost(${index})">
 
                     <i class="fa-solid fa-trash"></i>
 
@@ -92,8 +95,6 @@ function displayPosts() {
 
     });
 
-    localStorage.setItem("communityPosts", JSON.stringify(posts));
-
 }
 
 function viewPost(index) {
@@ -102,13 +103,17 @@ function viewPost(index) {
 
     alert(
 
-        "User : " + post.user +
+        "Title : " + post.title +
 
-        "\n\nPost : " + post.post +
+        "\n\nUser : " + post.userName +
+
+        "\n\nCategory : " + post.category +
 
         "\n\nDate : " + post.date +
 
-        "\n\nStatus : " + post.status
+        "\n\nStatus : " + post.status +
+
+        "\n\nDescription :\n\n" + post.description
 
     );
 
@@ -116,7 +121,9 @@ function viewPost(index) {
 
 function approvePost(index) {
 
-    posts[index].status = "Approved";
+    posts[index].status = "Active";
+
+    localStorage.setItem("communityPosts", JSON.stringify(posts));
 
     displayPosts();
 
@@ -128,6 +135,8 @@ function rejectPost(index) {
 
     posts[index].status = "Rejected";
 
+    localStorage.setItem("communityPosts", JSON.stringify(posts));
+
     displayPosts();
 
     alert("Post Rejected Successfully.");
@@ -136,23 +145,27 @@ function rejectPost(index) {
 
 function deletePost(index) {
 
-    if (confirm("Delete this post?")) {
+    if (!confirm("Delete this post?")) {
 
-        posts.splice(index, 1);
-
-        displayPosts();
-
-        alert("Post Deleted Successfully.");
+        return;
 
     }
+
+    posts.splice(index, 1);
+
+    localStorage.setItem("communityPosts", JSON.stringify(posts));
+
+    displayPosts();
+
+    alert("Post Deleted Successfully.");
 
 }
 
 searchPost.addEventListener("keyup", function () {
 
-    let value = this.value.toLowerCase();
+    const value = this.value.toLowerCase();
 
-    const rows = document.querySelectorAll("#postTable tbody tr");
+    const rows = document.querySelectorAll("#communityTable tbody tr");
 
     rows.forEach(function (row) {
 
@@ -169,36 +182,6 @@ searchPost.addEventListener("keyup", function () {
         }
 
     });
-
-});
-
-addPostBtn.addEventListener("click", function () {
-
-    const user = prompt("Enter User Name");
-
-    if (user == null || user.trim() == "") return;
-
-    const postText = prompt("Enter Community Post");
-
-    if (postText == null || postText.trim() == "") return;
-
-    const today = new Date().toLocaleDateString("en-GB");
-
-    posts.push({
-
-        user: user,
-
-        post: postText,
-
-        date: today,
-
-        status: "Pending"
-
-    });
-
-    displayPosts();
-
-    alert("Post Added Successfully.");
 
 });
 

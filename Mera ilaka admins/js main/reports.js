@@ -1,16 +1,24 @@
+/*=========================================
+        DASHBOARD BUTTON
+=========================================*/
+
 const dashboardBtn = document.getElementById("dashboardBtn");
 
-dashboardBtn.addEventListener("click", function () {
+if (dashboardBtn) {
 
-    window.location.href = "dashboard.html";
+    dashboardBtn.addEventListener("click", function () {
 
-});
+        window.location.href = "dashboard.html";
+
+    });
+
+}
+
+/*=========================================
+        GET DATA
+=========================================*/
 
 const users = JSON.parse(localStorage.getItem("users")) || [];
-
-const community = JSON.parse(localStorage.getItem("communityPosts")) || [];
-
-const marketplace = JSON.parse(localStorage.getItem("products")) || [];
 
 const businesses = JSON.parse(localStorage.getItem("businesses")) || [];
 
@@ -18,156 +26,112 @@ const services = JSON.parse(localStorage.getItem("services")) || [];
 
 const events = JSON.parse(localStorage.getItem("events")) || [];
 
-const support = JSON.parse(localStorage.getItem("supportTickets")) || [];
+const posts = JSON.parse(localStorage.getItem("communityPosts")) || [];
 
-const notifications = JSON.parse(localStorage.getItem("notifications")) || [];
+const support = JSON.parse(localStorage.getItem("supportRequests")) || [];
 
-document.getElementById("usersCount").innerText = users.length;
+/*=========================================
+        ELEMENTS
+=========================================*/
 
-document.getElementById("communityCount").innerText = community.length;
+const totalUsers = document.getElementById("totalUsers");
 
-document.getElementById("marketCount").innerText = marketplace.length;
+const totalBusinesses = document.getElementById("totalBusinesses");
 
-document.getElementById("businessCount").innerText = businesses.length;
+const totalServices = document.getElementById("totalServices");
 
-document.getElementById("serviceCount").innerText = services.length;
+const totalEvents = document.getElementById("totalEvents");
 
-document.getElementById("eventCount").innerText = events.length;
+const totalPosts = document.getElementById("totalPosts");
 
-document.getElementById("supportCount").innerText = support.length;
+const totalSupport = document.getElementById("totalSupport");
 
-document.getElementById("notificationCount").innerText = notifications.length;
+/*=========================================
+        DISPLAY REPORTS
+=========================================*/
 
-const ctx = document.getElementById("reportChart");
+function loadReports() {
 
-new Chart(ctx, {
+    totalUsers.textContent = users.length;
 
-    type: "bar",
+    totalBusinesses.textContent = businesses.length;
 
-    data: {
+    totalServices.textContent = services.length;
 
-        labels: [
+    totalEvents.textContent = events.length;
 
-            "Users",
+    totalPosts.textContent = posts.length;
 
-            "Community",
+    totalSupport.textContent = support.length;
 
-            "Marketplace",
+}
 
-            "Businesses",
+/*=========================================
+        SAMPLE DATA
+=========================================*/
 
-            "Services",
+if (users.length === 0) {
 
-            "Events",
+    localStorage.setItem("users", JSON.stringify([
+        { id: 1, name: "Arunsai" },
+        { id: 2, name: "Rahul" },
+        { id: 3, name: "Priya" }
+    ]));
 
-            "Support",
+}
 
-            "Notifications"
+if (businesses.length === 0) {
 
-        ],
+    localStorage.setItem("businesses", JSON.stringify([
+        { name: "Sri Balaji Medicals" },
+        { name: "Fresh Mart" }
+    ]));
 
-        datasets: [{
+}
 
-            label: "Total Records",
+if (services.length === 0) {
 
-            data: [
+    localStorage.setItem("services", JSON.stringify([
+        { name: "Electrician" },
+        { name: "Plumber" },
+        { name: "Home Cleaning" }
+    ]));
 
-                users.length,
+}
 
-                community.length,
+if (events.length === 0) {
 
-                marketplace.length,
+    localStorage.setItem("events", JSON.stringify([
+        { name: "Blood Donation Camp" },
+        { name: "Independence Day Celebration" }
+    ]));
 
-                businesses.length,
+}
 
-                services.length,
+if (posts.length === 0) {
 
-                events.length,
+    localStorage.setItem("communityPosts", JSON.stringify([
+        { title: "Road Cleaning Drive" },
+        { title: "Tree Plantation Program" }
+    ]));
 
-                support.length,
+}
 
-                notifications.length
+if (support.length === 0) {
 
-            ],
-
-            backgroundColor: [
-
-                "#3498db",
-
-                "#9b59b6",
-
-                "#e67e22",
-
-                "#16a085",
-
-                "#2ecc71",
-
-                "#f39c12",
-
-                "#e74c3c",
-
-                "#34495e"
-
-            ],
-
-            borderColor: [
-
-                "#2980b9",
-
-                "#8e44ad",
-
-                "#d35400",
-
-                "#117864",
-
-                "#27ae60",
-
-                "#d68910",
-
-                "#c0392b",
-
-                "#2c3e50"
-
-            ],
-
-            borderWidth: 2
-
-        }]
-
-    },
-
-    options: {
-
-        responsive: true,
-
-        plugins: {
-
-            legend: {
-
-                display: false
-
-            }
-
+    localStorage.setItem("supportRequests", JSON.stringify([
+        {
+            title: "Street Light Not Working"
         },
-
-        scales: {
-
-            y: {
-
-                beginAtZero: true,
-
-                ticks: {
-
-                    stepSize: 1
-
-                }
-
-            }
-
+        {
+            title: "Garbage Collection Delay"
         }
+    ]));
 
-    }
+}
 
-});
+/*=========================================
+        RELOAD DATA
+=========================================*/
 
-console.log("Reports & Analytics Loaded Successfully");
+loadReports();
