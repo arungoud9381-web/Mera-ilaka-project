@@ -1,7 +1,3 @@
-/*=========================================
-        DASHBOARD BUTTON
-=========================================*/
-
 const dashboardBtn = document.getElementById("dashboardBtn");
 
 if (dashboardBtn) {
@@ -13,10 +9,6 @@ if (dashboardBtn) {
     });
 
 }
-
-/*=========================================
-        GET DATA
-=========================================*/
 
 const users = JSON.parse(localStorage.getItem("users")) || [];
 
@@ -30,10 +22,6 @@ const posts = JSON.parse(localStorage.getItem("communityPosts")) || [];
 
 const support = JSON.parse(localStorage.getItem("supportRequests")) || [];
 
-/*=========================================
-        ELEMENTS
-=========================================*/
-
 const totalUsers = document.getElementById("totalUsers");
 
 const totalBusinesses = document.getElementById("totalBusinesses");
@@ -45,10 +33,6 @@ const totalEvents = document.getElementById("totalEvents");
 const totalPosts = document.getElementById("totalPosts");
 
 const totalSupport = document.getElementById("totalSupport");
-
-/*=========================================
-        DISPLAY REPORTS
-=========================================*/
 
 function loadReports() {
 
@@ -65,10 +49,6 @@ function loadReports() {
     totalSupport.textContent = support.length;
 
 }
-
-/*=========================================
-        SAMPLE DATA
-=========================================*/
 
 if (users.length === 0) {
 
@@ -129,9 +109,5 @@ if (support.length === 0) {
     ]));
 
 }
-
-/*=========================================
-        RELOAD DATA
-=========================================*/
 
 loadReports();

@@ -1,7 +1,3 @@
-/*=========================================
-        DASHBOARD BUTTON
-=========================================*/
-
 const dashboardBtn = document.getElementById("dashboardBtn");
 
 if (dashboardBtn) {
@@ -13,10 +9,6 @@ if (dashboardBtn) {
     });
 
 }
-
-/*=========================================
-        PAGE LOAD
-=========================================*/
 
 document.addEventListener("DOMContentLoaded", function () {
 

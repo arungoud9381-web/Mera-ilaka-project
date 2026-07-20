@@ -1,19 +1,9 @@
-/*=========================================
-            FORGOT PASSWORD
-=========================================*/
-
-// Get Elements
-
 const forgotForm = document.getElementById("forgotForm");
 const email = document.getElementById("email");
 const newPassword = document.getElementById("newPassword");
 const confirmPassword = document.getElementById("confirmPassword");
 const togglePassword = document.getElementById("togglePassword");
 
-
-/*=========================================
-        SHOW / HIDE PASSWORD
-=========================================*/
 
 togglePassword.addEventListener("click", function () {
 
@@ -35,10 +25,6 @@ togglePassword.addEventListener("click", function () {
 
 });
 
-
-/*=========================================
-        RESET PASSWORD
-=========================================*/
 
 forgotForm.addEventListener("submit", function (e) {
 

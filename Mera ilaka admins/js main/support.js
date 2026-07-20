@@ -1,7 +1,3 @@
-/*=========================================
-        DASHBOARD
-=========================================*/
-
 const dashboardBtn = document.getElementById("dashboardBtn");
 
 if (dashboardBtn) {
@@ -14,25 +10,13 @@ if (dashboardBtn) {
 
 }
 
-/*=========================================
-        ELEMENTS
-=========================================*/
-
 const tableBody = document.querySelector("#supportTable tbody");
 
 const searchSupport = document.getElementById("searchSupport");
 
 const statusFilter = document.getElementById("statusFilter");
 
-/*=========================================
-        DATA
-=========================================*/
-
 let supports = JSON.parse(localStorage.getItem("supportRequests")) || [];
-
-/*=========================================
-        DISPLAY SUPPORT REQUESTS
-=========================================*/
 
 function displaySupport() {
 
@@ -148,10 +132,6 @@ function displaySupport() {
 
 }
 
-/*=========================================
-        VIEW SUPPORT
-=========================================*/
-
 function viewSupport(index) {
 
     let request = supports[index];
@@ -179,10 +159,6 @@ function viewSupport(index) {
     );
 
 }
-
-/*=========================================
-        UPDATE STATUS
-=========================================*/
 
 function updateStatus(index) {
 
@@ -246,10 +222,6 @@ function updateStatus(index) {
 
 }
 
-/*=========================================
-        DELETE SUPPORT
-=========================================*/
-
 function deleteSupport(index) {
 
     if (confirm("Delete this support request?")) {
@@ -272,20 +244,8 @@ function deleteSupport(index) {
 
 }
 
-/*=========================================
-        SEARCH
-=========================================*/
-
 searchSupport.addEventListener("keyup", displaySupport);
 
-/*=========================================
-        FILTER
-=========================================*/
-
 statusFilter.addEventListener("change", displaySupport);
-
-/*=========================================
-        LOAD
-=========================================*/
 
 displaySupport();

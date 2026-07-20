@@ -1,7 +1,3 @@
-/*=========================================
-        DASHBOARD
-=========================================*/
-
 const dashboardBtn = document.getElementById("dashboardBtn");
 
 if (dashboardBtn) {
@@ -13,10 +9,6 @@ if (dashboardBtn) {
     });
 
 }
-
-/*=========================================
-        NEW REQUEST
-=========================================*/
 
 const newTicketBtn = document.getElementById("newTicketBtn");
 
@@ -30,17 +22,9 @@ if (newTicketBtn) {
 
 }
 
-/*=========================================
-        ELEMENTS
-=========================================*/
-
 const searchSupport = document.getElementById("searchSupport");
 const statusFilter = document.getElementById("statusFilter");
 const tableBody = document.querySelector("#supportTable tbody");
-
-/*=========================================
-        CURRENT USER
-=========================================*/
 
 const currentUser = JSON.parse(localStorage.getItem("currentUser")) || {
 
@@ -50,15 +34,7 @@ const currentUser = JSON.parse(localStorage.getItem("currentUser")) || {
 
 };
 
-/*=========================================
-        DATA
-=========================================*/
-
 let supports = JSON.parse(localStorage.getItem("supportRequests")) || [];
-
-/*=========================================
-        DISPLAY REQUESTS
-=========================================*/
 
 function displaySupport() {
 
@@ -150,20 +126,8 @@ function displaySupport() {
 
 }
 
-/*=========================================
-        SEARCH
-=========================================*/
-
 searchSupport.addEventListener("keyup", displaySupport);
 
-/*=========================================
-        FILTER
-=========================================*/
-
 statusFilter.addEventListener("change", displaySupport);
-
-/*=========================================
-        INITIAL LOAD
-=========================================*/
 
 displaySupport();

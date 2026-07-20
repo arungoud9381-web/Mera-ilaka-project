@@ -1,7 +1,3 @@
-/*=========================================
-        ELEMENTS
-=========================================*/
-
 const supportBtn = document.getElementById("supportBtn");
 
 const title = document.getElementById("title");
@@ -11,19 +7,11 @@ const description = document.getElementById("description");
 const submitBtn = document.getElementById("submitBtn");
 const clearBtn = document.getElementById("clearBtn");
 
-/*=========================================
-        SUPPORT PAGE
-=========================================*/
-
 supportBtn.addEventListener("click", function () {
 
     window.location.href = "support.html";
 
 });
-
-/*=========================================
-        CURRENT USER
-=========================================*/
 
 const currentUser = JSON.parse(localStorage.getItem("currentUser")) || {
 
@@ -33,15 +21,7 @@ const currentUser = JSON.parse(localStorage.getItem("currentUser")) || {
 
 };
 
-/*=========================================
-        DATA
-=========================================*/
-
 let supportRequests = JSON.parse(localStorage.getItem("supportRequests")) || [];
-
-/*=========================================
-        SUBMIT REQUEST
-=========================================*/
 
 submitBtn.addEventListener("click", function () {
 
@@ -101,10 +81,6 @@ submitBtn.addEventListener("click", function () {
 
 });
 
-/*=========================================
-        CLEAR FORM
-=========================================*/
-
 function clearForm() {
 
     title.value = "";
@@ -114,9 +90,5 @@ function clearForm() {
     description.value = "";
 
 }
-
-/*=========================================
-        CLEAR BUTTON
-=========================================*/
 
 clearBtn.addEventListener("click", clearForm);

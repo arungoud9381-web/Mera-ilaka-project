@@ -1,15 +1,9 @@
-// ======================================
-// Mera Ilaka - User Businesses
-// ======================================
-
-// Load businesses added by Admin
 let businesses = JSON.parse(localStorage.getItem("businesses")) || [];
 
 const businessContainer = document.getElementById("businessContainer");
 const searchBusiness = document.getElementById("searchBusiness");
 const categoryFilter = document.getElementById("categoryFilter");
 
-// Display Businesses
 function displayBusinesses(list) {
 
     businessContainer.innerHTML = "";
@@ -111,8 +105,6 @@ function filterBusinesses() {
     displayBusinesses(filtered);
 
 }
-
-// View Details
 
 function viewBusiness(index) {
 

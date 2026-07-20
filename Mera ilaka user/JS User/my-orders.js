@@ -1,13 +1,7 @@
-// =====================================
-// Mera Ilaka - My Orders
-// =====================================
-
 const ordersContainer = document.getElementById("ordersContainer");
 
-// Load Orders
 let orders = JSON.parse(localStorage.getItem("orders")) || [];
 
-// Display Orders
 function displayOrders() {
 
     ordersContainer.innerHTML = "";

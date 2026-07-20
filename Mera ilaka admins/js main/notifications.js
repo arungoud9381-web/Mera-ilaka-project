@@ -1,7 +1,3 @@
-/*=========================================
-        DASHBOARD
-=========================================*/
-
 const dashboardBtn = document.getElementById("dashboardBtn");
 
 if (dashboardBtn) {
@@ -14,23 +10,11 @@ if (dashboardBtn) {
 
 }
 
-/*=========================================
-        ELEMENTS
-=========================================*/
-
 const notificationList = document.getElementById("notificationList");
 
 const clearAllBtn = document.getElementById("clearAllBtn");
 
-/*=========================================
-        DATA
-=========================================*/
-
 let adminNotifications = JSON.parse(localStorage.getItem("adminNotifications")) || [];
-
-/*=========================================
-        SAMPLE DATA
-=========================================*/
 
 if (adminNotifications.length === 0) {
 
@@ -89,10 +73,6 @@ if (adminNotifications.length === 0) {
     );
 
 }
-
-/*=========================================
-        DISPLAY NOTIFICATIONS
-=========================================*/
 
 function displayNotifications() {
 
@@ -165,10 +145,6 @@ function displayNotifications() {
 
 }
 
-/*=========================================
-        MARK READ
-=========================================*/
-
 function markRead(index) {
 
     adminNotifications[index].read = true;
@@ -184,10 +160,6 @@ function markRead(index) {
     displayNotifications();
 
 }
-
-/*=========================================
-        DELETE
-=========================================*/
 
 function deleteNotification(index) {
 
@@ -209,10 +181,6 @@ function deleteNotification(index) {
 
 }
 
-/*=========================================
-        CLEAR ALL
-=========================================*/
-
 clearAllBtn.addEventListener("click", function () {
 
     if (confirm("Clear all notifications?")) {
@@ -233,14 +201,7 @@ clearAllBtn.addEventListener("click", function () {
 
 });
 
-/*=========================================
-        LOAD
-=========================================*/
-
 displayNotifications();
-/*=========================================
-        ADD ADMIN NOTIFICATION
-=========================================*/
 
 function addAdminNotification(title, message) {
 

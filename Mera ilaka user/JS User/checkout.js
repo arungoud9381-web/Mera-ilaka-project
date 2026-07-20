@@ -2,11 +2,9 @@ const orderItems = document.getElementById("orderItems");
 const grandTotal = document.getElementById("grandTotal");
 const placeOrderBtn = document.getElementById("placeOrderBtn");
 
-// Load Products
 let checkoutItems = JSON.parse(localStorage.getItem("checkoutItems")) || [];
 let buyNow = JSON.parse(localStorage.getItem("buyNow"));
 
-// Buy Now Support
 if (checkoutItems.length === 0 && buyNow) {
 
     checkoutItems.push(buyNow);

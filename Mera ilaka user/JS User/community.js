@@ -1,7 +1,3 @@
-/*=========================================
-        DASHBOARD
-=========================================*/
-
 const dashboardBtn = document.getElementById("dashboardBtn");
 
 if (dashboardBtn) {
@@ -14,24 +10,12 @@ if (dashboardBtn) {
 
 }
 
-/*=========================================
-        ELEMENTS
-=========================================*/
-
 const createPostBtn = document.getElementById("createPostBtn");
 const searchPost = document.getElementById("searchPost");
 const categoryFilter = document.getElementById("categoryFilter");
 const postsContainer = document.getElementById("postsContainer");
 
-/*=========================================
-        DATA
-=========================================*/
-
 let posts = JSON.parse(localStorage.getItem("communityPosts")) || [];
-
-/*=========================================
-        DISPLAY POSTS
-=========================================*/
 
 function displayPosts() {
 

@@ -1,7 +1,3 @@
-/*=========================================
-        DASHBOARD
-=========================================*/
-
 const dashboardBtn = document.getElementById("dashboardBtn");
 
 dashboardBtn.addEventListener("click", function () {
@@ -10,23 +6,11 @@ dashboardBtn.addEventListener("click", function () {
 
 });
 
-/*=========================================
-        ELEMENTS
-=========================================*/
-
 const notificationList = document.getElementById("notificationList");
 
 const clearAllBtn = document.getElementById("clearAllBtn");
 
-/*=========================================
-        DATA
-=========================================*/
-
 let notifications = JSON.parse(localStorage.getItem("notifications")) || [];
-
-/*=========================================
-        SAMPLE DATA
-=========================================*/
 
 if (notifications.length === 0) {
 
@@ -85,10 +69,6 @@ if (notifications.length === 0) {
     );
 
 }
-
-/*=========================================
-        DISPLAY
-=========================================*/
 
 function displayNotifications() {
 
@@ -161,10 +141,6 @@ function displayNotifications() {
 
 }
 
-/*=========================================
-        MARK AS READ
-=========================================*/
-
 function markRead(index) {
 
     notifications[index].read = true;
@@ -180,10 +156,6 @@ function markRead(index) {
     displayNotifications();
 
 }
-
-/*=========================================
-        DELETE
-=========================================*/
 
 function deleteNotification(index) {
 
@@ -205,10 +177,6 @@ function deleteNotification(index) {
 
 }
 
-/*=========================================
-        CLEAR ALL
-=========================================*/
-
 clearAllBtn.addEventListener("click", function () {
 
     if (confirm("Clear all notifications?")) {
@@ -228,16 +196,7 @@ clearAllBtn.addEventListener("click", function () {
     }
 
 });
-
-/*=========================================
-        LOAD
-=========================================*/
-
 displayNotifications();
-/*=========================================
-        ADD USER NOTIFICATION
-=========================================*/
-
 function addUserNotification(title, message) {
 
     let notifications = JSON.parse(localStorage.getItem("notifications")) || [];
